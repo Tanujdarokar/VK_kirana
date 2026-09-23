@@ -40,6 +40,7 @@ export const Navbar = () => {
   // Modals & Drawers
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const searchRef = useRef(null);
   const userMenuRef = useRef(null);
@@ -48,6 +49,7 @@ export const Navbar = () => {
   useEffect(() => {
     setIsUserMenuOpen(false);
     setIsSearchFocused(false);
+    setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
   // Outside click listeners
@@ -153,9 +155,8 @@ export const Navbar = () => {
             {/* Left: Mobile Menu Toggle & Logo */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
               <button
-                className="btn-icon"
+                className="btn-icon mobile-menu-toggle"
                 onClick={() => setIsMobileMenuOpen(true)}
-                style={{ display: 'none' }}
                 id="mobile-menu-btn"
                 aria-label="Open menu"
               >
@@ -653,6 +654,78 @@ export const Navbar = () => {
         isOpen={isAiModalOpen}
         onClose={() => setIsAiModalOpen(false)}
       />
+
+      {/* Mobile Navigation Drawer */}
+      {isMobileMenuOpen && (
+        <div
+          className="modal-backdrop"
+          style={{ justifyContent: 'flex-start', padding: 0 }}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <div
+            style={{
+              width: '280px',
+              height: '100%',
+              backgroundColor: '#ffffff',
+              boxShadow: '4px 0 20px rgba(0,0,0,0.15)',
+              display: 'flex',
+              flexDirection: 'column',
+              animation: 'slideInLeft 0.25s ease-out',
+              zIndex: 1100
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{ padding: '16px 20px', borderBottom: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#0f172a', color: 'white' }}>
+              <div style={{ fontWeight: 800, fontSize: '1.1rem', color: '#34d399' }}>
+                VKCommerce Navigation
+              </div>
+              <button onClick={() => setIsMobileMenuOpen(false)} style={{ color: '#94a3b8' }}>
+                <X size={20} />
+              </button>
+            </div>
+
+            <div style={{ padding: '16px', overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <Link
+                to="/products"
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', borderRadius: '10px', backgroundColor: '#ecfdf5', color: '#047857', fontWeight: 700, fontSize: '0.9rem', textDecoration: 'none' }}
+              >
+                <Sparkles size={18} /> All 10 Aisles
+              </Link>
+
+              <Link
+                to="/admin"
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', borderRadius: '10px', backgroundColor: '#f1f5f9', color: '#0f172a', fontWeight: 700, fontSize: '0.9rem', textDecoration: 'none' }}
+              >
+                <span>🏪</span> Dukan Manager / POS
+              </Link>
+
+              <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', marginTop: '12px', paddingLeft: '8px' }}>
+                Grocery Categories
+              </div>
+
+              {categories.map((cat) => (
+                <Link
+                  key={cat.id}
+                  to={`/category/${cat.slug}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  style={{
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    fontSize: '0.86rem',
+                    color: '#334155',
+                    fontWeight: 600,
+                    textDecoration: 'none'
+                  }}
+                >
+                  {cat.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

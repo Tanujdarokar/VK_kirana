@@ -2,15 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {
   ShieldCheck,
-  Truck,
-  MapPin,
   Banknote,
   CheckCircle2,
   Lock,
-  ArrowRight,
-  Clock,
-  Sparkles,
-  Check
+  ArrowRight
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';

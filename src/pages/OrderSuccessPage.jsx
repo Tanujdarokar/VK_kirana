@@ -5,12 +5,8 @@ import {
   CheckCircle2,
   Package,
   Truck,
-  MapPin,
-  Clock,
   Printer,
-  ArrowRight,
-  ShoppingBag,
-  Sparkles
+  ArrowRight
 } from 'lucide-react';
 import { useOrders } from '../context/OrderContext';
 

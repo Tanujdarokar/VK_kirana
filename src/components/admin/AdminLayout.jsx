@@ -7,18 +7,14 @@ import {
   BookOpen,
   Receipt,
   Store,
-  AlertTriangle,
-  TrendingUp,
-  ArrowLeft,
-  ShoppingBag,
-  Plus
+  AlertTriangle
 } from 'lucide-react';
 import { useFinance } from '../../context/FinanceContext';
 import { useInventory } from '../../context/InventoryContext';
 
 export const AdminLayout = ({ children, title, subtitle, actionButton }) => {
   const location = useLocation();
-  const { todaySales, todayGrossProfit, totalUdhaarPending } = useFinance();
+  const { todaySales, totalUdhaarPending } = useFinance();
   const { lowStockCount } = useInventory();
 
   const navLinks = [

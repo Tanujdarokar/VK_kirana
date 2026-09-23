@@ -473,6 +473,35 @@ img {
   background: #94a3b8;
 }
 
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+  .show-on-mobile {
+    display: flex !important;
+  }
+  .mobile-menu-toggle {
+    display: inline-flex !important;
+  }
+}
+@media (min-width: 769px) {
+  .show-on-mobile {
+    display: none !important;
+  }
+  .mobile-menu-toggle {
+    display: none !important;
+  }
+}
+
 /* Responsive Grid Helper */
 .grid-responsive {
   display: grid;

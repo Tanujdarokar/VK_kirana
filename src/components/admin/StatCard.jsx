@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const StatCard = ({ title, value, subtitle, icon: Icon, color = '#10b981', trend, isCurrency = true }) => {
+export const StatCard = ({ title, value, subtitle, icon: Icon, color = '#10b981', isCurrency = true }) => {
   return (
     <div
       className="card"

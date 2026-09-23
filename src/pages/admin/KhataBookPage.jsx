@@ -6,16 +6,15 @@ import {
   ArrowUpRight,
   ArrowDownRight,
   Send,
-  X,
-  Trash2
+  X
 } from 'lucide-react';
 import { AdminLayout } from '../../components/admin/AdminLayout';
 import { useFinance } from '../../context/FinanceContext';
 import { useToast } from '../../context/ToastContext';
 
 export const KhataBookPage = () => {
-  const { khataCustomers, addKhataCustomer, addKhataEntry, deleteKhataCustomer, totalUdhaarPending } = useFinance();
-  const { showError } = useToast();
+  const { khataCustomers, addKhataCustomer, addKhataEntry, totalUdhaarPending } = useFinance();
+  const { showError, showSuccess } = useToast();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCustomerId, setSelectedCustomerId] = useState(khataCustomers[0]?.id || null);

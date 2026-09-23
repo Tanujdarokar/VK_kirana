@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Printer, CheckCircle2, ShoppingBag } from 'lucide-react';
+import { X, Printer } from 'lucide-react';
 
 export const ReceiptModal = ({ transaction, isOpen, onClose }) => {
   if (!isOpen || !transaction) return null;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Heart, ShoppingBag, Check, ShieldCheck, Truck, Zap } from 'lucide-react';
+import { X, Heart, ShoppingBag, Check, Truck } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { Rating } from './Rating';

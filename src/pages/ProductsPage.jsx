@@ -4,19 +4,13 @@ import {
   Filter,
   SlidersHorizontal,
   X,
-  Star,
-  ChevronDown,
   RotateCcw,
-  Search,
-  Check,
-  Grid,
-  List
+  Search
 } from 'lucide-react';
 import { useInventory } from '../context/InventoryContext';
 import { brands } from '../data/products';
 import { categories } from '../data/categories';
 import { getExpandedSearchTerms } from '../data/aiAssistant';
-import { ProductCard } from '../components/product/ProductCard';
 import { ProductGrid } from '../components/product/ProductGrid';
 
 export const ProductsPage = () => {

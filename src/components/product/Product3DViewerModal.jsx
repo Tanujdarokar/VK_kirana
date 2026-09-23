@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, RotateCw, ZoomIn, ZoomOut, ShoppingBag, Heart, ShieldCheck, Truck, Sparkles, Check, Info } from 'lucide-react';
+import { X, RotateCw, ZoomIn, ZoomOut, ShoppingBag, Heart, ShieldCheck, Truck, Sparkles, Check } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { Rating } from '../common/Rating';
@@ -10,7 +10,6 @@ export const Product3DViewerModal = ({ product, isOpen, onClose }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [isAutoSpinning, setIsAutoSpinning] = useState(false);
-  const [activeSide, setActiveSide] = useState('front'); // 'front' or 'back' (nutrition/FSSAI)
   const [quantity, setQuantity] = useState(1);
 
   const { addToCart } = useCart();

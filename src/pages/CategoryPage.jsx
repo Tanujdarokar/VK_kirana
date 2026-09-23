@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Sparkles, ArrowLeft, ChevronRight, SlidersHorizontal } from 'lucide-react';
+import { Sparkles, ChevronRight } from 'lucide-react';
 import { categories } from '../data/categories';
 import { useInventory } from '../context/InventoryContext';
 import { ProductGrid } from '../components/product/ProductGrid';
@@ -27,7 +27,7 @@ export const CategoryPage = () => {
         if (sortBy === 'rating') return b.rating - a.rating;
         return (b.isPopular ? 1 : 0) - (a.isPopular ? 1 : 0);
       });
-  }, [categorySlug, selectedBrand, sortBy]);
+  }, [products, categorySlug, selectedBrand, sortBy]);
 
   // Unique brands in this category
   const categoryBrands = useMemo(() => {
@@ -35,7 +35,7 @@ export const CategoryPage = () => {
       .filter((p) => p.category === categorySlug)
       .map((p) => p.brand);
     return ['all', ...new Set(list)];
-  }, [categorySlug]);
+  }, [products, categorySlug]);
 
   if (!currentCategory) {
     return (

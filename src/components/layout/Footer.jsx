@@ -7,6 +7,7 @@ import {
   RotateCcw,
   Headphones,
   Mail,
+  Phone,
   Send
 } from 'lucide-react';
 import { useToast } from '../../context/ToastContext';

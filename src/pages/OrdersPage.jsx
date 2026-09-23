@@ -3,11 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import {
   Package,
   Calendar,
-  Clock,
   RotateCcw,
-  CheckCircle2,
-  ChevronRight,
-  ShoppingBag,
   ExternalLink
 } from 'lucide-react';
 import { useOrders } from '../context/OrderContext';

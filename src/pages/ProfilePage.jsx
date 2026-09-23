@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { User, Mail, Phone, MapPin, Package, Heart, LogOut, Save, CheckCircle2 } from 'lucide-react';
+import { Package, Heart, LogOut, Save } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useOrders } from '../context/OrderContext';
 import { useWishlist } from '../context/WishlistContext';

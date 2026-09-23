@@ -5,13 +5,10 @@ import {
   X,
   Plus,
   Minus,
-  Check,
   ShoppingBag,
   Send,
   Zap,
   CheckCircle2,
-  Users,
-  Coffee,
   ArrowRight,
   Clipboard
 } from 'lucide-react';
