@@ -7,10 +7,7 @@ import {
   RotateCcw,
   Headphones,
   Mail,
-  Send,
-  Phone,
-  MapPin,
-  Heart
+  Send
 } from 'lucide-react';
 import { useToast } from '../../context/ToastContext';
 import { categories } from '../../data/categories';

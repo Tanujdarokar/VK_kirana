@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Sparkles,
   Zap,
   ArrowRight,
   Clock,
-  ShieldCheck,
   ChevronRight,
-  TrendingUp,
   Percent,
   Star,
-  Quote,
   CheckCircle2,
   Bot,
-  ShoppingBag,
-  Heart,
   Package
 } from 'lucide-react';
 import { useInventory } from '../context/InventoryContext';

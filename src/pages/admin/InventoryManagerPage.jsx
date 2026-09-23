@@ -1,16 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import {
-  Package,
   Plus,
   Search,
   Edit2,
   Trash2,
-  AlertTriangle,
-  CheckCircle2,
   X,
-  TrendingUp,
-  Save,
-  Filter
+  Save
 } from 'lucide-react';
 import { AdminLayout } from '../../components/admin/AdminLayout';
 import { useInventory } from '../../context/InventoryContext';
@@ -19,7 +14,7 @@ import { useToast } from '../../context/ToastContext';
 
 export const InventoryManagerPage = () => {
   const { products, addProduct, updateProduct, deleteProduct, adjustStock, lowStockCount, outOfStockCount } = useInventory();
-  const { showSuccess, showError } = useToast();
+  const { showError } = useToast();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');

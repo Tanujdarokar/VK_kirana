@@ -123,7 +123,7 @@ export const ProductsPage = () => {
         if (sortBy === 'discount') return b.discount - a.discount;
         return (b.isPopular ? 1 : 0) - (a.isPopular ? 1 : 0);
       });
-  }, [searchQuery, selectedCategory, selectedBrands, maxPrice, minRating, minDiscount, inStockOnly, sortBy]);
+  }, [products, searchQuery, selectedCategory, selectedBrands, maxPrice, minRating, minDiscount, inStockOnly, sortBy]);
 
   // Sidebar Filter JSX component
   const filterSidebarContent = (

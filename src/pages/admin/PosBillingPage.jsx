@@ -1,18 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import {
-  Calculator,
   Search,
-  Plus,
-  Minus,
-  Trash2,
   Banknote,
   QrCode,
   BookOpen,
-  Printer,
   CheckCircle2,
-  X,
-  User,
-  Sparkles
+  X
 } from 'lucide-react';
 import { AdminLayout } from '../../components/admin/AdminLayout';
 import { useInventory } from '../../context/InventoryContext';
@@ -24,7 +17,7 @@ import { categories } from '../../data/categories';
 export const PosBillingPage = () => {
   const { products } = useInventory();
   const { recordPosSale, khataCustomers } = useFinance();
-  const { showError, showSuccess } = useToast();
+  const { showError } = useToast();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCat, setSelectedCat] = useState('all');

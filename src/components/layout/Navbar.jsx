@@ -38,7 +38,6 @@ export const Navbar = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   // Modals & Drawers
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
 
@@ -47,7 +46,6 @@ export const Navbar = () => {
 
   // Close menus on route change
   useEffect(() => {
-    setIsMobileMenuOpen(false);
     setIsUserMenuOpen(false);
     setIsSearchFocused(false);
   }, [location.pathname]);

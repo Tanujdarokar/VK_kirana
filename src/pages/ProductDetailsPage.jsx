@@ -5,16 +5,12 @@ import {
   ShoppingBag,
   Zap,
   Truck,
-  ShieldCheck,
   RotateCcw,
   Check,
   ChevronRight,
-  MapPin,
   Star,
   Plus,
-  Minus,
-  Share2,
-  AlertCircle
+  Minus
 } from 'lucide-react';
 import { useInventory } from '../context/InventoryContext';
 import { useCart } from '../context/CartContext';
@@ -33,8 +29,6 @@ export const ProductDetailsPage = () => {
 
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
-  const [pincodeInput, setPincodeInput] = useState('');
-  const [pincodeVerified, setPincodeVerified] = useState(null);
   const [activeTab, setActiveTab] = useState('highlights');
 
   // Customer Reviews State
@@ -89,17 +83,6 @@ export const ProductDetailsPage = () => {
   const handleBuyNow = () => {
     addToCart(product, quantity);
     navigate('/checkout');
-  };
-
-  const handlePincodeCheck = (e) => {
-    e.preventDefault();
-    if (pincodeInput.length === 6 && /^\d+$/.test(pincodeInput)) {
-      setPincodeVerified(true);
-      showSuccess(`Delivery available for ${pincodeInput} (Estimated: 15 Mins)`);
-    } else {
-      setPincodeVerified(false);
-      showError('Please enter a valid 6-digit pincode');
-    }
   };
 
   const handleReviewSubmit = (e) => {
