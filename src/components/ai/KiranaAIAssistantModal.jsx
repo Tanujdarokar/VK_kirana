@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Sparkles,
   Bot,
@@ -12,12 +12,8 @@ import {
   CheckCircle2,
   Users,
   Coffee,
-  Flame,
-  ShieldCheck,
-  Layers,
   ArrowRight,
-  Clipboard,
-  RotateCcw
+  Clipboard
 } from 'lucide-react';
 import { useInventory } from '../../context/InventoryContext';
 import { useCart } from '../../context/CartContext';
@@ -26,7 +22,6 @@ import {
   KIRANA_SMART_KITS,
   getSuggestedWeeklyKiranaPlan,
   parseMultiLineGroceryList,
-  parseGroceryLine,
   findProductByKeywords
 } from '../../data/aiAssistant';
 
@@ -45,14 +40,7 @@ export const KiranaAIAssistantModal = ({ isOpen, onClose, initialQuery = '' }) =
   const [itemQuantities, setItemQuantities] = useState({});
   const [isAiThinking, setIsAiThinking] = useState(false);
 
-  // Load kit on mount or query change
-  useEffect(() => {
-    if (isOpen) {
-      handleLoadKit(KIRANA_SMART_KITS[0]);
-    }
-  }, [isOpen]);
-
-  const handleLoadKit = (kit) => {
+  const handleLoadKit = useCallback((kit) => {
     setSelectedKit(kit);
     const resolved = kit.items.map((it) => {
       const prod = findProductByKeywords(products, it.keywords);
@@ -77,7 +65,38 @@ export const KiranaAIAssistantModal = ({ isOpen, onClose, initialQuery = '' }) =
 
     setSelectedItemIds(initialSelected);
     setItemQuantities(initialQtys);
-  };
+  }, [products]);
+
+  // Load kit on mount or query change
+  useEffect(() => {
+    if (isOpen) {
+      if (initialQuery && initialQuery.trim()) {
+        setQuery(initialQuery);
+        setActiveTab('chat');
+        setIsAiThinking(true);
+        const timer = setTimeout(() => {
+          const result = getSuggestedWeeklyKiranaPlan(initialQuery, products);
+          setSelectedKit(result.kitInfo);
+          setSuggestedItems(result.items);
+
+          const initialSelected = new Set();
+          const initialQtys = {};
+          result.items.forEach((item) => {
+            if (item.product) {
+              initialSelected.add(item.product.id);
+              initialQtys[item.product.id] = item.quantity || 1;
+            }
+          });
+          setSelectedItemIds(initialSelected);
+          setItemQuantities(initialQtys);
+          setIsAiThinking(false);
+        }, 300);
+        return () => clearTimeout(timer);
+      } else {
+        handleLoadKit(KIRANA_SMART_KITS[0]);
+      }
+    }
+  }, [isOpen, initialQuery, products, handleLoadKit]);
 
   const handleRunAiQuery = (customPrompt) => {
     const promptToRun = customPrompt || chatInput || query;

@@ -194,7 +194,7 @@ export const parseMultiLineGroceryList = (rawText = '', products = []) => {
 
   lines.forEach((line) => {
     // Strip bullet numbers (e.g. "1.", "2)", "- ")
-    const cleanLine = line.replace(/^(\d+[\.\)]\s*|[-*•]\s*)/, '').trim();
+    const cleanLine = line.replace(/^(\d+[.\)]\s*|[-*•]\s*)/, '').trim();
     if (!cleanLine) return;
 
     const parsed = parseGroceryLine(cleanLine, products);
