@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <title>Khata Book (Udhaar) - VK Kirana Admin</title>
+  <meta name="description" content="Digital Khata Book for customer credit, udhar records, and WhatsApp balance reminders." />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/admin.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="admin-wrapper">
+    <!-- Shared Sidebar -->
+    <div id="admin-sidebar-container"></div>
+
+    <!-- Content Area -->
+    <div class="admin-content-area">
+      <!-- Shared Topbar -->
+      <div id="admin-topbar-container"></div>
+
+      <!-- Main Body -->
+      <div class="admin-main-body">
+        
+        <!-- Header -->
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+          <div>
+            <h2 style="font-size: 1.5rem; font-weight: 900; color: #0f172a;">Digital Kirana Khata Book</h2>
+            <p style="color: #64748b; font-size: 0.88rem;">Track customer credit (Udhaar), collect jama payments, and send WhatsApp payment reminders</p>
+          </div>
+
+          <button id="open-add-customer-modal-btn" class="btn btn-primary" style="padding: 10px 18px; font-weight: 800;">
+            <i data-lucide="user-plus"></i>
+            <span>+ Add Khata Customer</span>
+          </button>
+        </div>
+
+        <!-- Khata 2-Panel Grid -->
+        <div class="khata-grid">
+          
+          <!-- Left: Customers List -->
+          <div class="khata-customer-list">
+            <div style="padding: 16px; border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+              <input
+                type="text"
+                id="khata-search-input"
+                placeholder="Search customer name or phone..."
+                style="width: 100%; padding: 8px 12px; border-radius: 8px; font-size: 0.85rem;"
+              />
+            </div>
+
+            <div id="khata-customers-container">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Right: Customer Ledger Details -->
+          <div id="khata-ledger-panel" style="padding: 24px; display: flex; flex-direction: column; overflow-y: auto;">
+            
+            <!-- Customer Header -->
+            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <h3 id="active-cust-name" style="font-size: 1.3rem; font-weight: 900; color: #0f172a;">Select a Customer</h3>
+                <div id="active-cust-phone" style="font-size: 0.85rem; color: #64748b; margin-top: 2px;">Phone: -</div>
+                <div id="active-cust-address" style="font-size: 0.78rem; color: #94a3b8;">Address: -</div>
+              </div>
+
+              <div style="text-align: right;">
+                <div style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase;">Pending Udhaar</div>
+                <div id="active-cust-balance" style="font-size: 1.8rem; font-weight: 900; color: #ef4444;">₹0</div>
+                <a id="active-cust-wa-btn" href="#" target="_blank" class="btn btn-outline btn-sm" style="color: #059669; border-color: #a7f3d0; margin-top: 6px;">
+                  💬 WhatsApp Reminder
+                </a>
+              </div>
+            </div>
+
+            <!-- Transaction Action Buttons: Diya (Credit) vs Liya (Payment) -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;">
+              <button id="open-diya-btn" class="btn btn-danger" style="padding: 12px; font-weight: 800; font-size: 0.95rem;">
+                🔴 GAVE CREDIT (Udhaar Diya)
+              </button>
+
+              <button id="open-liya-btn" class="btn btn-primary" style="padding: 12px; font-weight: 800; font-size: 0.95rem;">
+                🟢 RECEIVED PAYMENT (Jama Liya)
+              </button>
+            </div>
+
+            <!-- Ledger History -->
+            <div style="flex: 1;">
+              <h4 style="font-size: 1rem; font-weight: 800; color: #0f172a; margin-bottom: 12px;">
+                Transaction Ledger Entries
+              </h4>
+
+              <div id="active-cust-entries-list" style="display: flex; flex-direction: column; gap: 8px;">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Customer Modal -->
+  <div id="add-customer-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card" style="max-width: 440px; padding: 24px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+        <h3 style="font-size: 1.2rem; font-weight: 900;">Add Khata Customer</h3>
+        <button id="close-cust-modal-btn" class="btn-icon">✕</button>
+      </div>
+
+      <form id="add-customer-form">
+        <div style="margin-bottom: 12px;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Customer Full Name *</label>
+          <input type="text" id="khata-new-name" required placeholder="e.g. Ramesh Sharma" style="width: 100%; padding: 10px; border-radius: 8px;" />
+        </div>
+
+        <div style="margin-bottom: 12px;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Phone Number *</label>
+          <input type="tel" id="khata-new-phone" required placeholder="9876543210" style="width: 100%; padding: 10px; border-radius: 8px;" />
+        </div>
+
+        <div style="margin-bottom: 18px;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Address / House No.</label>
+          <input type="text" id="khata-new-address" placeholder="e.g. House #12, 3rd Cross" style="width: 100%; padding: 10px; border-radius: 8px;" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-weight: 800;">
+          Add to Khata Book
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Record Entry Modal -->
+  <div id="record-entry-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card" style="max-width: 420px; padding: 24px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+        <h3 id="record-entry-title" style="font-size: 1.2rem; font-weight: 900;">Record Transaction</h3>
+        <button id="close-entry-modal-btn" class="btn-icon">✕</button>
+      </div>
+
+      <form id="record-entry-form">
+        <input type="hidden" id="record-entry-type" value="udhaar" />
+        
+        <div style="margin-bottom: 12px;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Amount (₹) *</label>
+          <input type="number" id="record-entry-amount" required placeholder="₹0" style="width: 100%; padding: 12px; border-radius: 8px; font-size: 1.2rem; font-weight: 800;" />
+        </div>
+
+        <div style="margin-bottom: 18px;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Note / Items Given</label>
+          <input type="text" id="record-entry-note" placeholder="e.g. Atta 5kg + Refined Oil 1L" style="width: 100%; padding: 10px; border-radius: 8px;" />
+        </div>
+
+        <button type="submit" id="record-entry-submit-btn" class="btn btn-primary" style="width: 100%; padding: 12px; font-weight: 800;">
+          Save Entry
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="./js/pages/admin-khata.js"></script>
+</body>
+</html>

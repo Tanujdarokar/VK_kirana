@@ -1,108 +1,97 @@
-# VKCommerce
+# VKCommerce - Kirana & Supermarket
 
-A modern React + Vite grocery and kirana store application built for both customer shopping and store-owner management. The project includes a storefront, product browsing, cart and checkout flow, wishlist, orders, user authentication screens, and an admin dashboard for inventory, billing, khata records, and expense tracking.
+A modern, high-performance grocery and local kirana store web application built using **pure HTML5, CSS3, and Vanilla JavaScript (ES Modules)**.
 
-## Overview
+The project includes an interactive customer storefront, product catalog with dynamic filtering and live auto-complete search, cart, checkout flow with UPI/COD, order tracking, customer authentication, along with a complete Kirana Store Management suite (Admin Dashboard, POS Billing Counter, Stock Inventory Manager, Digital Khata Book, and Shop Expense Tracker).
 
-VKCommerce is designed as a local kirana-style ecommerce app with a business-management layer for shop owners. It combines a customer-facing online store with admin tools for operating a small retail business.
+---
 
-## Features
+## 🌟 Tech Stack
 
-### Customer experience
-- Product catalog and category browsing
-- Product detail pages with quick view support
-- Wishlist and cart management
-- Checkout flow and order confirmation
-- Order history and user profile
-- Login, registration, and forgot-password screens
-- Responsive layout with navbar and footer
-- AI assistant floating button for support/help
+- **Core**: Vanilla HTML5, CSS3, and Modern JavaScript (ES Modules)
+- **Styling**: Tailored CSS design system with CSS custom properties, glassmorphism, responsive grid layouts, and micro-animations
+- **State Management**: Centralized unified store (`js/store.js`) backed by browser `localStorage`
+- **NLP Grocery Assistant**: Hinglish conversational parser (`js/data/aiAssistant.js` & `js/ai-widget.js`)
+- **Dev Server**: Vite (for fast local development and multi-page preview)
 
-### Store-owner tools
-- Admin dashboard
-- Inventory management page
-- POS billing interface
-- Khata book tracking
-- Expense tracker
-- Business overview cards and stats
+---
 
-## Tech stack
-
-- React 19
-- Vite
-- React Router DOM
-- Lucide React icons
-- Canvas Confetti for celebratory UI effects
-
-## Project structure
+## 📁 Project Structure
 
 ```text
 VKCommerce/
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── admin/
-│   │   ├── ai/
-│   │   ├── common/
-│   │   ├── layout/
-│   │   └── product/
-│   ├── context/
+├── index.html                   # Storefront Homepage
+├── products.html                # Product Catalog with Search, Category & Price Filters
+├── category.html                # Category Browsing View
+├── product-details.html         # Product Specifications & Nutrition
+├── cart.html                    # Shopping Bag with Coupon Promo & Free Delivery Meter
+├── checkout.html                # Express 15-Min Delivery & Payment (UPI/COD)
+├── order-success.html           # Order Confirmed + Live 15-Minute Delivery Tracker
+├── orders.html                  # Customer Past Orders & Reorder
+├── wishlist.html                # Saved Wishlist Items
+├── profile.html                 # Customer Account Profile & Role Switcher
+├── login.html                   # Login with 1-Click Demo Customer & Vendor Buttons
+├── register.html                # Customer Registration
+├── admin.html                   # Dukan Business Dashboard & Metrics
+├── admin-pos.html               # Express POS Billing Counter & Thermal Receipt Printer
+├── admin-inventory.html         # Live Inventory Stock & Price Margin Manager
+├── admin-khata.html             # Digital Udhar / Khata Book with WhatsApp Reminders
+├── admin-expenses.html          # Shop Daily Expenses & P&L Overhead Tracker
+├── css/
+│   ├── style.css                # Core design system, utilities, cards, typography
+│   └── admin.css                # Admin, POS Counter, Khata, and Expenses styles
+├── js/
 │   ├── data/
-│   ├── pages/
-│   ├── App.jsx
-│   ├── index.css
-│   ├── main.jsx
-│   └── App.css
-├── index.html
+│   │   ├── products.js          # 80+ Grocery products with images, prices, units
+│   │   ├── categories.js        # 10 Kirana categories with banners & colors
+│   │   └── aiAssistant.js       # Hinglish voice/text parser & grocery aliases
+│   ├── store.js                 # Unified state store (Auth, Cart, Inventory, Khata, Expenses)
+│   ├── common.js                # Shared navbar, footer, modals, toasts, product cards
+│   ├── ai-widget.js             # Kirana AI Assistant floating widget
+│   ├── admin-common.js          # Shared admin navigation and vendor security guard
+│   └── pages/                   # Page-specific controllers
+│       ├── home.js
+│       ├── products.js
+│       ├── category.js
+│       ├── product-details.js
+│       ├── cart.js
+│       ├── checkout.js
+│       ├── order-success.js
+│       ├── orders.js
+│       ├── wishlist.js
+│       ├── profile.js
+│       ├── auth.js
+│       ├── admin-dashboard.js
+│       ├── admin-pos.js
+│       ├── admin-inventory.js
+│       ├── admin-khata.js
+│       └── admin-expenses.js
+├── public/
+│   └── favicon.svg              # Store favicon icon
 ├── package.json
-├── vite.config.js
-└── README.md
+└── vite.config.js
 ```
 
-## Prerequisites
+---
 
-Before running the project, make sure you have:
+## 🚀 Running Locally
 
-- Node.js installed
-- npm or another package manager available
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-## Installation
+2. **Start Development Server**:
+   ```bash
+   npm run dev
+   ```
+   Open `http://localhost:5173` in your browser.
 
-```bash
-npm install
-```
+3. **Build for Production**:
+   ```bash
+   npm run build
+   ```
+   The optimized multi-page output will be generated inside the `dist/` directory.
 
-## Run locally
-
-```bash
-npm run dev
-```
-
-Then open the local Vite URL shown in the terminal, usually:
-
-```text
-http://localhost:5173
-```
-
-## Production build
-
-```bash
-npm run build
-```
-
-To preview the production build:
-
-```bash
-npm run preview
-```
-
-## Notes
-
-- This project currently uses local mock/demo data for products, categories, orders, and admin metrics.
-- It is a frontend-focused application and does not include a backend or database yet.
-- The app is structured for easy extension into a full ecommerce + ERP flow with API integration later.
-
-## License
-
-This project is for educational and demo purposes.
+4. **Direct Browser / Static Hosting**:
+   The website can also be opened directly via `index.html` or deployed to any static web hosting service (GitHub Pages, Vercel, Netlify, Apache, Nginx, or cPanel).

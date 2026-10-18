@@ -1,15 +1,202 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <title>VKCommerce - Fresh Daily Grocery Shopping & 15-Min Delivery</title>
-    <meta name="description" content="Shop fresh daily groceries, farm-pure milk & dairy, whole wheat atta, aged basmati rice, breakfast spreads, spices, and tea with superfast 15-minute delivery." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="./src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <title>VKCommerce - Fresh Daily Grocery Shopping & 15-Min Delivery</title>
+  <meta name="description" content="Shop fresh daily groceries, farm-pure milk & dairy, whole wheat atta, aged basmati rice, breakfast spreads, spices, and tea with superfast 15-minute delivery." />
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <!-- Common Shell Navigation -->
+  <div id="vk-navbar-container"></div>
+
+  <main>
+    <!-- Hero Banner Section -->
+    <section style="background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #065f46 100%); color: white; padding: 48px 0 60px; position: relative; overflow: hidden;">
+      <div style="position: absolute; right: -5%; top: -20%; width: 450px; height: 450px; border-radius: 50%; background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(6, 78, 59, 0) 70%); pointer-events: none;"></div>
+      
+      <div class="container" style="position: relative; z-index: 1;">
+        <div style="display: grid; grid-template-columns: 1fr 420px; gap: 2.5rem; align-items: center;" class="layout-2col-responsive">
+          <div>
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; color: #a7f3d0; margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.15);">
+              <span>⚡ Bengaluru Express Hub</span>
+              <span>•</span>
+              <span style="color: #facc15;">15-Minute Guaranteed Delivery</span>
+            </div>
+
+            <h1 style="font-size: 2.75rem; font-weight: 900; line-height: 1.15; color: white; margin-bottom: 18px; letter-spacing: -0.02em;">
+              Pure Desi Groceries & Daily Kirana at <span style="color: #34d399;">Wholesale Rates</span>
+            </h1>
+
+            <p style="font-size: 1.05rem; color: #d1fae5; line-height: 1.6; margin-bottom: 28px; max-width: 580px;">
+              Direct from mandi to your doorstep. Fresh chakki atta, farm-pure cow milk, unpolished dal, mustard oil, authentic spices & daily essentials.
+            </p>
+
+            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+              <a href="products.html" class="btn btn-primary btn-lg" style="background: #ffffff; color: #047857; font-weight: 800; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+                <span>Shop All Essentials</span>
+                <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+              </a>
+
+              <a href="products.html?deal=true" class="btn btn-outline btn-lg" style="color: white; border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08);">
+                <span>🔥 Today's Offers</span>
+              </a>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 24px; margin-top: 32px; font-size: 0.85rem; color: #a7f3d0;">
+              <div>✓ No Minimum Order</div>
+              <div>✓ Instant UPI & COD</div>
+              <div>✓ Fresh Sourced Daily</div>
+            </div>
+          </div>
+
+          <!-- Hero Promo Card -->
+          <div class="card hide-on-mobile animate-float-3d" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); padding: 24px; border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <span class="badge badge-deal">🔥 Dukan Maha Bachat</span>
+              <span style="font-size: 0.8rem; font-weight: 800; color: #ef4444;">ENDS IN 04h 32m</span>
+            </div>
+
+            <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 16px;">
+              <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&auto=format&fit=crop&q=80" alt="Atta" style="width: 90px; height: 90px; object-fit: cover; border-radius: 12px;" />
+              <div>
+                <div style="font-size: 0.75rem; font-weight: 800; color: #059669; text-transform: uppercase;">Aashirvaad Sharbati Atta</div>
+                <div style="font-size: 1rem; font-weight: 800; color: #0f172a;">100% MP Wheat 5kg Pack</div>
+                <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 4px;">
+                  <span style="font-size: 1.3rem; font-weight: 900; color: #059669;">₹245</span>
+                  <span style="font-size: 0.9rem; text-decoration: line-through; color: #94a3b8;">₹265</span>
+                  <span style="font-size: 0.75rem; font-weight: 800; color: #ef4444; background: #fee2e2; padding: 2px 6px; border-radius: 4px;">8% OFF</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="background: #f8fafc; border-radius: 12px; padding: 12px; margin-bottom: 16px; border: 1px solid #e2e8f0; font-size: 0.85rem; color: #475569;">
+              🎁 Use Code <strong>VKFIRST100</strong> for Flat ₹100 OFF on orders above ₹400!
+            </div>
+
+            <a href="product-details.html?id=atta-1" class="btn btn-primary" style="width: 100%; padding: 12px;">
+              Grab Deal Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Strip -->
+    <section style="padding: 48px 0; background-color: #ffffff;">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-tag">⚡ Dukan Aisle Categories</span>
+            <h2 class="section-title">Shop by Category</h2>
+          </div>
+          <a href="products.html" class="section-link">
+            <span>View All Products</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+          </a>
+        </div>
+
+        <div id="home-categories-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(115px, 1fr)); gap: 14px;">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Deals of the Day Section -->
+    <section style="padding: 48px 0; background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-tag" style="color: #ef4444;">🔥 Limited Time Discounts</span>
+            <h2 class="section-title">Deals of the Day</h2>
+            <div class="section-subtitle">Lowest wholesale prices on premium daily groceries</div>
+          </div>
+          <a href="products.html?deal=true" class="section-link">
+            <span>See All Deals</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+          </a>
+        </div>
+
+        <div id="home-deals-grid" class="grid-responsive">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Kirana Essentials Section -->
+    <section style="padding: 48px 0; background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-tag">⭐ Bengaluru Most Bought</span>
+            <h2 class="section-title">Popular Everyday Kirana</h2>
+            <div class="section-subtitle">Staples that 10,000+ local families re-order every week</div>
+          </div>
+          <a href="products.html" class="section-link">
+            <span>Browse Full Store</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+          </a>
+        </div>
+
+        <div id="home-popular-grid" class="grid-responsive">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose VK Kirana Features Banner -->
+    <section style="padding: 54px 0; background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border-top: 1px solid #d1fae5; border-bottom: 1px solid #d1fae5;">
+      <div class="container">
+        <div style="text-align: center; max-width: 640px; margin: 0 auto 40px;">
+          <span class="section-tag" style="justify-content: center;">🌟 Why VK Kirana?</span>
+          <h2 style="font-size: 2rem; font-weight: 800; color: #064e3b; margin-top: 6px;">The Neighborhood Dukan Trust</h2>
+          <p style="color: #047857; font-size: 0.95rem; margin-top: 6px;">Blending traditional trustworthiness with 15-minute quick-commerce speed</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+          <div class="card" style="padding: 24px; text-align: center; border-radius: 18px;">
+            <div style="width: 52px; height: 52px; border-radius: 14px; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
+              ⚡
+            </div>
+            <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">15-Min Delivery</h3>
+            <p style="font-size: 0.88rem; color: #64748b; line-height: 1.5;">Express delivery from the nearest Mandi fulfillment counter in Bengaluru.</p>
+          </div>
+
+          <div class="card" style="padding: 24px; text-align: center; border-radius: 18px;">
+            <div style="width: 52px; height: 52px; border-radius: 14px; background: #fef3c7; color: #d97706; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
+              🏷️
+            </div>
+            <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Wholesale Kirana Rates</h3>
+            <p style="font-size: 0.88rem; color: #64748b; line-height: 1.5;">Direct mandi procurement ensures prices 10-15% lower than fancy dark stores.</p>
+          </div>
+
+          <div class="card" style="padding: 24px; text-align: center; border-radius: 18px;">
+            <div style="width: 52px; height: 52px; border-radius: 14px; background: #fee2e2; color: #ef4444; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
+              🛡️
+            </div>
+            <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">100% Genuine Staples</h3>
+            <p style="font-size: 0.88rem; color: #64748b; line-height: 1.5;">Original brands: Aashirvaad, Amul, Fortune, MDH, Tata Tea with no compromise.</p>
+          </div>
+
+          <div class="card" style="padding: 24px; text-align: center; border-radius: 18px;">
+            <div style="width: 52px; height: 52px; border-radius: 14px; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
+              🤖
+            </div>
+            <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Hinglish AI Assistant</h3>
+            <p style="font-size: 0.88rem; color: #64748b; line-height: 1.5;">Speak or paste raw Hindi/Hinglish shopping lists and add to cart instantly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Common Shell Footer -->
+  <div id="vk-footer-container"></div>
+
+  <!-- Page Logic Script -->
+  <script type="module" src="./js/pages/home.js"></script>
+</body>
 </html>

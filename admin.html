@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <title>Dukan Dashboard - VK Kirana Admin</title>
+  <meta name="description" content="Kirana Store business metrics, daily revenue, and operations management." />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/admin.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="admin-wrapper">
+    <!-- Shared Admin Sidebar -->
+    <div id="admin-sidebar-container"></div>
+
+    <!-- Admin Content Area -->
+    <div class="admin-content-area">
+      <!-- Shared Admin Topbar -->
+      <div id="admin-topbar-container"></div>
+
+      <!-- Main Dashboard Body -->
+      <div class="admin-main-body">
+        
+        <!-- Welcome Banner -->
+        <div style="background: linear-gradient(135deg, #064e3b 0%, #047857 100%); color: white; padding: 24px 28px; border-radius: 20px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <span style="font-size: 0.78rem; font-weight: 800; color: #a7f3d0; text-transform: uppercase;">
+              🏪 Mandi Koramangala Hub
+            </span>
+            <h2 style="font-size: 1.6rem; font-weight: 900; color: white; margin-top: 4px;">
+              VK Kirana Store & Supermarket
+            </h2>
+            <p style="color: #d1fae5; font-size: 0.9rem; margin-top: 2px;">
+              Live counter billing, customer credit accounts (Udhaar), stock reorder alerts, and daily profits.
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <a href="admin-pos.html" class="btn btn-primary" style="background: #ffffff; color: #064e3b; font-weight: 800;">
+              <i data-lucide="calculator"></i>
+              <span>Open POS Billing</span>
+            </a>
+            <a href="admin-khata.html" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.4);">
+              <i data-lucide="book-open"></i>
+              <span>Khata Book</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4 Stat Metric Cards -->
+        <div class="stat-card-grid">
+          
+          <div class="stat-card">
+            <div>
+              <div style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Today's Counter Sales</div>
+              <div id="stat-sales" style="font-size: 1.8rem; font-weight: 900; color: #0f172a; margin-top: 4px;">₹0</div>
+              <div style="font-size: 0.78rem; color: #059669; font-weight: 700; margin-top: 2px;">⚡ Express POS + Store</div>
+            </div>
+            <div class="stat-icon-wrapper" style="background: #ecfdf5; color: #059669;">
+              <i data-lucide="banknote" style="width: 26px; height: 26px;"></i>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div>
+              <div style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Pending Udhaar (Khata)</div>
+              <div id="stat-khata" style="font-size: 1.8rem; font-weight: 900; color: #ef4444; margin-top: 4px;">₹0</div>
+              <div style="font-size: 0.78rem; color: #dc2626; font-weight: 700; margin-top: 2px;">Across active customers</div>
+            </div>
+            <div class="stat-icon-wrapper" style="background: #fee2e2; color: #ef4444;">
+              <i data-lucide="book-open" style="width: 26px; height: 26px;"></i>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div>
+              <div style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Low Stock Warnings</div>
+              <div id="stat-low-stock" style="font-size: 1.8rem; font-weight: 900; color: #d97706; margin-top: 4px;">0</div>
+              <div style="font-size: 0.78rem; color: #b45309; font-weight: 700; margin-top: 2px;">Items need mandi reorder</div>
+            </div>
+            <div class="stat-icon-wrapper" style="background: #fef3c7; color: #d97706;">
+              <i data-lucide="alert-triangle" style="width: 26px; height: 26px;"></i>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div>
+              <div style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Total Kirana Items</div>
+              <div id="stat-total-items" style="font-size: 1.8rem; font-weight: 900; color: #0f172a; margin-top: 4px;">80</div>
+              <div style="font-size: 0.78rem; color: #64748b; font-weight: 700; margin-top: 2px;">Active in digital catalog</div>
+            </div>
+            <div class="stat-icon-wrapper" style="background: #e0f2fe; color: #0284c7;">
+              <i data-lucide="boxes" style="width: 26px; height: 26px;"></i>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 2 Column Overview Section: Recent Transactions & Low Stock Alerts -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;" class="layout-2col-responsive">
+          
+          <!-- Recent Sales Table -->
+          <div class="card" style="padding: 24px; border-radius: 20px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <h3 style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">Recent Counter Bills</h3>
+              <a href="admin-pos.html" style="font-size: 0.85rem; font-weight: 700; color: #059669;">+ New Bill</a>
+            </div>
+
+            <div id="recent-sales-list" style="display: flex; flex-direction: column; gap: 10px;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Low Stock Items Warning Table -->
+          <div class="card" style="padding: 24px; border-radius: 20px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <h3 style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">Low Stock Alerts (Mandi Reorder)</h3>
+              <a href="admin-inventory.html" style="font-size: 0.85rem; font-weight: 700; color: #059669;">Manage Stock</a>
+            </div>
+
+            <div id="low-stock-list" style="display: flex; flex-direction: column; gap: 10px;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./js/pages/admin-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <title>My Profile - VKCommerce</title>
+  <meta name="description" content="Manage your customer account and delivery address." />
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <!-- Common Navbar Shell -->
+  <div id="vk-navbar-container"></div>
+
+  <main style="padding: 32px 0 60px;">
+    <div class="container" style="max-width: 800px;">
+      <!-- Breadcrumb -->
+      <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #64748b; margin-bottom: 20px;">
+        <a href="index.html" style="color: #059669; font-weight: 600;">Home</a>
+        <span>›</span>
+        <span style="font-weight: 700; color: #0f172a;">Account Profile</span>
+      </div>
+
+      <!-- Profile Header Card -->
+      <div class="card" style="padding: 28px; border-radius: 20px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 18px;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #059669; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 900; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);">
+            <span id="profile-avatar-letter">U</span>
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <h1 id="profile-name-heading" style="font-size: 1.4rem; font-weight: 900; color: #0f172a;">User</h1>
+              <span id="profile-role-badge" class="badge badge-popular">Customer</span>
+            </div>
+            <div id="profile-email-text" style="color: #64748b; font-size: 0.88rem; margin-top: 2px;">user@example.com</div>
+          </div>
+        </div>
+
+        <button id="profile-logout-btn" class="btn btn-outline btn-sm" style="color: #ef4444; border-color: #fee2e2;">
+          <i data-lucide="log-out"></i>
+          <span>Sign Out</span>
+        </button>
+      </div>
+
+      <!-- Edit Profile Form -->
+      <div class="card" style="padding: 28px; border-radius: 20px; margin-bottom: 24px;">
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin-bottom: 18px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px;">
+          Personal & Delivery Address Details
+        </h3>
+
+        <form id="profile-form">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;" class="layout-2col-responsive">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Full Name</label>
+              <input type="text" id="prof-name" required style="width: 100%; padding: 10px; border-radius: 10px;" />
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Phone Number</label>
+              <input type="tel" id="prof-phone" required style="width: 100%; padding: 10px; border-radius: 10px;" />
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Delivery Street / Flat Address</label>
+            <input type="text" id="prof-street" required style="width: 100%; padding: 10px; border-radius: 10px;" />
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;" class="layout-2col-responsive">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">City / State</label>
+              <input type="text" id="prof-city" required style="width: 100%; padding: 10px; border-radius: 10px;" />
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Pincode</label>
+              <input type="text" id="prof-pincode" required style="width: 100%; padding: 10px; border-radius: 10px;" />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="padding: 12px 24px;">
+            Save Profile Changes
+          </button>
+        </form>
+      </div>
+
+      <!-- Quick Switch Role Card -->
+      <div class="card" style="padding: 24px; border-radius: 20px; background: #f8fafc;">
+        <h4 style="font-size: 1rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;">
+          Demo Role Switching
+        </h4>
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 14px;">
+          Easily test both Customer Storefront view and Dukan Owner (POS & Khata) management view:
+        </p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <button id="prof-switch-cust-btn" class="btn btn-outline" style="background: white;">
+            🛒 Switch to Customer Account (Tanuj Sharma)
+          </button>
+          <button id="prof-switch-vend-btn" class="btn btn-primary" style="background: #0f172a; border-color: #1e293b;">
+            🏪 Switch to Store Owner (Vijay Dukan)
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Common Footer Shell -->
+  <div id="vk-footer-container"></div>
+
+  <!-- Page Logic Script -->
+  <script type="module" src="./js/pages/profile.js"></script>
+</body>
+</html>

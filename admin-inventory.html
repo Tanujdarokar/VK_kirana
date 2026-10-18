@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <title>Inventory Manager - VK Kirana Admin</title>
+  <meta name="description" content="Manage kirana product stock, prices, cost margins, and low stock warnings." />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/admin.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="admin-wrapper">
+    <!-- Shared Sidebar -->
+    <div id="admin-sidebar-container"></div>
+
+    <!-- Content Area -->
+    <div class="admin-content-area">
+      <!-- Shared Topbar -->
+      <div id="admin-topbar-container"></div>
+
+      <!-- Main Body -->
+      <div class="admin-main-body">
+        
+        <!-- Header Controls -->
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+          <div>
+            <h2 style="font-size: 1.5rem; font-weight: 900; color: #0f172a;">Store Stock & Prices</h2>
+            <p style="color: #64748b; font-size: 0.88rem;">Manage real-time inventory, wholesale cost prices, and mandi purchase alerts</p>
+          </div>
+
+          <button id="open-add-product-modal-btn" class="btn btn-primary" style="padding: 10px 18px; font-weight: 800;">
+            <i data-lucide="plus-circle"></i>
+            <span>+ Add New Product</span>
+          </button>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="card" style="padding: 16px; border-radius: 16px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 12px; flex: 1; min-width: 260px;">
+            <input
+              type="text"
+              id="inv-search-input"
+              placeholder="Search product name, brand, or category..."
+              style="width: 100%; max-width: 380px; padding: 9px 14px; border-radius: 10px; font-size: 0.88rem;"
+            />
+            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #d97706; cursor: pointer; white-space: nowrap;">
+              <input type="checkbox" id="inv-low-stock-only" style="accent-color: #d97706; width: 16px; height: 16px;" />
+              <span>⚠️ Low Stock Only (<span id="inv-low-count">0</span>)</span>
+            </label>
+          </div>
+
+          <div style="font-size: 0.85rem; font-weight: 700; color: #64748b;">
+            Total SKUs: <strong id="inv-total-count" style="color: #0f172a;">0</strong>
+          </div>
+        </div>
+
+        <!-- Inventory Table Card -->
+        <div class="card" style="border-radius: 20px; overflow: hidden; margin-bottom: 32px;">
+          <div class="table-responsive">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+              <thead style="background: #f8fafc; border-bottom: 1.5px solid #e2e8f0; color: #64748b; font-weight: 800; font-size: 0.78rem; text-transform: uppercase;">
+                <tr>
+                  <th style="padding: 14px 18px;">Product</th>
+                  <th style="padding: 14px;">Category</th>
+                  <th style="padding: 14px;">Sell Price</th>
+                  <th style="padding: 14px;">Cost Price</th>
+                  <th style="padding: 14px;">Margin</th>
+                  <th style="padding: 14px;">Stock (Units)</th>
+                  <th style="padding: 14px;">Status</th>
+                  <th style="padding: 14px 18px; text-align: right;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="inventory-table-body">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Customer Item Requests Section -->
+        <div class="card" style="padding: 24px; border-radius: 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #0f172a;">Customer Sourcing Requests</h3>
+              <p style="color: #64748b; font-size: 0.85rem;">Items requested by local buyers on the storefront</p>
+            </div>
+          </div>
+
+          <div id="customer-requests-list" style="display: flex; flex-direction: column; gap: 10px;">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Product Modal -->
+  <div id="add-product-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card" style="max-width: 540px; padding: 28px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px;">
+        <h3 style="font-size: 1.25rem; font-weight: 900; color: #0f172a;">Add New Kirana Item</h3>
+        <button id="close-add-modal-btn" class="btn-icon">✕</button>
+      </div>
+
+      <form id="add-product-form">
+        <div style="margin-bottom: 12px;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Item Title *</label>
+          <input type="text" id="add-p-name" required placeholder="e.g. Catch Sabzi Masala 100g" style="width: 100%; padding: 10px; border-radius: 8px;" />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div>
+            <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Category *</label>
+            <select id="add-p-category" style="width: 100%; padding: 10px; border-radius: 8px;">
+              <option value="atta-flour-grains">Atta, Flour & Grains</option>
+              <option value="dal-pulses">Dal & Pulses</option>
+              <option value="cooking-oil-ghee">Cooking Oil & Ghee</option>
+              <option value="masala-spices">Masala & Spices</option>
+              <option value="snacks-biscuits">Snacks & Biscuits</option>
+              <option value="dairy-breakfast">Dairy & Breakfast</option>
+              <option value="beverages">Beverages & Tea</option>
+              <option value="personal-care">Personal Care</option>
+              <option value="household-cleaning">Household Cleaning</option>
+              <option value="dryfruits-grocery">Dry Fruits & Grocery</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Brand Name</label>
+            <input type="text" id="add-p-brand" placeholder="e.g. Catch, MDH, Amul" style="width: 100%; padding: 10px; border-radius: 8px;" />
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div>
+            <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Customer Selling Price (₹) *</label>
+            <input type="number" id="add-p-price" required placeholder="e.g. 55" style="width: 100%; padding: 10px; border-radius: 8px;" />
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Wholesale Purchase Cost (₹)</label>
+            <input type="number" id="add-p-cost" placeholder="e.g. 45" style="width: 100%; padding: 10px; border-radius: 8px;" />
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+          <div>
+            <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Unit / Pack Size</label>
+            <input type="text" id="add-p-unit" placeholder="e.g. 100 g, 1 L, 5 kg" style="width: 100%; padding: 10px; border-radius: 8px;" />
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Initial Stock Quantity *</label>
+            <input type="number" id="add-p-stock" required value="25" style="width: 100%; padding: 10px; border-radius: 8px;" />
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Image URL (Optional)</label>
+          <input type="url" id="add-p-image" placeholder="https://..." style="width: 100%; padding: 10px; border-radius: 8px;" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-weight: 800;">
+          Add Product to Catalog
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="./js/pages/admin-inventory.js"></script>
+</body>
+</html>
