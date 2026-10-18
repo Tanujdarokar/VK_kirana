@@ -128,7 +128,7 @@ export const ProductDetailsPage = () => {
             padding: '32px',
             marginBottom: '36px',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '36px'
           }}
         >

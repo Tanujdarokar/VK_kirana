@@ -269,7 +269,7 @@ export const ProductCard = ({ product }) => {
           </div>
 
           {/* Pricing & Add/Quantity Actions */}
-          <div style={{ paddingTop: '8px', borderTop: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+          <div style={{ paddingTop: '8px', borderTop: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px', flexWrap: 'wrap' }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '5px' }}>
                 <span style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0f172a' }}>

@@ -5,7 +5,9 @@ import {
   QrCode,
   BookOpen,
   CheckCircle2,
-  X
+  X,
+  FileText,
+  Plus
 } from 'lucide-react';
 import { AdminLayout } from '../../components/admin/AdminLayout';
 import { useInventory } from '../../context/InventoryContext';
@@ -15,9 +17,9 @@ import { ReceiptModal } from '../../components/admin/ReceiptModal';
 import { categories } from '../../data/categories';
 
 export const PosBillingPage = () => {
-  const { products } = useInventory();
+  const { products, addProduct } = useInventory();
   const { recordPosSale, khataCustomers } = useFinance();
-  const { showError } = useToast();
+  const { showError, showSuccess } = useToast();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCat, setSelectedCat] = useState('all');
@@ -30,6 +32,10 @@ export const PosBillingPage = () => {
   const [selectedKhataCustomer, setSelectedKhataCustomer] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('cash'); // 'cash' | 'upi' | 'udhaar'
   const [cashTendered, setCashTendered] = useState('');
+
+  // Custom Item Notepad State
+  const [isCustomItemOpen, setIsCustomItemOpen] = useState(false);
+  const [customItem, setCustomItem] = useState({ name: '', price: '', qty: 1, saveToInventory: false });
 
   // Receipt Modal State
   const [latestTxn, setLatestTxn] = useState(null);
@@ -69,13 +75,50 @@ export const PosBillingPage = () => {
     });
   };
 
+  const handleAddCustomItem = (e) => {
+    e.preventDefault();
+    if (!customItem.name.trim() || !customItem.price) {
+      showError('Please enter custom item name and selling price.');
+      return;
+    }
+
+    const priceNum = Number(customItem.price);
+    const qtyNum = Number(customItem.qty || 1);
+
+    const newProd = {
+      id: 'custom-' + Date.now(),
+      name: customItem.name.trim(),
+      brand: 'Unlisted Item',
+      unit: '1 unit',
+      price: priceNum,
+      discountPrice: priceNum,
+      costPrice: Math.round(priceNum * 0.8),
+      stock: 999
+    };
+
+    if (customItem.saveToInventory) {
+      addProduct({
+        name: customItem.name.trim(),
+        price: priceNum,
+        discountPrice: priceNum,
+        stock: 50,
+        category: 'rice-grains'
+      });
+    }
+
+    setBillItems((prev) => [...prev, { product: newProd, quantity: qtyNum }]);
+    setIsCustomItemOpen(false);
+    setCustomItem({ name: '', price: '', qty: 1, saveToInventory: false });
+    showSuccess(`Added custom item "${newProd.name}" (₹${priceNum}) to POS bill! 📝`);
+  };
+
   const updateBillQty = (productId, qty) => {
     if (qty <= 0) {
       setBillItems((prev) => prev.filter((i) => i.product.id !== productId));
       return;
     }
     const product = products.find((p) => p.id === productId);
-    if (product && qty > product.stock) {
+    if (product && qty > product.stock && !productId.startsWith('custom-')) {
       showError(`Only ${product.stock} items in stock`);
       return;
     }
@@ -118,8 +161,10 @@ export const PosBillingPage = () => {
         return;
       }
       const cust = khataCustomers.find((c) => c.id === selectedKhataCustomer);
-      finalCustName = cust ? cust.name : customerName;
-      finalCustId = selectedKhataCustomer;
+      if (cust) {
+        finalCustName = cust.name;
+        finalCustId = cust.id;
+      }
     }
 
     const txn = recordPosSale({
@@ -147,15 +192,29 @@ export const PosBillingPage = () => {
         <div>
           {/* Search and Category Quick Pills */}
           <div className="card" style={{ padding: '16px', marginBottom: '16px' }}>
-            <div style={{ position: 'relative', marginBottom: '12px' }}>
-              <Search size={18} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }} />
-              <input
-                type="text"
-                placeholder="Search item (e.g. Milk, Atta, Basmati, Chips, Sugar)..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                style={{ width: '100%', padding: '10px 14px 10px 38px', borderRadius: '8px', fontSize: '0.9rem' }}
-              />
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '12px' }}>
+              <div style={{ position: 'relative', flex: 1 }}>
+                <Search size={18} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }} />
+                <input
+                  type="text"
+                  placeholder="Search item (e.g. Milk, Atta, Basmati, Chips, Sugar)..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  style={{ width: '100%', padding: '10px 14px 10px 38px', borderRadius: '8px', fontSize: '0.9rem' }}
+                />
+              </div>
+
+              <button
+                onClick={() => {
+                  if (searchQuery) setCustomItem((prev) => ({ ...prev, name: searchQuery }));
+                  setIsCustomItemOpen(true);
+                }}
+                className="btn btn-secondary"
+                style={{ padding: '0 12px', fontSize: '0.82rem', whiteSpace: 'nowrap', border: '1px solid #10b981', color: '#065f46', backgroundColor: '#ecfdf5' }}
+              >
+                <FileText size={15} />
+                <span>+ Custom Notepad Item</span>
+              </button>
             </div>
 
             {/* Category pills */}
@@ -195,53 +254,75 @@ export const PosBillingPage = () => {
           </div>
 
           {/* Product Fast Click Tiles */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
-            gap: '12px',
-            maxHeight: '560px',
-            overflowY: 'auto'
-          }}>
-            {filteredProducts.map((product) => {
-              const sp = product.discountPrice || product.price;
-              const isOut = product.stock <= 0;
+          {filteredProducts.length === 0 ? (
+            <div className="card" style={{ padding: '36px', textAlign: 'center', color: '#64748b' }}>
+              <FileText size={36} color="#94a3b8" style={{ margin: '0 auto 12px' }} />
+              <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#0f172a' }}>
+                No catalog items matching "{searchQuery}"
+              </h4>
+              <p style={{ fontSize: '0.85rem', margin: '4px 0 16px' }}>
+                Type loose or unlisted grocery item name into the custom bill notepad.
+              </p>
+              <button
+                onClick={() => {
+                  setCustomItem((prev) => ({ ...prev, name: searchQuery }));
+                  setIsCustomItemOpen(true);
+                }}
+                className="btn btn-primary btn-sm"
+              >
+                <Plus size={15} />
+                <span>Add "{searchQuery}" to Active Bill</span>
+              </button>
+            </div>
+          ) : (
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
+              gap: '12px',
+              maxHeight: '560px',
+              overflowY: 'auto'
+            }}>
+              {filteredProducts.map((product) => {
+                const sp = product.discountPrice || product.price;
+                const isOut = product.stock <= 0;
 
-              return (
-                <div
-                  key={product.id}
-                  onClick={() => !isOut && addItemToBill(product)}
-                  className="card"
-                  style={{
-                    padding: '12px',
-                    cursor: isOut ? 'not-allowed' : 'pointer',
-                    opacity: isOut ? 0.6 : 1,
-                    textAlign: 'center',
-                    border: '1px solid #e2e8f0',
-                    transition: 'all 0.15s ease'
-                  }}
-                >
-                  <div style={{ height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px' }}>
-                    <img src={product.image} alt={product.name} style={{ maxHeight: '50px', objectFit: 'contain' }} />
-                  </div>
+                return (
+                  <div
+                    key={product.id}
+                    onClick={() => !isOut && addItemToBill(product)}
+                    className="card"
+                    style={{
+                      padding: '12px',
+                      cursor: isOut ? 'not-allowed' : 'pointer',
+                      opacity: isOut ? 0.6 : 1,
+                      textAlign: 'center',
+                      border: '1px solid #e2e8f0',
+                      transition: 'all 0.15s ease'
+                    }}
+                  >
+                    <div style={{ height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px' }}>
+                      <img src={product.image} alt={product.name} style={{ maxHeight: '50px', objectFit: 'contain' }} />
+                    </div>
 
-                  <div style={{ fontWeight: 700, fontSize: '0.82rem', color: '#0f172a', lineHeight: 1.2, height: '2rem', overflow: 'hidden' }}>
-                    {product.name}
-                  </div>
+                    <div style={{ fontWeight: 700, fontSize: '0.82rem', color: '#0f172a', lineHeight: 1.2, height: '2rem', overflow: 'hidden' }}>
+                      {product.name}
+                    </div>
 
-                  <div style={{ fontSize: '0.72rem', color: '#64748b', margin: '2px 0' }}>
-                    {product.unit}
-                  </div>
+                    <div style={{ fontSize: '0.72rem', color: '#64748b', margin: '2px 0' }}>
+                      {product.unit}
+                    </div>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '6px', paddingTop: '6px', borderTop: '1px solid #f1f5f9' }}>
-                    <span style={{ fontWeight: 800, fontSize: '0.92rem', color: '#10b981' }}>₹{sp}</span>
-                    <span style={{ fontSize: '0.7rem', color: isOut ? '#ef4444' : '#64748b', fontWeight: 600 }}>
-                      {isOut ? 'Empty' : `${product.stock} left`}
-                    </span>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '6px', paddingTop: '6px', borderTop: '1px solid #f1f5f9' }}>
+                      <span style={{ fontWeight: 800, fontSize: '0.92rem', color: '#10b981' }}>₹{sp}</span>
+                      <span style={{ fontSize: '0.7rem', color: isOut ? '#ef4444' : '#64748b', fontWeight: 600 }}>
+                        {isOut ? 'Empty' : `${product.stock} left`}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         {/* Right: Current Active Counter Bill */}
@@ -269,13 +350,13 @@ export const PosBillingPage = () => {
                   borderRadius: '6px',
                   fontSize: '0.78rem',
                   fontWeight: 700,
-                  border: customerType === 'walkin' ? '1px solid #10b981' : '1px solid #e2e8f0',
-                  backgroundColor: customerType === 'walkin' ? '#ecfdf5' : '#ffffff',
-                  color: customerType === 'walkin' ? '#065f46' : '#64748b'
+                  backgroundColor: customerType === 'walkin' ? '#0f172a' : '#f1f5f9',
+                  color: customerType === 'walkin' ? '#ffffff' : '#64748b'
                 }}
               >
                 Walk-in Customer
               </button>
+
               <button
                 type="button"
                 onClick={() => { setCustomerType('khata'); setPaymentMethod('udhaar'); }}
@@ -285,70 +366,95 @@ export const PosBillingPage = () => {
                   borderRadius: '6px',
                   fontSize: '0.78rem',
                   fontWeight: 700,
-                  border: customerType === 'khata' ? '1px solid #ea580c' : '1px solid #e2e8f0',
-                  backgroundColor: customerType === 'khata' ? '#fff7ed' : '#ffffff',
-                  color: customerType === 'khata' ? '#c2410c' : '#64748b'
+                  backgroundColor: customerType === 'khata' ? '#ea580c' : '#f1f5f9',
+                  color: customerType === 'khata' ? '#ffffff' : '#64748b'
                 }}
               >
-                Udhaar / Khata Customer
+                Khata Ledger Dues
               </button>
             </div>
 
             {customerType === 'walkin' ? (
               <input
                 type="text"
-                placeholder="Customer Name (Optional)"
+                placeholder="Walk-in Customer Name (Optional)"
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
-                style={{ width: '100%', padding: '6px 10px', borderRadius: '6px', fontSize: '0.82rem' }}
+                style={{ width: '100%', padding: '6px 10px', borderRadius: '6px', fontSize: '0.85rem' }}
               />
             ) : (
               <select
                 value={selectedKhataCustomer}
                 onChange={(e) => setSelectedKhataCustomer(e.target.value)}
-                style={{ width: '100%', padding: '6px 10px', borderRadius: '6px', fontSize: '0.82rem', fontWeight: 600 }}
+                style={{ width: '100%', padding: '6px 10px', borderRadius: '6px', fontSize: '0.85rem' }}
               >
-                <option value="">Select Khata Account...</option>
+                <option value="">-- Select Udhaar Khata Account --</option>
                 {khataCustomers.map((c) => (
                   <option key={c.id} value={c.id}>
-                    {c.name} (Pending Due: ₹{c.balance})
+                    {c.name} (Pending: ₹{c.balance})
                   </option>
                 ))}
               </select>
             )}
           </div>
 
-          {/* Items In Bill List */}
-          <div style={{ maxHeight: '200px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '14px', paddingRight: '4px' }}>
+          {/* Items List in Bill */}
+          <div style={{ maxHeight: '220px', overflowY: 'auto', marginBottom: '14px', borderBottom: '1px solid #f1f5f9', paddingBottom: '10px' }}>
             {billItems.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '24px 0', color: '#94a3b8', fontSize: '0.85rem' }}>
-                Click items on the left to add to bill
+                Bill is empty. Click items or "+ Custom Notepad Item" to start billing.
               </div>
             ) : (
-              billItems.map(({ product, quantity }) => {
-                const sp = product.discountPrice || product.price;
+              billItems.map((item) => {
+                const price = item.product.discountPrice || item.product.price;
                 return (
-                  <div key={product.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 8px', backgroundColor: '#f8fafc', borderRadius: '8px', fontSize: '0.82rem' }}>
-                    <div style={{ maxWidth: '140px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      <div style={{ fontWeight: 700, color: '#0f172a' }}>{product.name}</div>
-                      <div style={{ fontSize: '0.72rem', color: '#64748b' }}>₹{sp} x {quantity}</div>
-                    </div>
-
-                    {/* Qty controls */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <button onClick={() => updateBillQty(product.id, quantity - 1)} style={{ width: '22px', height: '22px', background: '#e2e8f0', borderRadius: '4px', fontWeight: 800 }}>-</button>
-                      <span style={{ fontWeight: 700, minWidth: '18px', textAlign: 'center' }}>{quantity}</span>
-                      <button onClick={() => updateBillQty(product.id, quantity + 1)} style={{ width: '22px', height: '22px', background: '#e2e8f0', borderRadius: '4px', fontWeight: 800 }}>+</button>
+                  <div key={item.product.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid #f8fafc', fontSize: '0.85rem' }}>
+                    <div style={{ flex: 1, paddingRight: '8px' }}>
+                      <div style={{ fontWeight: 600, color: '#0f172a' }}>{item.product.name}</div>
+                      <div style={{ fontSize: '0.72rem', color: '#64748b' }}>₹{price} / unit</div>
                     </div>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <strong style={{ fontSize: '0.88rem' }}>₹{sp * quantity}</strong>
-                      <button onClick={() => removeBillItem(product.id)} style={{ color: '#ef4444' }}><X size={14} /></button>
+                      <div style={{ display: 'flex', alignItems: 'center', border: '1px solid #e2e8f0', borderRadius: '6px' }}>
+                        <button
+                          onClick={() => updateBillQty(item.product.id, item.quantity - 1)}
+                          style={{ padding: '2px 6px', fontWeight: 700 }}
+                        >
+                          -
+                        </button>
+                        <span style={{ padding: '0 6px', fontWeight: 700, fontSize: '0.82rem' }}>{item.quantity}</span>
+                        <button
+                          onClick={() => updateBillQty(item.product.id, item.quantity + 1)}
+                          style={{ padding: '2px 6px', fontWeight: 700 }}
+                        >
+                          +
+                        </button>
+                      </div>
+
+                      <div style={{ fontWeight: 800, width: '50px', textAlign: 'right', color: '#0f172a' }}>
+                        ₹{price * item.quantity}
+                      </div>
+
+                      <button onClick={() => removeBillItem(item.product.id)} style={{ color: '#ef4444', marginLeft: '4px' }}>
+                        <X size={14} />
+                      </button>
                     </div>
                   </div>
                 );
               })
             )}
+          </div>
+
+          {/* Discount Input */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+            <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Discount (₹):</span>
+            <input
+              type="number"
+              value={discount}
+              onChange={(e) => setDiscount(e.target.value)}
+              placeholder="0"
+              style={{ width: '80px', padding: '4px 8px', borderRadius: '6px', fontSize: '0.85rem', textAlign: 'right' }}
+            />
           </div>
 
           {/* Payment Method Selector */}
@@ -459,6 +565,78 @@ export const PosBillingPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Custom Item Notepad Modal */}
+      {isCustomItemOpen && (
+        <div className="modal-backdrop" onClick={() => setIsCustomItemOpen(false)}>
+          <div className="modal-card" style={{ maxWidth: '420px', padding: '24px' }} onClick={(e) => e.stopPropagation()}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800 }}>Add Custom / Loose Item to Bill</h3>
+              <button onClick={() => setIsCustomItemOpen(false)} className="btn-icon"><X size={18} /></button>
+            </div>
+
+            <form onSubmit={handleAddCustomItem} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <div>
+                <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#334155', display: 'block', marginBottom: '4px' }}>
+                  Item Description / Name *
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Loose Sugar 2 kg, Fresh Curd Packet"
+                  value={customItem.name}
+                  onChange={(e) => setCustomItem({ ...customItem, name: e.target.value })}
+                  required
+                  autoFocus
+                  style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', fontSize: '0.9rem', fontWeight: 600 }}
+                />
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#334155', display: 'block', marginBottom: '4px' }}>
+                    Selling Price ₹ *
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="e.g. 90"
+                    value={customItem.price}
+                    onChange={(e) => setCustomItem({ ...customItem, price: e.target.value })}
+                    required
+                    style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', fontSize: '1rem', fontWeight: 800 }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#334155', display: 'block', marginBottom: '4px' }}>
+                    Quantity
+                  </label>
+                  <input
+                    type="number"
+                    min={1}
+                    value={customItem.qty}
+                    onChange={(e) => setCustomItem({ ...customItem, qty: e.target.value })}
+                    style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', fontSize: '0.9rem' }}
+                  />
+                </div>
+              </div>
+
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: '#334155', fontWeight: 600, cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={customItem.saveToInventory}
+                  onChange={(e) => setCustomItem({ ...customItem, saveToInventory: e.target.checked })}
+                  style={{ accentColor: '#10b981' }}
+                />
+                <span>Also save this item into Shop Inventory</span>
+              </label>
+
+              <button type="submit" className="btn btn-primary" style={{ marginTop: '8px' }}>
+                Add to Active POS Bill
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* POS Receipt Modal */}
       <ReceiptModal

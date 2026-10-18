@@ -11,11 +11,13 @@ import {
 } from 'lucide-react';
 import { useFinance } from '../../context/FinanceContext';
 import { useInventory } from '../../context/InventoryContext';
+import { useAuth } from '../../context/AuthContext';
 
 export const AdminLayout = ({ children, title, subtitle, actionButton }) => {
   const location = useLocation();
   const { todaySales, totalUdhaarPending } = useFinance();
   const { lowStockCount } = useInventory();
+  const { user } = useAuth();
 
   const navLinks = [
     { path: '/admin', label: 'Dashboard & Accounts', icon: LayoutDashboard },
@@ -103,12 +105,12 @@ export const AdminLayout = ({ children, title, subtitle, actionButton }) => {
         <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: '24px', alignItems: 'start' }} className="admin-grid-layout">
           
           {/* Left Admin Navigation Sidebar */}
-          <aside className="card" style={{ padding: '12px', position: 'sticky', top: '80px' }}>
+          <aside className="card admin-sidebar" style={{ padding: '12px', position: 'sticky', top: '80px' }}>
             <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', padding: '8px 12px 6px', letterSpacing: '0.05em' }}>
               Store Management
             </div>
 
-            <nav style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <nav className="admin-nav-list" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               {navLinks.map((item) => {
                 const isActive = location.pathname === item.path;
                 const Icon = item.icon;
@@ -116,10 +118,12 @@ export const AdminLayout = ({ children, title, subtitle, actionButton }) => {
                   <Link
                     key={item.path}
                     to={item.path}
+                    className="admin-nav-item"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
+                      gap: '10px',
                       padding: '10px 12px',
                       borderRadius: '10px',
                       fontSize: '0.86rem',
@@ -127,7 +131,8 @@ export const AdminLayout = ({ children, title, subtitle, actionButton }) => {
                       backgroundColor: isActive ? '#ecfdf5' : 'transparent',
                       color: isActive ? '#065f46' : '#475569',
                       border: isActive ? '1px solid #a7f3d0' : '1px solid transparent',
-                      transition: 'all 0.15s ease'
+                      transition: 'all 0.15s ease',
+                      whiteSpace: 'nowrap'
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -154,15 +159,17 @@ export const AdminLayout = ({ children, title, subtitle, actionButton }) => {
               })}
             </nav>
 
-            <div style={{ borderTop: '1px solid #f1f5f9', marginTop: '16px', paddingTop: '12px', padding: '12px' }}>
-              <div style={{ fontSize: '0.75rem', color: '#64748b', marginBottom: '4px' }}>Logged in as:</div>
-              <div style={{ fontWeight: 700, fontSize: '0.85rem', color: '#0f172a' }}>Shopkeeper / Owner</div>
-              <div style={{ fontSize: '0.72rem', color: '#10b981', fontWeight: 600 }}>Active Dukan Counter</div>
+            <div style={{ borderTop: '1px solid #f1f5f9', marginTop: '16px', paddingTop: '12px', padding: '12px' }} className="hide-on-mobile">
+              <div style={{ fontSize: '0.75rem', color: '#64748b', marginBottom: '2px' }}>Logged in as Vendor:</div>
+              <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#0f172a' }}>{user?.name || 'Vijay Dukan Owner'}</div>
+              <div style={{ fontSize: '0.72rem', color: '#10b981', fontWeight: 600, marginTop: '2px' }}>
+                🏪 {user?.shopName || 'VK Kirana & Supermarket'}
+              </div>
             </div>
           </aside>
 
           {/* Right Main Content */}
-          <main>
+          <main style={{ minWidth: 0 }}>
             {/* Page Header */}
             {(title || actionButton) && (
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
@@ -183,6 +190,19 @@ export const AdminLayout = ({ children, title, subtitle, actionButton }) => {
         @media (max-width: 900px) {
           .admin-grid-layout {
             grid-template-columns: 1fr !important;
+          }
+          .admin-sidebar {
+            position: relative !important;
+            top: 0 !important;
+          }
+          .admin-nav-list {
+            flex-direction: row !important;
+            overflow-x: auto !important;
+            white-space: nowrap !important;
+            padding-bottom: 4px !important;
+          }
+          .admin-nav-item {
+            flex-shrink: 0 !important;
           }
         }
       `}</style>

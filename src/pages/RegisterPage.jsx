@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingBag, User, Mail, Phone, Lock, Eye, EyeOff } from 'lucide-react';
+import { ShoppingBag, User, Mail, Phone, Lock, Eye, EyeOff, Store } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 
@@ -45,7 +45,8 @@ export const RegisterPage = () => {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        password: formData.password
+        password: formData.password,
+        role: 'user'
       });
       setIsLoading(false);
       if (res.success) {
@@ -55,17 +56,17 @@ export const RegisterPage = () => {
   };
 
   return (
-    <div style={{ padding: '50px 20px 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ padding: '40px 20px 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div className="card" style={{ maxWidth: '460px', width: '100%', padding: '36px 32px' }}>
 
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#10b981', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
             <ShoppingBag size={24} />
           </div>
-          <h1 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#0f172a' }}>Create Account</h1>
+          <h1 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#0f172a' }}>Create Customer Account</h1>
           <p style={{ color: '#64748b', fontSize: '0.88rem', marginTop: '4px' }}>
-            Join VKCommerce to enjoy 15-min grocery deliveries & wholesale prices
+            Join VKCommerce for instant 15-min grocery deliveries & wholesale prices
           </p>
         </div>
 
@@ -171,17 +172,34 @@ export const RegisterPage = () => {
             type="submit"
             disabled={isLoading}
             className="btn btn-primary"
-            style={{ width: '100%', height: '44px', marginTop: '6px' }}
+            style={{
+              width: '100%',
+              height: '44px',
+              marginTop: '6px'
+            }}
           >
-            {isLoading ? 'Creating Account...' : 'Create My Account'}
+            {isLoading ? 'Creating Account...' : 'Create Customer Account'}
           </button>
         </form>
 
-        <div style={{ textAlign: 'center', marginTop: '24px', fontSize: '0.85rem', color: '#64748b' }}>
-          Already have an account?{' '}
+        <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '0.85rem', color: '#64748b' }}>
+          Already registered?{' '}
           <Link to="/login" style={{ color: '#10b981', fontWeight: 700 }}>
-            Sign In
+            Sign In Here
           </Link>
+        </div>
+
+        {/* Store Owner Note */}
+        <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid #f1f5f9', textAlign: 'center', fontSize: '0.8rem', color: '#475569' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: 600 }}>
+            <Store size={14} color="#0f172a" />
+            <span>Are you the VK Kirana Store Owner?</span>
+          </div>
+          <div style={{ marginTop: '4px' }}>
+            <Link to="/login" style={{ color: '#0f172a', fontWeight: 800, textDecoration: 'underline' }}>
+              Sign In to Store Owner Portal
+            </Link>
+          </div>
         </div>
       </div>
     </div>

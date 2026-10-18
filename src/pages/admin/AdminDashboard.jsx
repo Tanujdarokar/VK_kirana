@@ -5,17 +5,11 @@ import {
   DollarSign,
   Package,
   BookOpen,
-  Receipt,
   Calculator,
   Plus,
   AlertTriangle,
-  ArrowUpRight,
-  ArrowDownRight,
-  CreditCard,
   Banknote,
-  QrCode,
-  CheckCircle2,
-  Clock
+  QrCode
 } from 'lucide-react';
 import { AdminLayout } from '../../components/admin/AdminLayout';
 import { StatCard } from '../../components/admin/StatCard';

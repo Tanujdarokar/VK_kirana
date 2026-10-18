@@ -482,6 +482,67 @@ img {
   }
 }
 
+/* Table Responsive Container */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive Grids */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+/* 2-Column Responsive Layout (e.g., Cart, Checkout, Product Details, POS) */
+.layout-2col-responsive {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Media Queries for Responsive Devices */
+
+/* Large Desktop PCs (≥ 1280px) */
+@media (min-width: 1280px) {
+  .grid-responsive {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+}
+
+/* Laptops & Medium Desktops (1025px - 1279px) */
+@media (min-width: 1025px) and (max-width: 1279px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  .layout-2col-responsive {
+    grid-template-columns: 1fr 340px;
+    gap: 1.25rem;
+  }
+}
+
+/* Tablets & iPad (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+  .grid-responsive {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1rem;
+  }
+  .layout-2col-responsive {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .hide-on-tablet {
+    display: none !important;
+  }
+}
+
+/* Mobile Devices (≤ 768px) */
 @media (max-width: 768px) {
   .hide-on-mobile {
     display: none !important;
@@ -492,33 +553,42 @@ img {
   .mobile-menu-toggle {
     display: inline-flex !important;
   }
-}
-@media (min-width: 769px) {
-  .show-on-mobile {
-    display: none !important;
+  .layout-2col-responsive {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
   }
-  .mobile-menu-toggle {
-    display: none !important;
+  .modal-card {
+    width: 95% !important;
+    max-height: 92vh !important;
+    border-radius: var(--radius-lg) !important;
   }
 }
 
-/* Responsive Grid Helper */
-.grid-responsive {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 1.25rem;
-}
-
+/* Mobile Phones (≤ 640px) */
 @media (max-width: 640px) {
+  .container {
+    padding: 0 0.85rem;
+  }
   .grid-responsive {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 0.85rem;
+    grid-template-columns: repeat(2, 1fr); /* 2-card mobile grid */
+    gap: 0.75rem;
   }
   .section-title {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
-  .container {
-    padding: 0 1rem;
+  .section-header {
+    margin-bottom: 1.25rem;
+  }
+  .btn-lg {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Extra Small Phones (≤ 380px) */
+@media (max-width: 380px) {
+  .grid-responsive {
+    grid-template-columns: 1fr; /* 1 card per row on tiny screens */
   }
 }
 

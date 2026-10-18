@@ -5,11 +5,11 @@ import { useToast } from './ToastContext';
 const InventoryContext = createContext();
 
 const STORAGE_KEY_INVENTORY = 'vkcommerce_kirana_products';
+const STORAGE_KEY_REQUESTS = 'vkcommerce_requested_items';
 
 // Augment initial products with realistic Kirana cost prices (Wholesale Purchase Cost)
 const DEFAULT_KIRANA_ITEMS = initialProducts.map((p) => {
   const sellPrice = p.discountPrice || p.price;
-  // Standard Kirana margin between 10% to 25%
   const costPrice = Math.round(sellPrice * (p.category === 'dairy' ? 0.90 : 0.82));
   return {
     ...p,
@@ -19,8 +19,31 @@ const DEFAULT_KIRANA_ITEMS = initialProducts.map((p) => {
   };
 });
 
+const DEFAULT_REQUESTED_ITEMS = [
+  {
+    id: 'req-101',
+    name: 'Fortune Kachi Ghani Mustard Oil 5L Jar',
+    qty: '1 Jar',
+    note: 'Urgent for family function',
+    customerName: 'Harsh Verma',
+    customerPhone: '+91 98765 12345',
+    date: new Date(Date.now() - 86400000).toISOString(),
+    status: 'Pending'
+  },
+  {
+    id: 'req-102',
+    name: 'Catch Sabzi Masala 100g',
+    qty: '2 Pkts',
+    note: 'Prefer latest MFD pack',
+    customerName: 'Sneha Kapoor',
+    customerPhone: '+91 98123 45678',
+    date: new Date(Date.now() - 2 * 86400000).toISOString(),
+    status: 'Pending'
+  }
+];
+
 export const InventoryProvider = ({ children }) => {
-  const { showSuccess, showError, showInfo } = useToast();
+  const { showSuccess, showInfo } = useToast();
 
   const [products, setProducts] = useState(() => {
     try {
@@ -31,9 +54,22 @@ export const InventoryProvider = ({ children }) => {
     }
   });
 
+  const [requestedItems, setRequestedItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY_REQUESTS);
+      return saved ? JSON.parse(saved) : DEFAULT_REQUESTED_ITEMS;
+    } catch {
+      return DEFAULT_REQUESTED_ITEMS;
+    }
+  });
+
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY_INVENTORY, JSON.stringify(products));
   }, [products]);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_REQUESTS, JSON.stringify(requestedItems));
+  }, [requestedItems]);
 
   // Add new Kirana item
   const addProduct = (newItem) => {
@@ -50,7 +86,7 @@ export const InventoryProvider = ({ children }) => {
       category: newItem.category || 'rice-grains',
       categoryName: newItem.categoryName || 'General Grocery',
       brand: newItem.brand || 'Local Kirana',
-      unit: newItem.unit || '1 kg',
+      unit: newItem.unit || '1 unit',
       costPrice: costPrice,
       price: price,
       discountPrice: sellPrice,
@@ -136,6 +172,35 @@ export const InventoryProvider = ({ children }) => {
     }
   };
 
+  // Item Request / Notepad Functions
+  const addRequestedItem = ({ name, qty, note, customerName, customerPhone }) => {
+    const newReq = {
+      id: 'req-' + Date.now(),
+      name: name.trim(),
+      qty: qty || '1 unit',
+      note: note || '',
+      customerName: customerName || 'Valued Customer',
+      customerPhone: customerPhone || '',
+      date: new Date().toISOString(),
+      status: 'Pending'
+    };
+
+    setRequestedItems((prev) => [newReq, ...prev]);
+    showSuccess(`Item note for "${name}" submitted to Storekeeper! 📝`);
+    return newReq;
+  };
+
+  const deleteRequestedItem = (id) => {
+    setRequestedItems((prev) => prev.filter((r) => r.id !== id));
+    showInfo('Requested item note removed.');
+  };
+
+  const fulfillRequestedItem = (reqId, productData) => {
+    const newProd = addProduct(productData);
+    deleteRequestedItem(reqId);
+    showSuccess(`Added "${newProd.name}" to inventory & cleared request!`);
+  };
+
   // Get product by ID
   const getProductById = (id) => products.find((p) => p.id === id);
 
@@ -170,19 +235,24 @@ export const InventoryProvider = ({ children }) => {
       outOfStockCount: outOfStockItems.length,
       totalValuationCost,
       totalValuationSell,
-      potentialGrossProfit
+      potentialGrossProfit,
+      requestedCount: requestedItems.length
     };
-  }, [products]);
+  }, [products, requestedItems.length]);
 
   return (
     <InventoryContext.Provider
       value={{
         products,
+        requestedItems,
         addProduct,
         updateProduct,
         adjustStock,
         deductSoldStock,
         deleteProduct,
+        addRequestedItem,
+        deleteRequestedItem,
+        fulfillRequestedItem,
         getProductById,
         ...inventoryMetrics
       }}

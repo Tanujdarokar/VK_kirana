@@ -14,7 +14,8 @@ import {
   Zap,
   ArrowRight,
   ShieldCheck,
-  Bot
+  Bot,
+  FileText
 } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
@@ -23,6 +24,7 @@ import { useInventory } from '../../context/InventoryContext';
 import { categories } from '../../data/categories';
 import { getExpandedSearchTerms } from '../../data/aiAssistant';
 import { KiranaAIAssistantModal } from '../ai/KiranaAIAssistantModal';
+import { ItemRequestModal } from '../common/ItemRequestModal';
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ export const Navbar = () => {
   const { products } = useInventory();
   const { totalItems, grandTotal } = useCart();
   const { wishlistCount } = useWishlist();
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, isVendor, logout } = useAuth();
 
   // Search state
   const [searchQuery, setSearchQuery] = useState('');
@@ -41,6 +43,7 @@ export const Navbar = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isRequestModalOpen, setIsRequestModalOpen] = useState(false);
 
   const searchRef = useRef(null);
   const userMenuRef = useRef(null);
@@ -325,8 +328,29 @@ export const Navbar = () => {
                       </div>
                     </div>
                   ) : (
-                    <div style={{ padding: '24px', textAlign: 'center', color: '#64748b', fontSize: '0.9rem' }}>
-                      No groceries matching "{searchQuery}". Press Enter to browse catalog.
+                    <div style={{ padding: '20px', textAlign: 'center', color: '#64748b', fontSize: '0.9rem' }}>
+                      <div style={{ marginBottom: '10px' }}>No groceries matching "{searchQuery}"</div>
+                      <button
+                        onClick={() => {
+                          setIsSearchFocused(false);
+                          setIsRequestModalOpen(true);
+                        }}
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          padding: '7px 14px',
+                          borderRadius: '8px',
+                          backgroundColor: '#ecfdf5',
+                          border: '1px solid #10b981',
+                          color: '#065f46',
+                          fontWeight: 700,
+                          fontSize: '0.82rem',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <FileText size={15} /> Add "{searchQuery}" to Request Note
+                      </button>
                     </div>
                   )}
                 </div>
@@ -454,7 +478,7 @@ export const Navbar = () => {
                       top: '100%',
                       right: 0,
                       marginTop: '8px',
-                      width: '220px',
+                      width: '230px',
                       backgroundColor: '#ffffff',
                       borderRadius: '12px',
                       boxShadow: '0 10px 25px rgba(0,0,0,0.12)',
@@ -465,16 +489,30 @@ export const Navbar = () => {
                     }}
                   >
                     <div style={{ padding: '12px 14px', borderBottom: '1px solid #f1f5f9' }}>
-                      <div style={{ fontWeight: 700, fontSize: '0.9rem', color: '#0f172a' }}>{user?.name}</div>
-                      <div style={{ fontSize: '0.75rem', color: '#64748b', overflow: 'hidden', textOverflow: 'ellipsis' }}>{user?.email}</div>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
+                        <div style={{ fontWeight: 700, fontSize: '0.9rem', color: '#0f172a' }}>{user?.name}</div>
+                        <span
+                          style={{
+                            fontSize: '0.68rem',
+                            fontWeight: 800,
+                            padding: '2px 6px',
+                            borderRadius: '6px',
+                            backgroundColor: isVendor ? '#0f172a' : '#dcfce7',
+                            color: isVendor ? '#34d399' : '#15803d'
+                          }}
+                        >
+                          {isVendor ? '🏪 VENDOR' : '🛒 CUSTOMER'}
+                        </span>
+                      </div>
+                      <div style={{ fontSize: '0.75rem', color: '#64748b', overflow: 'hidden', textOverflow: 'ellipsis', marginTop: '2px' }}>{user?.email}</div>
                     </div>
                     <div style={{ padding: '6px' }}>
                       <Link
                         to="/admin"
-                        style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', borderRadius: '8px', fontSize: '0.85rem', color: '#047857', backgroundColor: '#ecfdf5', fontWeight: 700, marginBottom: '4px', textDecoration: 'none' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', borderRadius: '8px', fontSize: '0.85rem', color: isVendor ? '#047857' : '#475569', backgroundColor: isVendor ? '#ecfdf5' : '#f1f5f9', fontWeight: 700, marginBottom: '4px', textDecoration: 'none' }}
                         onClick={() => setIsUserMenuOpen(false)}
                       >
-                        <span>🏪</span> Kirana Dukan Manager
+                        <span>🏪</span> {isVendor ? 'Kirana Dukan Manager' : 'Dukan Manager (Vendor)'}
                       </Link>
                       <Link
                         to="/orders"
@@ -653,6 +691,13 @@ export const Navbar = () => {
       <KiranaAIAssistantModal
         isOpen={isAiModalOpen}
         onClose={() => setIsAiModalOpen(false)}
+      />
+
+      {/* Item Request Notepad Modal */}
+      <ItemRequestModal
+        isOpen={isRequestModalOpen}
+        onClose={() => setIsRequestModalOpen(false)}
+        initialItemName={searchQuery}
       />
 
       {/* Mobile Navigation Drawer */}

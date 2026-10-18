@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
+import { ShieldAlert, Store, ArrowRight } from 'lucide-react';
 import { ToastProvider } from './context/ToastContext';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { InventoryProvider } from './context/InventoryContext';
 import { FinanceProvider } from './context/FinanceContext';
 import { CartProvider } from './context/CartContext';
@@ -44,6 +45,54 @@ function ScrollToTop() {
   return null;
 }
 
+// Vendor Guard Wrapper
+function VendorRoute({ children }) {
+  const { isVendor, user } = useAuth();
+
+  if (!isVendor) {
+    return (
+      <div style={{ padding: '60px 20px 80px', minHeight: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f1f5f9' }}>
+        <div className="card" style={{ maxWidth: '520px', width: '100%', padding: '36px 32px', textAlign: 'center', borderTop: '6px solid #0f172a' }}>
+          <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: '#fef2f2', color: '#ef4444', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', boxShadow: '0 8px 20px rgba(239, 68, 68, 0.15)' }}>
+            <ShieldAlert size={34} />
+          </div>
+
+          <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#dc2626', backgroundColor: '#fee2e2', padding: '3px 10px', borderRadius: '20px', textTransform: 'uppercase' }}>
+            Vendor Access Restricted
+          </span>
+
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a', margin: '12px 0 8px' }}>
+            Store Owner / Dukan Access Only
+          </h2>
+
+          <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '20px' }}>
+            You are currently logged in as {user ? <strong>{user.name} ({user.email})</strong> : 'a Customer'}.
+            Khata Book, POS Counter Billing, Inventory, and Shop Expenses management are restricted to <strong>Vendor / Shopkeeper</strong> accounts.
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <Link
+              to="/login"
+              className="btn btn-primary"
+              style={{ backgroundColor: '#0f172a', borderColor: '#1e293b', justifyContent: 'center' }}
+            >
+              <Store size={18} color="#34d399" />
+              <span>Sign In as Vendor / Shopkeeper</span>
+            </Link>
+
+            <Link to="/products" className="btn btn-outline" style={{ justifyContent: 'center' }}>
+              <span>Return to Customer Storefront</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return children;
+}
+
 export function App() {
   return (
     <ToastProvider>
@@ -56,12 +105,12 @@ export function App() {
                   <Router>
                     <ScrollToTop />
                     <Routes>
-                      {/* Store Owner & Business Money Management Admin Routes */}
-                      <Route path="/admin" element={<AdminDashboard />} />
-                      <Route path="/admin/inventory" element={<InventoryManagerPage />} />
-                      <Route path="/admin/pos" element={<PosBillingPage />} />
-                      <Route path="/admin/khata" element={<KhataBookPage />} />
-                      <Route path="/admin/expenses" element={<ExpenseTrackerPage />} />
+                      {/* Store Owner & Business Money Management Admin Routes (Vendor Protected) */}
+                      <Route path="/admin" element={<VendorRoute><AdminDashboard /></VendorRoute>} />
+                      <Route path="/admin/inventory" element={<VendorRoute><InventoryManagerPage /></VendorRoute>} />
+                      <Route path="/admin/pos" element={<VendorRoute><PosBillingPage /></VendorRoute>} />
+                      <Route path="/admin/khata" element={<VendorRoute><KhataBookPage /></VendorRoute>} />
+                      <Route path="/admin/expenses" element={<VendorRoute><ExpenseTrackerPage /></VendorRoute>} />
 
                       {/* Customer Storefront Routes with Main Navbar & Footer */}
                       <Route
