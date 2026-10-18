@@ -1,12 +1,10 @@
 // Wishlist Page Controller for wishlist.html
 
 import { initCommonUI, renderProductCard } from '../common.js';
-import { initAiWidget } from '../ai-widget.js';
 import { store } from '../store.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initCommonUI();
-  initAiWidget();
   renderWishlist();
 
   store.subscribe((event) => {

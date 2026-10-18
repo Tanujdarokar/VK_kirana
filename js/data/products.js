@@ -6,9 +6,9 @@ export const products = [
     category: "atta-flour-grains",
     categoryName: "Atta, Flour & Grains",
     brand: "Aashirvaad",
-    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=75"
     ],
     price: 265,
     discountPrice: 245,
@@ -30,9 +30,9 @@ export const products = [
     category: "atta-flour-grains",
     categoryName: "Atta, Flour & Grains",
     brand: "Fortune",
-    image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=75"
     ],
     price: 240,
     discountPrice: 219,
@@ -54,9 +54,9 @@ export const products = [
     category: "atta-flour-grains",
     categoryName: "Atta, Flour & Grains",
     brand: "India Gate",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75"
     ],
     price: 499,
     discountPrice: 425,
@@ -78,9 +78,9 @@ export const products = [
     category: "atta-flour-grains",
     categoryName: "Atta, Flour & Grains",
     brand: "Fortune",
-    image: "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=600&auto=format&fit=crop&q=75"
     ],
     price: 65,
     discountPrice: 52,
@@ -102,9 +102,9 @@ export const products = [
     category: "atta-flour-grains",
     categoryName: "Atta, Flour & Grains",
     brand: "Rajdhani",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 45,
     discountPrice: 38,
@@ -126,9 +126,9 @@ export const products = [
     category: "atta-flour-grains",
     categoryName: "Atta, Flour & Grains",
     brand: "Fortune",
-    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=75"
     ],
     price: 48,
     discountPrice: 42,
@@ -150,9 +150,9 @@ export const products = [
     category: "atta-flour-grains",
     categoryName: "Atta, Flour & Grains",
     brand: "Tata Sampann",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75"
     ],
     price: 95,
     discountPrice: 84,
@@ -174,9 +174,9 @@ export const products = [
     category: "atta-flour-grains",
     categoryName: "Atta, Flour & Grains",
     brand: "Aashirvaad",
-    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=75"
     ],
     price: 330,
     discountPrice: 295,
@@ -200,9 +200,9 @@ export const products = [
     category: "dal-pulses",
     categoryName: "Dal & Pulses",
     brand: "Tata Sampann",
-    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75"
     ],
     price: 195,
     discountPrice: 175,
@@ -224,9 +224,9 @@ export const products = [
     category: "dal-pulses",
     categoryName: "Dal & Pulses",
     brand: "Tata Sampann",
-    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75"
     ],
     price: 165,
     discountPrice: 148,
@@ -248,9 +248,9 @@ export const products = [
     category: "dal-pulses",
     categoryName: "Dal & Pulses",
     brand: "Fortune",
-    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75"
     ],
     price: 110,
     discountPrice: 95,
@@ -272,9 +272,9 @@ export const products = [
     category: "dal-pulses",
     categoryName: "Dal & Pulses",
     brand: "Tata Sampann",
-    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75"
     ],
     price: 125,
     discountPrice: 110,
@@ -296,9 +296,9 @@ export const products = [
     category: "dal-pulses",
     categoryName: "Dal & Pulses",
     brand: "Rajdhani",
-    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75"
     ],
     price: 170,
     discountPrice: 152,
@@ -320,9 +320,9 @@ export const products = [
     category: "dal-pulses",
     categoryName: "Dal & Pulses",
     brand: "Nature Fresh",
-    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75"
     ],
     price: 180,
     discountPrice: 158,
@@ -344,9 +344,9 @@ export const products = [
     category: "dal-pulses",
     categoryName: "Dal & Pulses",
     brand: "Tata Sampann",
-    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75"
     ],
     price: 190,
     discountPrice: 169,
@@ -368,9 +368,9 @@ export const products = [
     category: "dal-pulses",
     categoryName: "Dal & Pulses",
     brand: "Fortune",
-    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=600&auto=format&fit=crop&q=75"
     ],
     price: 155,
     discountPrice: 138,
@@ -394,9 +394,9 @@ export const products = [
     category: "cooking-oil-ghee",
     categoryName: "Cooking Oil & Ghee",
     brand: "Fortune",
-    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=75"
     ],
     price: 155,
     discountPrice: 139,
@@ -418,9 +418,9 @@ export const products = [
     category: "cooking-oil-ghee",
     categoryName: "Cooking Oil & Ghee",
     brand: "Fortune",
-    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=75"
     ],
     price: 740,
     discountPrice: 669,
@@ -442,9 +442,9 @@ export const products = [
     category: "cooking-oil-ghee",
     categoryName: "Cooking Oil & Ghee",
     brand: "Saffola",
-    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=75"
     ],
     price: 195,
     discountPrice: 172,
@@ -466,9 +466,9 @@ export const products = [
     category: "cooking-oil-ghee",
     categoryName: "Cooking Oil & Ghee",
     brand: "Gemini",
-    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=75"
     ],
     price: 185,
     discountPrice: 165,
@@ -490,9 +490,9 @@ export const products = [
     category: "cooking-oil-ghee",
     categoryName: "Cooking Oil & Ghee",
     brand: "Fortune",
-    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=75"
     ],
     price: 175,
     discountPrice: 155,
@@ -514,9 +514,9 @@ export const products = [
     category: "cooking-oil-ghee",
     categoryName: "Cooking Oil & Ghee",
     brand: "Amul",
-    image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 640,
     discountPrice: 585,
@@ -538,9 +538,9 @@ export const products = [
     category: "cooking-oil-ghee",
     categoryName: "Cooking Oil & Ghee",
     brand: "Gowardhan",
-    image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 360,
     discountPrice: 325,
@@ -564,9 +564,9 @@ export const products = [
     category: "masala-spices",
     categoryName: "Masala & Spices",
     brand: "Everest",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 75,
     discountPrice: 65,
@@ -588,9 +588,9 @@ export const products = [
     category: "masala-spices",
     categoryName: "Masala & Spices",
     brand: "Everest",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 90,
     discountPrice: 78,
@@ -612,9 +612,9 @@ export const products = [
     category: "masala-spices",
     categoryName: "Masala & Spices",
     brand: "MDH",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 68,
     discountPrice: 58,
@@ -636,9 +636,9 @@ export const products = [
     category: "masala-spices",
     categoryName: "Masala & Spices",
     brand: "MDH",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 88,
     discountPrice: 75,
@@ -660,9 +660,9 @@ export const products = [
     category: "masala-spices",
     categoryName: "Masala & Spices",
     brand: "Catch",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 65,
     discountPrice: 55,
@@ -684,9 +684,9 @@ export const products = [
     category: "masala-spices",
     categoryName: "Masala & Spices",
     brand: "Catch",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 95,
     discountPrice: 82,
@@ -708,9 +708,9 @@ export const products = [
     category: "masala-spices",
     categoryName: "Masala & Spices",
     brand: "Tata Sampann",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 45,
     discountPrice: 38,
@@ -732,9 +732,9 @@ export const products = [
     category: "masala-spices",
     categoryName: "Masala & Spices",
     brand: "MDH",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 45,
     discountPrice: 38,
@@ -756,9 +756,9 @@ export const products = [
     category: "masala-spices",
     categoryName: "Masala & Spices",
     brand: "Everest",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 72,
     discountPrice: 62,
@@ -782,9 +782,9 @@ export const products = [
     category: "snacks-biscuits",
     categoryName: "Snacks & Biscuits",
     brand: "Parle-G",
-    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=75"
     ],
     price: 90,
     discountPrice: 79,
@@ -806,9 +806,9 @@ export const products = [
     category: "snacks-biscuits",
     categoryName: "Snacks & Biscuits",
     brand: "Britannia",
-    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=75"
     ],
     price: 45,
     discountPrice: 38,
@@ -830,9 +830,9 @@ export const products = [
     category: "snacks-biscuits",
     categoryName: "Snacks & Biscuits",
     brand: "Parle",
-    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=75"
     ],
     price: 50,
     discountPrice: 42,
@@ -854,9 +854,9 @@ export const products = [
     category: "snacks-biscuits",
     categoryName: "Snacks & Biscuits",
     brand: "Britannia",
-    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=75"
     ],
     price: 75,
     discountPrice: 65,
@@ -878,9 +878,9 @@ export const products = [
     category: "snacks-biscuits",
     categoryName: "Snacks & Biscuits",
     brand: "Lays",
-    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=75"
     ],
     price: 30,
     discountPrice: 28,
@@ -902,9 +902,9 @@ export const products = [
     category: "snacks-biscuits",
     categoryName: "Snacks & Biscuits",
     brand: "Kurkure",
-    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=75"
     ],
     price: 20,
     discountPrice: 19,
@@ -926,9 +926,9 @@ export const products = [
     category: "snacks-biscuits",
     categoryName: "Snacks & Biscuits",
     brand: "Bingo",
-    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=75"
     ],
     price: 20,
     discountPrice: 19,
@@ -950,9 +950,9 @@ export const products = [
     category: "snacks-biscuits",
     categoryName: "Snacks & Biscuits",
     brand: "Haldirams",
-    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=75"
     ],
     price: 110,
     discountPrice: 95,
@@ -976,9 +976,9 @@ export const products = [
     category: "dairy-breakfast",
     categoryName: "Dairy & Breakfast",
     brand: "Amul",
-    image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=75"
     ],
     price: 74,
     discountPrice: 68,
@@ -1000,9 +1000,9 @@ export const products = [
     category: "dairy-breakfast",
     categoryName: "Dairy & Breakfast",
     brand: "Amul",
-    image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 275,
     discountPrice: 255,
@@ -1024,9 +1024,9 @@ export const products = [
     category: "dairy-breakfast",
     categoryName: "Dairy & Breakfast",
     brand: "Amul",
-    image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=75"
     ],
     price: 145,
     discountPrice: 132,
@@ -1048,9 +1048,9 @@ export const products = [
     category: "dairy-breakfast",
     categoryName: "Dairy & Breakfast",
     brand: "Mother Dairy",
-    image: "https://images.unsplash.com/photo-1571212515416-fef01fc43637?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1571212515416-fef01fc43637?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1571212515416-fef01fc43637?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1571212515416-fef01fc43637?w=600&auto=format&fit=crop&q=75"
     ],
     price: 50,
     discountPrice: 45,
@@ -1072,9 +1072,9 @@ export const products = [
     category: "dairy-breakfast",
     categoryName: "Dairy & Breakfast",
     brand: "Amul",
-    image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=75"
     ],
     price: 110,
     discountPrice: 95,
@@ -1096,9 +1096,9 @@ export const products = [
     category: "dairy-breakfast",
     categoryName: "Dairy & Breakfast",
     brand: "Britannia",
-    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=75"
     ],
     price: 55,
     discountPrice: 48,
@@ -1120,9 +1120,9 @@ export const products = [
     category: "dairy-breakfast",
     categoryName: "Dairy & Breakfast",
     brand: "Farm Fresh",
-    image: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=600&auto=format&fit=crop&q=75"
     ],
     price: 110,
     discountPrice: 96,
@@ -1144,9 +1144,9 @@ export const products = [
     category: "dairy-breakfast",
     categoryName: "Dairy & Breakfast",
     brand: "Amul",
-    image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=75"
     ],
     price: 33,
     discountPrice: 33,
@@ -1170,9 +1170,9 @@ export const products = [
     category: "beverages",
     categoryName: "Beverages",
     brand: "Tata Tea",
-    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75"
     ],
     price: 290,
     discountPrice: 249,
@@ -1194,9 +1194,9 @@ export const products = [
     category: "beverages",
     categoryName: "Beverages",
     brand: "Red Label",
-    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75"
     ],
     price: 310,
     discountPrice: 265,
@@ -1218,9 +1218,9 @@ export const products = [
     category: "beverages",
     categoryName: "Beverages",
     brand: "Nescafe",
-    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75"
     ],
     price: 345,
     discountPrice: 299,
@@ -1242,9 +1242,9 @@ export const products = [
     category: "beverages",
     categoryName: "Beverages",
     brand: "Bru",
-    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75"
     ],
     price: 210,
     discountPrice: 185,
@@ -1266,9 +1266,9 @@ export const products = [
     category: "beverages",
     categoryName: "Beverages",
     brand: "Horlicks",
-    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75"
     ],
     price: 285,
     discountPrice: 249,
@@ -1290,9 +1290,9 @@ export const products = [
     category: "beverages",
     categoryName: "Beverages",
     brand: "Bournvita",
-    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75"
     ],
     price: 295,
     discountPrice: 259,
@@ -1314,9 +1314,9 @@ export const products = [
     category: "beverages",
     categoryName: "Beverages",
     brand: "Thums Up",
-    image: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=600&auto=format&fit=crop&q=75"
     ],
     price: 40,
     discountPrice: 38,
@@ -1338,9 +1338,9 @@ export const products = [
     category: "beverages",
     categoryName: "Beverages",
     brand: "Bisleri",
-    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=75"
     ],
     price: 20,
     discountPrice: 20,
@@ -1364,9 +1364,9 @@ export const products = [
     category: "personal-care",
     categoryName: "Personal Care",
     brand: "Lux",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75"
     ],
     price: 160,
     discountPrice: 135,
@@ -1388,9 +1388,9 @@ export const products = [
     category: "personal-care",
     categoryName: "Personal Care",
     brand: "Dove",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75"
     ],
     price: 210,
     discountPrice: 185,
@@ -1412,9 +1412,9 @@ export const products = [
     category: "personal-care",
     categoryName: "Personal Care",
     brand: "Dettol",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75"
     ],
     price: 195,
     discountPrice: 169,
@@ -1436,9 +1436,9 @@ export const products = [
     category: "personal-care",
     categoryName: "Personal Care",
     brand: "Lifebuoy",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75"
     ],
     price: 140,
     discountPrice: 119,
@@ -1460,9 +1460,9 @@ export const products = [
     category: "personal-care",
     categoryName: "Personal Care",
     brand: "Colgate",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75"
     ],
     price: 180,
     discountPrice: 155,
@@ -1484,9 +1484,9 @@ export const products = [
     category: "personal-care",
     categoryName: "Personal Care",
     brand: "Closeup",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75"
     ],
     price: 120,
     discountPrice: 105,
@@ -1508,9 +1508,9 @@ export const products = [
     category: "personal-care",
     categoryName: "Personal Care",
     brand: "Head & Shoulders",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75"
     ],
     price: 360,
     discountPrice: 315,
@@ -1532,9 +1532,9 @@ export const products = [
     category: "personal-care",
     categoryName: "Personal Care",
     brand: "Clinic Plus",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=75"
     ],
     price: 240,
     discountPrice: 205,
@@ -1558,9 +1558,9 @@ export const products = [
     category: "household-cleaning",
     categoryName: "Household Cleaning",
     brand: "Surf Excel",
-    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75"
     ],
     price: 270,
     discountPrice: 239,
@@ -1582,9 +1582,9 @@ export const products = [
     category: "household-cleaning",
     categoryName: "Household Cleaning",
     brand: "Tide",
-    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75"
     ],
     price: 320,
     discountPrice: 275,
@@ -1606,9 +1606,9 @@ export const products = [
     category: "household-cleaning",
     categoryName: "Household Cleaning",
     brand: "Ariel",
-    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75"
     ],
     price: 395,
     discountPrice: 349,
@@ -1630,9 +1630,9 @@ export const products = [
     category: "household-cleaning",
     categoryName: "Household Cleaning",
     brand: "Vim",
-    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75"
     ],
     price: 155,
     discountPrice: 135,
@@ -1654,9 +1654,9 @@ export const products = [
     category: "household-cleaning",
     categoryName: "Household Cleaning",
     brand: "Vim",
-    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75"
     ],
     price: 60,
     discountPrice: 52,
@@ -1678,9 +1678,9 @@ export const products = [
     category: "household-cleaning",
     categoryName: "Household Cleaning",
     brand: "Harpic",
-    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75"
     ],
     price: 199,
     discountPrice: 175,
@@ -1702,9 +1702,9 @@ export const products = [
     category: "household-cleaning",
     categoryName: "Household Cleaning",
     brand: "Lizol",
-    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75"
     ],
     price: 215,
     discountPrice: 189,
@@ -1726,9 +1726,9 @@ export const products = [
     category: "household-cleaning",
     categoryName: "Household Cleaning",
     brand: "Doctor Phenyl",
-    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=600&auto=format&fit=crop&q=75"
     ],
     price: 90,
     discountPrice: 75,
@@ -1752,9 +1752,9 @@ export const products = [
     category: "dryfruits-grocery",
     categoryName: "Dry Fruits & Other Grocery",
     brand: "Nutty Delight",
-    image: "https://images.unsplash.com/photo-1508061253366-f7da158b6d9e?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1508061253366-f7da158b6d9e?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1508061253366-f7da158b6d9e?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1508061253366-f7da158b6d9e?w=600&auto=format&fit=crop&q=75"
     ],
     price: 480,
     discountPrice: 420,
@@ -1776,9 +1776,9 @@ export const products = [
     category: "dryfruits-grocery",
     categoryName: "Dry Fruits & Other Grocery",
     brand: "Nutty Delight",
-    image: "https://images.unsplash.com/photo-1508061253366-f7da158b6d9e?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1508061253366-f7da158b6d9e?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1508061253366-f7da158b6d9e?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1508061253366-f7da158b6d9e?w=600&auto=format&fit=crop&q=75"
     ],
     price: 520,
     discountPrice: 460,
@@ -1800,9 +1800,9 @@ export const products = [
     category: "dryfruits-grocery",
     categoryName: "Dry Fruits & Other Grocery",
     brand: "Nutty Delight",
-    image: "https://images.unsplash.com/photo-1508061253366-f7da158b6d9e?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1508061253366-f7da158b6d9e?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1508061253366-f7da158b6d9e?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1508061253366-f7da158b6d9e?w=600&auto=format&fit=crop&q=75"
     ],
     price: 180,
     discountPrice: 155,
@@ -1824,9 +1824,9 @@ export const products = [
     category: "dryfruits-grocery",
     categoryName: "Dry Fruits & Other Grocery",
     brand: "Madhur",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75"
     ],
     price: 55,
     discountPrice: 48,
@@ -1848,9 +1848,9 @@ export const products = [
     category: "dryfruits-grocery",
     categoryName: "Dry Fruits & Other Grocery",
     brand: "Tata Salt",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75"
     ],
     price: 28,
     discountPrice: 26,
@@ -1872,9 +1872,9 @@ export const products = [
     category: "dryfruits-grocery",
     categoryName: "Dry Fruits & Other Grocery",
     brand: "Dabur",
-    image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=75"
     ],
     price: 245,
     discountPrice: 210,
@@ -1896,9 +1896,9 @@ export const products = [
     category: "dryfruits-grocery",
     categoryName: "Dry Fruits & Other Grocery",
     brand: "Tata Salt",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75"
     ],
     price: 45,
     discountPrice: 39,
@@ -1920,9 +1920,9 @@ export const products = [
     category: "dryfruits-grocery",
     categoryName: "Dry Fruits & Other Grocery",
     brand: "Madhur",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75",
     images: [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75"
     ],
     price: 265,
     discountPrice: 235,

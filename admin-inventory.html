@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <title>Inventory Manager - VK Kirana Admin</title>
   <meta name="description" content="Manage kirana product stock, prices, cost margins, and low stock warnings." />
+  <meta name="robots" content="noindex,follow" />
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/admin.css" />
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
 <body>
   <div class="admin-wrapper">
@@ -108,7 +109,7 @@
       <form id="add-product-form">
         <div style="margin-bottom: 12px;">
           <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Item Title *</label>
-          <input type="text" id="add-p-name" required placeholder="e.g. Catch Sabzi Masala 100g" style="width: 100%; padding: 10px; border-radius: 8px;" />
+          <input type="text" id="add-p-name" required minlength="2" maxlength="100" placeholder="e.g. Catch Sabzi Masala 100g" style="width: 100%; padding: 10px; border-radius: 8px;" />
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
@@ -130,37 +131,37 @@
 
           <div>
             <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Brand Name</label>
-            <input type="text" id="add-p-brand" placeholder="e.g. Catch, MDH, Amul" style="width: 100%; padding: 10px; border-radius: 8px;" />
+            <input type="text" id="add-p-brand" maxlength="60" placeholder="e.g. Catch, MDH, Amul" style="width: 100%; padding: 10px; border-radius: 8px;" />
           </div>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
           <div>
             <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Customer Selling Price (₹) *</label>
-            <input type="number" id="add-p-price" required placeholder="e.g. 55" style="width: 100%; padding: 10px; border-radius: 8px;" />
+            <input type="number" id="add-p-price" required min="0.01" max="1000000" step="0.01" inputmode="decimal" placeholder="e.g. 55" style="width: 100%; padding: 10px; border-radius: 8px;" />
           </div>
 
           <div>
             <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Wholesale Purchase Cost (₹)</label>
-            <input type="number" id="add-p-cost" placeholder="e.g. 45" style="width: 100%; padding: 10px; border-radius: 8px;" />
+            <input type="number" id="add-p-cost" min="0" max="1000000" step="0.01" inputmode="decimal" placeholder="e.g. 45" style="width: 100%; padding: 10px; border-radius: 8px;" />
           </div>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
           <div>
             <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Unit / Pack Size</label>
-            <input type="text" id="add-p-unit" placeholder="e.g. 100 g, 1 L, 5 kg" style="width: 100%; padding: 10px; border-radius: 8px;" />
+            <input type="text" id="add-p-unit" maxlength="40" placeholder="e.g. 100 g, 1 L, 5 kg" style="width: 100%; padding: 10px; border-radius: 8px;" />
           </div>
 
           <div>
             <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Initial Stock Quantity *</label>
-            <input type="number" id="add-p-stock" required value="25" style="width: 100%; padding: 10px; border-radius: 8px;" />
+            <input type="number" id="add-p-stock" required min="0" max="1000000" step="1" inputmode="numeric" value="25" style="width: 100%; padding: 10px; border-radius: 8px;" />
           </div>
         </div>
 
         <div style="margin-bottom: 20px;">
           <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">Image URL (Optional)</label>
-          <input type="url" id="add-p-image" placeholder="https://..." style="width: 100%; padding: 10px; border-radius: 8px;" />
+          <input type="url" id="add-p-image" maxlength="2048" pattern="https://.*" placeholder="https://..." style="width: 100%; padding: 10px; border-radius: 8px;" />
         </div>
 
         <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-weight: 800;">

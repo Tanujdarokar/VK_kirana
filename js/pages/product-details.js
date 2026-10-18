@@ -1,7 +1,6 @@
 // Product Details Page Controller for product-details.html
 
 import { initCommonUI, renderProductCard } from '../common.js';
-import { initAiWidget } from '../ai-widget.js';
 import { store } from '../store.js';
 
 let currentProduct = null;
@@ -9,7 +8,6 @@ let selectedQuantity = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
   initCommonUI();
-  initAiWidget();
 
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get('id') || 'atta-1';
@@ -47,14 +45,14 @@ function loadProduct(id) {
   const mainImg = document.getElementById('main-product-image');
   if (mainImg) {
     mainImg.src = currentProduct.image;
-    mainImg.alt = currentProduct.name;
+    mainImg.alt = `${currentProduct.name} product image`;
   }
 
   const gallery = document.getElementById('thumbnail-gallery');
   const images = currentProduct.images || [currentProduct.image];
   if (gallery) {
     gallery.innerHTML = images.map((imgUrl, idx) => `
-      <img src="${imgUrl}" alt="${currentProduct.name} ${idx + 1}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 10px; cursor: pointer; border: 2px solid ${idx === 0 ? '#059669' : '#e2e8f0'};" onclick="document.getElementById('main-product-image').src='${imgUrl}'" />
+      <img src="${imgUrl}" alt="${currentProduct.name} image ${idx + 1}" loading="lazy" decoding="async" width="60" height="60" style="width: 60px; height: 60px; object-fit: cover; border-radius: 10px; cursor: pointer; border: 2px solid ${idx === 0 ? '#047857' : '#e2e8f0'};" onclick="document.getElementById('main-product-image').src='${imgUrl}'" />
     `).join('');
   }
 

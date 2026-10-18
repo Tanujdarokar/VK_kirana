@@ -2,11 +2,12 @@
 
 import { store } from './store.js';
 import { categories } from './data/categories.js';
-import { getExpandedSearchTerms } from './data/aiAssistant.js';
+import { getExpandedSearchTerms } from './data/searchAliases.js';
 
 export function initCommonUI() {
   renderNavbar();
   renderFooter();
+  renderCookieConsent();
   renderModals();
   setupEventListeners();
   updateBadges();
@@ -87,10 +88,10 @@ function renderNavbar() {
     <!-- Main Navigation Bar -->
     <header style="background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
       <div class="container" style="padding: 12px 1.25rem;">
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+        <div class="navbar-main-row" style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
           
           <!-- Logo & Mobile Menu Toggle -->
-          <div style="display: flex; align-items: center; gap: 14px;">
+          <div class="navbar-brand-group" style="display: flex; align-items: center; gap: 14px;">
             <button class="btn-icon mobile-menu-toggle show-on-mobile" style="display: none;" id="open-mobile-menu-btn" aria-label="Menu">
               <i data-lucide="menu"></i>
             </button>
@@ -101,7 +102,7 @@ function renderNavbar() {
               </div>
               <div>
                 <div style="font-size: 1.4rem; font-weight: 900; color: #0f172a; letter-spacing: -0.03em; line-height: 1;">
-                  VK<span style="color: #059669;">Kirana</span>
+                  VK<span style="color: #047857;">Kirana</span>
                 </div>
                 <div style="font-size: 0.65rem; font-weight: 800; color: #047857; letter-spacing: 0.06em; text-transform: uppercase;">
                   Apni Local Dukan 🛒
@@ -111,10 +112,10 @@ function renderNavbar() {
           </div>
 
           <!-- Live Search Bar -->
-          <div style="flex: 1; max-width: 520px; position: relative;">
+          <div class="navbar-search" style="flex: 1; max-width: 520px; position: relative;">
             <form id="global-search-form" action="products.html" method="GET">
               <div style="position: relative; display: flex; align-items: center;">
-                <i data-lucide="search" style="position: absolute; left: 14px; width: 18px; height: 18px; color: #94a3b8; pointer-events: none;"></i>
+                <i data-lucide="search" style="position: absolute; left: 14px; width: 18px; height: 18px; color: #64748b; pointer-events: none;"></i>
                 <input
                   type="text"
                   name="search"
@@ -129,40 +130,40 @@ function renderNavbar() {
           </div>
 
           <!-- Right Action Buttons -->
-          <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="navbar-actions" style="display: flex; align-items: center; gap: 10px;">
             <!-- Location Selector -->
             <button class="btn btn-outline hide-on-mobile" id="open-location-modal-btn" style="padding: 7px 12px; font-size: 0.85rem; border-radius: 10px;">
-              <i data-lucide="map-pin" style="width: 16px; height: 16px; color: #059669;"></i>
+              <i data-lucide="map-pin" style="width: 16px; height: 16px; color: #047857;"></i>
               <span id="selected-location-label" style="max-width: 130px; overflow: hidden; text-overflow: ellipsis;">Koramangala, BLR</span>
             </button>
 
             <!-- Item Request Button -->
             <button class="btn btn-secondary hide-on-mobile" id="open-request-modal-btn" style="padding: 7px 12px; font-size: 0.85rem; border-radius: 10px;">
-              <i data-lucide="package-plus" style="width: 16px; height: 16px; color: #059669;"></i>
+              <i data-lucide="package-plus" style="width: 16px; height: 16px; color: #047857;"></i>
               <span>Request Item</span>
             </button>
 
             <!-- Admin Shortcut (If Vendor) -->
-            <a href="admin.html" id="navbar-admin-link" class="btn btn-primary" style="display: ${isVendor ? 'flex' : 'none'}; padding: 7px 12px; font-size: 0.85rem; background: #0f172a; border-color: #1e293b; border-radius: 10px;">
+            <a href="admin.html" id="navbar-admin-link" class="btn btn-primary hide-on-mobile" style="display: ${isVendor ? 'flex' : 'none'}; padding: 7px 12px; font-size: 0.85rem; background: #0f172a; border-color: #1e293b; border-radius: 10px;">
               <i data-lucide="layout-dashboard" style="width: 16px; height: 16px; color: #34d399;"></i>
               <span>Dukan Admin</span>
             </a>
 
             <!-- Wishlist Button -->
-            <a href="wishlist.html" class="btn-icon" style="position: relative;" aria-label="Wishlist">
+            <a href="wishlist.html" class="btn-icon hide-on-mobile" style="position: relative;" aria-label="Wishlist">
               <i data-lucide="heart" style="width: 20px; height: 20px;"></i>
               <span class="wishlist-count-badge" style="display: none; position: absolute; top: -4px; right: -4px; background: #ef4444; color: white; font-size: 0.7rem; font-weight: 800; width: 18px; height: 18px; border-radius: 50%; align-items: center; justify-content: center;">0</span>
             </a>
 
             <!-- Cart Button -->
-            <a href="cart.html" class="btn btn-primary" style="padding: 8px 16px; border-radius: 12px; position: relative;" aria-label="Cart">
+            <a href="cart.html" class="btn btn-primary hide-on-mobile" style="padding: 8px 16px; border-radius: 12px; position: relative;" aria-label="Cart">
               <i data-lucide="shopping-cart" style="width: 18px; height: 18px;"></i>
               <span class="hide-on-mobile">Cart</span>
               <span class="cart-count-badge" style="display: none; position: absolute; top: -6px; right: -6px; background: #0f172a; color: #34d399; font-size: 0.72rem; font-weight: 800; width: 22px; height: 22px; border-radius: 50%; border: 2px solid white; align-items: center; justify-content: center;">0</span>
             </a>
 
             <!-- User Menu Button -->
-            <div style="position: relative;" id="user-menu-wrapper">
+            <div class="hide-on-mobile" style="position: relative;" id="user-menu-wrapper">
               <button class="btn btn-outline" id="user-menu-btn" style="padding: 7px 12px; border-radius: 10px; display: flex; align-items: center; gap: 8px;">
                 <div style="width: 26px; height: 26px; border-radius: 50%; background: #059669; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800;">
                   ${user ? user.name.charAt(0) : 'U'}
@@ -178,7 +179,7 @@ function renderNavbar() {
                 <div style="padding: 8px 12px; border-bottom: 1px solid #f1f5f9; margin-bottom: 6px;">
                   <div style="font-weight: 800; color: #0f172a; font-size: 0.9rem;">${user ? user.name : 'Guest User'}</div>
                   <div style="font-size: 0.78rem; color: #64748b;">${user ? user.email : 'Not signed in'}</div>
-                  <span id="navbar-vendor-badge" style="display: ${isVendor ? 'inline-block' : 'none'}; font-size: 0.7rem; font-weight: 800; color: #059669; background: #ecfdf5; padding: 2px 8px; border-radius: 10px; margin-top: 4px;">🏪 Store Owner</span>
+                  <span id="navbar-vendor-badge" style="display: ${isVendor ? 'inline-block' : 'none'}; font-size: 0.7rem; font-weight: 800; color: #047857; background: #ecfdf5; padding: 2px 8px; border-radius: 10px; margin-top: 4px;">🏪 Store Owner</span>
                 </div>
 
                 <a href="profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; color: #334155; font-size: 0.88rem; font-weight: 600; text-decoration: none;">
@@ -189,11 +190,11 @@ function renderNavbar() {
                 </a>
                 
                 <div style="border-top: 1px solid #f1f5f9; margin: 6px 0; padding-top: 6px;">
-                  <div style="font-size: 0.72rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; padding: 4px 12px;">Quick Role Switch</div>
+                  <div style="font-size: 0.72rem; font-weight: 800; color: #64748b; text-transform: uppercase; padding: 4px 12px;">Quick Role Switch</div>
                   <button id="switch-to-customer-btn" style="width: 100%; text-align: left; display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 6px; font-size: 0.82rem; color: #0f172a; font-weight: 600;">
                     🛒 Switch to Customer
                   </button>
-                  <button id="switch-to-vendor-btn" style="width: 100%; text-align: left; display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 6px; font-size: 0.82rem; color: #059669; font-weight: 700;">
+                  <button id="switch-to-vendor-btn" style="width: 100%; text-align: left; display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 6px; font-size: 0.82rem; color: #047857; font-weight: 700;">
                     🏪 Switch to Dukan Owner (Admin)
                   </button>
                 </div>
@@ -204,7 +205,7 @@ function renderNavbar() {
                       <i data-lucide="log-out" style="width: 16px; height: 16px;"></i> Sign Out
                     </button>
                   ` : `
-                    <a href="login.html" class="dropdown-item" style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; color: #059669; font-size: 0.88rem; font-weight: 700; text-decoration: none;">
+                    <a href="login.html" class="dropdown-item" style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; color: #047857; font-size: 0.88rem; font-weight: 700; text-decoration: none;">
                       <i data-lucide="log-in" style="width: 16px; height: 16px;"></i> Sign In / Register
                     </a>
                   `}
@@ -217,7 +218,7 @@ function renderNavbar() {
 
         <!-- Quick Categories Strip -->
         <div class="hide-on-mobile" style="display: flex; align-items: center; gap: 20px; overflow-x: auto; padding-top: 10px; margin-top: 10px; border-top: 1px solid #f1f5f9; font-size: 0.86rem; font-weight: 600; color: #475569;">
-          <a href="products.html" style="color: #059669; font-weight: 700; white-space: nowrap;">⚡ All Groceries</a>
+          <a href="products.html" style="color: #047857; font-weight: 700; white-space: nowrap;">⚡ All Groceries</a>
           ${categories.slice(0, 8).map(c => `
             <a href="category.html?category=${c.slug}" style="white-space: nowrap; transition: color 0.2s;" onmouseover="this.style.color='#059669'" onmouseout="this.style.color='#475569'">
               ${c.name}
@@ -229,23 +230,29 @@ function renderNavbar() {
 
     <!-- Mobile Navigation Drawer -->
     <div id="mobile-menu-drawer" style="display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px);">
-      <div style="width: 300px; height: 100%; background: white; padding: 20px; display: flex; flex-direction: column; overflow-y: auto;">
+      <div class="mobile-menu-panel" style="width: 300px; height: 100%; background: white; padding: 20px; display: flex; flex-direction: column; overflow-y: auto;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px;">
           <div style="font-weight: 900; font-size: 1.2rem; color: #0f172a;">VKKirana Menu</div>
           <button id="close-mobile-menu-btn" class="btn-icon"><i data-lucide="x"></i></button>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 10px; font-weight: 600;">
+          <form action="products.html" method="GET" role="search">
+            <label for="mobile-search-input" style="display: block; margin-bottom: 6px; color: #334155; font-size: 0.85rem;">Search groceries</label>
+            <input id="mobile-search-input" type="search" name="search" maxlength="100" placeholder="Search products..." style="width: 100%; padding: 10px 12px; border-radius: 10px;" />
+          </form>
           <a href="index.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="home"></i> Home</a>
           <a href="products.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="shopping-bag"></i> All Products</a>
           <a href="cart.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="shopping-cart"></i> Cart</a>
+          <a href="wishlist.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="heart"></i> Wishlist</a>
+          <a href="${user ? 'profile.html' : 'login.html'}" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="user"></i> ${user ? 'My Profile' : 'Demo Profiles'}</a>
+          <a href="cart.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="shopping-cart"></i> Cart</a>
           <a href="orders.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="package"></i> Orders</a>
           <a href="wishlist.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="heart"></i> Wishlist</a>
-          <a href="admin.html" class="btn btn-primary" style="justify-content: flex-start; background: #0f172a;"><i data-lucide="store"></i> Dukan Admin / POS</a>
         </div>
 
         <div style="margin-top: 24px; border-top: 1px solid #e2e8f0; padding-top: 16px;">
-          <div style="font-size: 0.8rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 10px;">Categories</div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 10px;">Categories</div>
           <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
             ${categories.map(c => `<a href="category.html?category=${c.slug}" style="color: #334155;">${c.name}</a>`).join('')}
           </div>
@@ -262,7 +269,7 @@ function renderFooter() {
   footerContainer.innerHTML = `
     <footer style="background-color: #0f172a; color: #e2e8f0; padding: 60px 0 24px; margin-top: auto; border-top: 4px solid #059669;">
       <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+        <div class="footer-columns" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
           <div>
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
               <div style="width: 38px; height: 38px; border-radius: 10px; background: #059669; display: flex; align-items: center; justify-content: center; color: white;">
@@ -296,7 +303,6 @@ function renderFooter() {
               <li><a href="products.html">All Products Catalog</a></li>
               <li><a href="cart.html">My Shopping Cart</a></li>
               <li><a href="orders.html">Track Orders</a></li>
-              <li><a href="admin.html">Dukan Owner Admin Portal</a></li>
               <li><a href="login.html">Sign In / Switch Accounts</a></li>
             </ul>
           </div>
@@ -315,16 +321,68 @@ function renderFooter() {
           </div>
         </div>
 
-        <div style="border-top: 1px solid #1e293b; padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; color: #64748b;">
+        <div class="footer-bottom" style="border-top: 1px solid #1e293b; padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; color: #94a3b8;">
           <div>© 2026 VKCommerce & Kirana Supermarket. Pure HTML, CSS, JavaScript Architecture.</div>
-          <div style="display: flex; gap: 20px;">
-            <span>Safe & Secure UPI / Card Checkout</span>
+          <div class="footer-links" style="display: flex; gap: 20px;">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms & Conditions</a>
+            <button type="button" id="cookie-settings-btn" style="color: inherit; text-decoration: underline;">Cookie settings</button>
             <span>100% Genuine Brands Guarantee</span>
           </div>
         </div>
       </div>
     </footer>
   `;
+}
+
+function renderCookieConsent() {
+  const banner = document.createElement('section');
+  banner.id = 'cookie-consent-banner';
+  banner.className = 'cookie-consent-banner';
+  banner.setAttribute('role', 'region');
+  banner.setAttribute('aria-label', 'Cookie preferences');
+  banner.setAttribute('aria-live', 'polite');
+  banner.innerHTML = `
+    <div class="cookie-consent-copy">
+      <strong>Privacy choices</strong>
+      <p>This demo stores shopping and profile data in this browser. Analytics and advertising are not enabled. Your optional analytics choice is remembered for future configuration. <a href="privacy.html">Privacy Policy</a></p>
+    </div>
+    <div class="cookie-consent-actions">
+      <button type="button" class="btn btn-outline btn-sm" id="cookie-reject-btn">Reject optional</button>
+      <button type="button" class="btn btn-primary btn-sm" id="cookie-accept-btn">Accept optional</button>
+    </div>
+  `;
+  document.body.appendChild(banner);
+
+  const preferenceKey = 'vkcommerce_cookie_consent_v1';
+  const showBanner = () => { banner.hidden = false; };
+  const hideBanner = () => { banner.hidden = true; };
+
+  try {
+    if (localStorage.getItem(preferenceKey)) hideBanner();
+  } catch (error) {
+    console.error('Unable to read cookie preferences:', error);
+  }
+
+  const savePreference = (analytics) => {
+    try {
+      localStorage.setItem(preferenceKey, JSON.stringify({
+        necessary: true,
+        analytics,
+        updatedAt: new Date().toISOString()
+      }));
+      hideBanner();
+    } catch (error) {
+      console.error('Unable to save cookie preferences:', error);
+      store.showToast('Your privacy choice could not be saved. Please enable browser storage and try again.', 'error');
+    }
+  };
+
+  document.getElementById('cookie-accept-btn').addEventListener('click', () => savePreference(true));
+  document.getElementById('cookie-reject-btn').addEventListener('click', () => savePreference(false));
+
+  const settingsButton = document.getElementById('cookie-settings-btn');
+  if (settingsButton) settingsButton.addEventListener('click', showBanner);
 }
 
 function renderModals() {
@@ -344,7 +402,7 @@ function renderModals() {
         <div style="display: flex; flex-direction: column; gap: 10px;">
           ${['Koramangala 4th Block, BLR', 'Indiranagar 100ft Road, BLR', 'HSR Layout Sector 1, BLR', 'BTM Layout 2nd Stage, BLR', 'Whitefield Main Road, BLR', 'Jayanagar 4th Block, BLR'].map(loc => `
             <button class="location-select-btn btn btn-outline" data-loc="${loc}" style="justify-content: flex-start; text-align: left; padding: 12px 16px;">
-              <i data-lucide="map-pin" style="color: #059669; width: 18px; height: 18px;"></i>
+              <i data-lucide="map-pin" style="color: #047857; width: 18px; height: 18px;"></i>
               <span>${loc}</span>
             </button>
           `).join('')}
@@ -363,17 +421,21 @@ function renderModals() {
           Can't find a specific grocery, brand or bulk item? Tell your local VK Kirana store owner and we will arrange it today!
         </p>
         <form id="item-request-form">
+          <div class="form-honeypot" aria-hidden="true">
+            <label for="req-company">Leave this field empty</label>
+            <input type="text" id="req-company" name="company" tabindex="-1" autocomplete="off" />
+          </div>
           <div style="margin-bottom: 12px;">
             <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 4px;">Item / Brand Name *</label>
-            <input type="text" id="req-item-name" required placeholder="e.g. Catch Sabzi Masala 100g, Fortune 5L Jar" style="width: 100%; padding: 10px; border-radius: 8px;" />
+            <input type="text" id="req-item-name" name="item" required minlength="2" maxlength="100" placeholder="e.g. Catch Sabzi Masala 100g, Fortune 5L Jar" style="width: 100%; padding: 10px; border-radius: 8px;" />
           </div>
           <div style="margin-bottom: 12px;">
             <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 4px;">Quantity Needed</label>
-            <input type="text" id="req-item-qty" placeholder="e.g. 2 packets, 1 tin" style="width: 100%; padding: 10px; border-radius: 8px;" />
+            <input type="text" id="req-item-qty" name="quantity" maxlength="50" placeholder="e.g. 2 packets, 1 tin" style="width: 100%; padding: 10px; border-radius: 8px;" />
           </div>
           <div style="margin-bottom: 16px;">
             <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 4px;">Special Note (Optional)</label>
-            <textarea id="req-item-note" rows="2" placeholder="e.g. Need latest MFD pack or delivery before evening" style="width: 100%; padding: 10px; border-radius: 8px;"></textarea>
+            <textarea id="req-item-note" name="note" rows="2" maxlength="200" placeholder="e.g. Need latest MFD pack or delivery before evening" style="width: 100%; padding: 10px; border-radius: 8px;"></textarea>
           </div>
           <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">
             Send Request to Dukan Owner
@@ -476,15 +538,16 @@ function setupEventListeners() {
   if (reqForm) {
     reqForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (document.getElementById('req-company').value) return;
       const user = store.getUser();
-      const name = document.getElementById('req-item-name').value;
+      const name = document.getElementById('req-item-name').value.trim();
       const qty = document.getElementById('req-item-qty').value;
       const note = document.getElementById('req-item-note').value;
 
       store.addRequestedItem({
         name,
-        qty: qty || '1 unit',
-        note: note || '',
+        qty: qty.trim() || '1 unit',
+        note: note.trim(),
         customerName: user ? user.name : 'Walk-in Customer',
         customerPhone: user ? user.phone : '+91 98765 00000'
       });
@@ -514,16 +577,16 @@ function setupEventListeners() {
       }).slice(0, 5);
 
       if (matches.length === 0) {
-        searchDropdown.innerHTML = `<div style="padding: 12px; color: #94a3b8; font-size: 0.88rem;">No products found for "${val}"</div>`;
+        searchDropdown.innerHTML = `<div style="padding: 12px; color: #64748b; font-size: 0.88rem;">No products found for "${val}"</div>`;
       } else {
         searchDropdown.innerHTML = matches.map(m => `
           <a href="product-details.html?id=${m.id}" style="display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #f1f5f9; text-decoration: none; color: #0f172a; transition: background 0.2s;" onmouseover="this.style.backgroundColor='#f8fafc'" onmouseout="this.style.backgroundColor='transparent'">
-            <img src="${m.image}" alt="${m.name}" style="width: 38px; height: 38px; object-fit: cover; border-radius: 6px;" />
+            <img src="${m.image}" alt="${m.name}" loading="lazy" decoding="async" width="38" height="38" style="width: 38px; height: 38px; object-fit: cover; border-radius: 6px;" />
             <div style="flex: 1; min-width: 0;">
               <div style="font-size: 0.86rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${m.name}</div>
               <div style="font-size: 0.78rem; color: #64748b;">${m.unit} • ₹${m.discountPrice || m.price}</div>
             </div>
-            <span style="font-size: 0.75rem; font-weight: 700; color: #059669;">View</span>
+            <span style="font-size: 0.75rem; font-weight: 700; color: #047857;">View</span>
           </a>
         `).join('');
       }
@@ -550,7 +613,7 @@ export function renderProductCard(product) {
     <div class="product-card-3d" data-product-id="${product.id}">
       <div class="product-image-wrap">
         <a href="product-details.html?id=${product.id}">
-          <img src="${product.image}" alt="${product.name}" loading="lazy" />
+          <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async" width="240" height="240" />
         </a>
         <div class="product-card-badges">
           ${product.discount ? `<span class="badge badge-discount">${product.discount}% OFF</span>` : ''}

@@ -32,7 +32,7 @@ function renderExpenses() {
   if (!tbody) return;
 
   if (expenses.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="6" style="padding: 30px; text-align: center; color: #94a3b8;">No expenses recorded yet.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" style="padding: 30px; text-align: center; color: #64748b;">No expenses recorded yet.</td></tr>`;
     return;
   }
 
@@ -101,7 +101,8 @@ function setupExpenseListeners() {
       const note = document.getElementById('exp-note').value.trim();
       const paidVia = document.getElementById('exp-paid-via').value;
 
-      store.addExpense({ category, amount, note, paidVia });
+      const expense = store.addExpense({ category, amount, note, paidVia });
+      if (!expense) return;
       form.reset();
       if (modal) modal.style.display = 'none';
     });

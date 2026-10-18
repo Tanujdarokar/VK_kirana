@@ -3,11 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <title>VKCommerce - Fresh Daily Grocery Shopping & 15-Min Delivery</title>
   <meta name="description" content="Shop fresh daily groceries, farm-pure milk & dairy, whole wheat atta, aged basmati rice, breakfast spreads, spices, and tea with superfast 15-minute delivery." />
+  <link rel="canonical" href="https://tanujdarokar.github.io/VK_kirana/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="VK Kirana" />
+  <meta property="og:url" content="https://tanujdarokar.github.io/VK_kirana/" />
+  <meta property="og:title" content="VKCommerce - Fresh Daily Grocery Shopping &amp; 15-Min Delivery" />
+  <meta property="og:description" content="Shop fresh daily groceries, farm-pure milk &amp; dairy, whole wheat atta, aged basmati rice, breakfast spreads, spices, and tea with superfast 15-minute delivery." />
+  <meta property="og:image" content="https://tanujdarokar.github.io/VK_kirana/social-preview.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="VK Kirana - fresh daily groceries at your doorstep" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VKCommerce - Fresh Daily Grocery Shopping &amp; 15-Min Delivery" />
+  <meta name="twitter:description" content="Shop fresh daily groceries, farm-pure milk &amp; dairy, whole wheat atta, aged basmati rice, breakfast spreads, spices, and tea with superfast 15-minute delivery." />
+  <meta name="twitter:image" content="https://tanujdarokar.github.io/VK_kirana/social-preview.png" />
   <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
 <body>
   <!-- Common Shell Navigation -->
@@ -16,12 +31,12 @@
   <main>
     <!-- Hero Banner Section -->
     <section style="background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #065f46 100%); color: white; padding: 48px 0 60px; position: relative; overflow: hidden;">
-      <div style="position: absolute; right: -5%; top: -20%; width: 450px; height: 450px; border-radius: 50%; background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(6, 78, 59, 0) 70%); pointer-events: none;"></div>
+      <div class="hero-decoration" style="position: absolute; right: -5%; top: -20%; width: 450px; height: 450px; border-radius: 50%; background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(6, 78, 59, 0) 70%); pointer-events: none;"></div>
       
       <div class="container" style="position: relative; z-index: 1;">
         <div style="display: grid; grid-template-columns: 1fr 420px; gap: 2.5rem; align-items: center;" class="layout-2col-responsive">
           <div>
-            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; color: #a7f3d0; margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.15);">
+            <div class="hero-kicker" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; color: #a7f3d0; margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.15);">
               <span>⚡ Bengaluru Express Hub</span>
               <span>•</span>
               <span style="color: #facc15;">15-Minute Guaranteed Delivery</span>
@@ -36,17 +51,14 @@
             </p>
 
             <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-              <a href="products.html" class="btn btn-primary btn-lg" style="background: #ffffff; color: #047857; font-weight: 800; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+              <a href="products.html" class="btn btn-primary btn-lg home-main-cta" style="background: #ffffff; color: #047857; font-weight: 800; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
                 <span>Shop All Essentials</span>
                 <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
               </a>
 
-              <a href="products.html?deal=true" class="btn btn-outline btn-lg" style="color: white; border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08);">
-                <span>🔥 Today's Offers</span>
-              </a>
             </div>
 
-            <div style="display: flex; align-items: center; gap: 24px; margin-top: 32px; font-size: 0.85rem; color: #a7f3d0;">
+            <div class="home-benefits" style="display: flex; align-items: center; gap: 24px; margin-top: 32px; font-size: 0.85rem; color: #a7f3d0;">
               <div>✓ No Minimum Order</div>
               <div>✓ Instant UPI & COD</div>
               <div>✓ Fresh Sourced Daily</div>
@@ -61,13 +73,13 @@
             </div>
 
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 16px;">
-              <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&auto=format&fit=crop&q=80" alt="Atta" style="width: 90px; height: 90px; object-fit: cover; border-radius: 12px;" />
+              <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&auto=format&fit=crop&q=75" alt="Fresh wheat flour atta" decoding="async" fetchpriority="low" style="width: 90px; height: 90px; object-fit: cover; border-radius: 12px;" />
               <div>
-                <div style="font-size: 0.75rem; font-weight: 800; color: #059669; text-transform: uppercase;">Aashirvaad Sharbati Atta</div>
+                <div style="font-size: 0.75rem; font-weight: 800; color: #047857; text-transform: uppercase;">Aashirvaad Sharbati Atta</div>
                 <div style="font-size: 1rem; font-weight: 800; color: #0f172a;">100% MP Wheat 5kg Pack</div>
                 <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 4px;">
-                  <span style="font-size: 1.3rem; font-weight: 900; color: #059669;">₹245</span>
-                  <span style="font-size: 0.9rem; text-decoration: line-through; color: #94a3b8;">₹265</span>
+                  <span style="font-size: 1.3rem; font-weight: 900; color: #047857;">₹245</span>
+                  <span style="font-size: 0.9rem; text-decoration: line-through; color: #64748b;">₹265</span>
                   <span style="font-size: 0.75rem; font-weight: 800; color: #ef4444; background: #fee2e2; padding: 2px 6px; border-radius: 4px;">8% OFF</span>
                 </div>
               </div>
@@ -152,13 +164,13 @@
       <div class="container">
         <div style="text-align: center; max-width: 640px; margin: 0 auto 40px;">
           <span class="section-tag" style="justify-content: center;">🌟 Why VK Kirana?</span>
-          <h2 style="font-size: 2rem; font-weight: 800; color: #064e3b; margin-top: 6px;">The Neighborhood Dukan Trust</h2>
+          <h2 class="home-feature-heading" style="font-size: 2rem; font-weight: 800; color: #064e3b; margin-top: 6px;">The Neighborhood Dukan Trust</h2>
           <p style="color: #047857; font-size: 0.95rem; margin-top: 6px;">Blending traditional trustworthiness with 15-minute quick-commerce speed</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+        <div class="home-feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
           <div class="card" style="padding: 24px; text-align: center; border-radius: 18px;">
-            <div style="width: 52px; height: 52px; border-radius: 14px; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
+            <div style="width: 52px; height: 52px; border-radius: 14px; background: #ecfdf5; color: #047857; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
               ⚡
             </div>
             <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">15-Min Delivery</h3>
@@ -183,10 +195,10 @@
 
           <div class="card" style="padding: 24px; text-align: center; border-radius: 18px;">
             <div style="width: 52px; height: 52px; border-radius: 14px; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
-              🤖
+              🛍️
             </div>
-            <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Hinglish AI Assistant</h3>
-            <p style="font-size: 0.88rem; color: #64748b; line-height: 1.5;">Speak or paste raw Hindi/Hinglish shopping lists and add to cart instantly.</p>
+            <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Easy Online Orders</h3>
+            <p style="font-size: 0.88rem; color: #64748b; line-height: 1.5;">Browse the catalog, add essentials to your cart, and review your order before checkout.</p>
           </div>
         </div>
       </div>

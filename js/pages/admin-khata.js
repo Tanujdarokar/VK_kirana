@@ -39,7 +39,7 @@ function renderCustomerList() {
   });
 
   if (filtered.length === 0) {
-    container.innerHTML = `<div style="padding: 20px; text-align: center; color: #94a3b8; font-size: 0.85rem;">No customers found.</div>`;
+    container.innerHTML = `<div style="padding: 20px; text-align: center; color: #64748b; font-size: 0.85rem;">No customers found.</div>`;
     return;
   }
 
@@ -55,7 +55,7 @@ function renderCustomerList() {
           <div style="font-weight: 900; font-size: 0.95rem; color: ${c.balance > 0 ? '#ef4444' : '#059669'};">
             ₹${c.balance}
           </div>
-          <div style="font-size: 0.7rem; color: #94a3b8;">${c.balance > 0 ? 'Due' : 'Cleared'}</div>
+          <div style="font-size: 0.7rem; color: #64748b;">${c.balance > 0 ? 'Due' : 'Cleared'}</div>
         </div>
       </div>
     `;
@@ -86,7 +86,7 @@ function renderActiveCustomerLedger() {
   const entriesContainer = document.getElementById('active-cust-entries-list');
   if (entriesContainer) {
     if (!cust.entries || cust.entries.length === 0) {
-      entriesContainer.innerHTML = `<div style="padding: 30px; text-align: center; color: #94a3b8; font-size: 0.88rem;">No transactions recorded for ${cust.name} yet.</div>`;
+      entriesContainer.innerHTML = `<div style="padding: 30px; text-align: center; color: #64748b; font-size: 0.88rem;">No transactions recorded for ${cust.name} yet.</div>`;
       return;
     }
 
@@ -154,6 +154,7 @@ function setupKhataListeners() {
       const address = document.getElementById('khata-new-address').value.trim();
 
       const newCust = store.addKhataCustomer({ name, phone, address });
+      if (!newCust) return;
       activeCustomerId = newCust.id;
       custForm.reset();
       if (custModal) custModal.style.display = 'none';
@@ -208,7 +209,8 @@ function setupKhataListeners() {
       const amount = Number(document.getElementById('record-entry-amount').value);
       const note = document.getElementById('record-entry-note').value.trim();
 
-      store.addKhataEntry(activeCustomerId, { type, amount, note });
+      const entry = store.addKhataEntry(activeCustomerId, { type, amount, note });
+      if (!entry) return;
       entryForm.reset();
       if (entryModal) entryModal.style.display = 'none';
     });

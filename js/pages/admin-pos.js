@@ -60,7 +60,7 @@ function renderPosCatalog() {
   });
 
   if (filtered.length === 0) {
-    container.innerHTML = `<div style="grid-column: 1/-1; padding: 20px; text-align: center; color: #94a3b8;">No items match "${posSearchQuery}"</div>`;
+    container.innerHTML = `<div style="grid-column: 1/-1; padding: 20px; text-align: center; color: #64748b;">No items match "${posSearchQuery}"</div>`;
     return;
   }
 
@@ -68,12 +68,12 @@ function renderPosCatalog() {
     const price = p.discountPrice || p.price;
     return `
       <div class="pos-product-item" onclick="window.posAddToCart('${p.id}')">
-        <img src="${p.image}" alt="${p.name}" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; margin-bottom: 6px;" />
+        <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" width="160" height="160" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; margin-bottom: 6px;" />
         <div style="font-size: 0.75rem; font-weight: 700; color: #0f172a; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 2.4em;">
           ${p.name}
         </div>
         <div style="display: flex; align-items: baseline; justify-content: space-between; margin-top: auto; padding-top: 6px;">
-          <span style="font-weight: 900; color: #059669; font-size: 0.95rem;">₹${price}</span>
+          <span style="font-weight: 900; color: #047857; font-size: 0.95rem;">₹${price}</span>
           <span style="font-size: 0.7rem; color: #64748b;">${p.unit}</span>
         </div>
       </div>
@@ -87,7 +87,7 @@ function renderBillCart() {
   if (!container) return;
 
   if (billItems.length === 0) {
-    container.innerHTML = `<div style="padding: 40px 10px; text-align: center; color: #94a3b8; font-size: 0.85rem;">Click any product or scan to add to bill.</div>`;
+    container.innerHTML = `<div style="padding: 40px 10px; text-align: center; color: #64748b; font-size: 0.85rem;">Click any product or scan to add to bill.</div>`;
     if (totalEl) totalEl.textContent = '₹0';
     updateChange();
     return;

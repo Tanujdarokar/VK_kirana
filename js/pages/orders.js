@@ -53,7 +53,7 @@ function renderOrders() {
             </div>
             <div style="display: flex; align-items: center; gap: 12px;">
               ${statusBadge}
-              <span style="font-weight: 900; font-size: 1.15rem; color: #059669;">₹${order.total}</span>
+              <span style="font-weight: 900; font-size: 1.15rem; color: #047857;">₹${order.total}</span>
             </div>
           </div>
 
@@ -62,7 +62,7 @@ function renderOrders() {
             ${(order.items || []).map(item => `
               <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.88rem;">
                 <div style="display: flex; align-items: center; gap: 10px;">
-                  <img src="${item.product.image}" alt="${item.product.name}" style="width: 36px; height: 36px; object-fit: cover; border-radius: 8px;" />
+                  <img src="${item.product.image}" alt="${item.product.name}" loading="lazy" decoding="async" width="36" height="36" style="width: 36px; height: 36px; object-fit: cover; border-radius: 8px;" />
                   <div>
                     <span style="font-weight: 700; color: #0f172a;">${item.product.name}</span>
                     <span style="font-size: 0.78rem; color: #64748b; margin-left: 6px;">(${item.product.unit})</span>

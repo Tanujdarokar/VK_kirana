@@ -40,7 +40,7 @@ function renderInventory() {
   if (!tbody) return;
 
   if (filtered.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="8" style="padding: 30px; text-align: center; color: #94a3b8;">No items match the search query.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="8" style="padding: 30px; text-align: center; color: #64748b;">No items match the search query.</td></tr>`;
     return;
   }
 
@@ -61,7 +61,7 @@ function renderInventory() {
       <tr style="border-bottom: 1px solid #f1f5f9; transition: background 0.2s;" onmouseover="this.style.backgroundColor='#f8fafc'" onmouseout="this.style.backgroundColor='transparent'">
         <td style="padding: 12px 18px;">
           <div style="display: flex; align-items: center; gap: 12px;">
-            <img src="${p.image}" alt="${p.name}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; background: #f8fafc;" />
+            <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" width="40" height="40" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; background: #f8fafc;" />
             <div>
               <div style="font-weight: 800; color: #0f172a; max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</div>
               <div style="font-size: 0.75rem; color: #64748b;">${p.brand || 'Kirana'} • ${p.unit}</div>
@@ -71,7 +71,7 @@ function renderInventory() {
         <td style="padding: 12px; color: #475569; font-size: 0.82rem;">${p.categoryName || p.category}</td>
         <td style="padding: 12px; font-weight: 900; color: #0f172a;">₹${sellPrice}</td>
         <td style="padding: 12px; color: #64748b;">₹${costPrice}</td>
-        <td style="padding: 12px; font-weight: 800; color: #059669;">${marginPct}% (₹${profit})</td>
+        <td style="padding: 12px; font-weight: 800; color: #047857;">${marginPct}% (₹${profit})</td>
         <td style="padding: 12px;">
           <div style="display: inline-flex; align-items: center; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; background: white;">
             <button style="width: 26px; height: 26px; font-weight: 800; font-size: 0.85rem;" onclick="window.invUpdateStock('${p.id}', ${Math.max(0, p.stock - 5)})">-5</button>
@@ -96,7 +96,7 @@ function renderCustomerRequests() {
 
   const requests = store.getRequestedItems();
   if (requests.length === 0) {
-    container.innerHTML = `<div style="padding: 20px; text-align: center; color: #94a3b8; font-size: 0.88rem;">No unlisted item requests currently.</div>`;
+    container.innerHTML = `<div style="padding: 20px; text-align: center; color: #64748b; font-size: 0.88rem;">No unlisted item requests currently.</div>`;
     return;
   }
 
@@ -110,7 +110,7 @@ function renderCustomerRequests() {
       </div>
       <div style="display: flex; align-items: center; gap: 8px;">
         <span class="badge badge-deal">${r.status || 'Pending'}</span>
-        <a href="https://wa.me/?text=Hello%20${encodeURIComponent(r.customerName)},%20we%20have%20arranged%20your%20requested%20item%20at%20VK%20Kirana!" target="_blank" class="btn btn-outline btn-sm" style="color: #059669; border-color: #a7f3d0;">
+        <a href="https://wa.me/?text=Hello%20${encodeURIComponent(r.customerName)},%20we%20have%20arranged%20your%20requested%20item%20at%20VK%20Kirana!" target="_blank" class="btn btn-outline btn-sm" style="color: #047857; border-color: #a7f3d0;">
           WhatsApp Buyer
         </a>
       </div>
@@ -164,7 +164,7 @@ function setupInventoryListeners() {
       const stock = Number(document.getElementById('add-p-stock').value || 25);
       const image = document.getElementById('add-p-image').value.trim();
 
-      store.addProduct({
+      const product = store.addProduct({
         name,
         category,
         brand,
@@ -174,6 +174,7 @@ function setupInventoryListeners() {
         stock,
         image
       });
+      if (!product) return;
 
       form.reset();
       if (modal) modal.style.display = 'none';

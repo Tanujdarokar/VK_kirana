@@ -1,7 +1,6 @@
 // Category Page Controller for category.html
 
 import { initCommonUI, renderProductCard } from '../common.js';
-import { initAiWidget } from '../ai-widget.js';
 import { store } from '../store.js';
 import { categories } from '../data/categories.js';
 
@@ -10,7 +9,6 @@ let currentSort = 'featured';
 
 document.addEventListener('DOMContentLoaded', () => {
   initCommonUI();
-  initAiWidget();
 
   const urlParams = new URLSearchParams(window.location.search);
   currentCategorySlug = urlParams.get('category') || 'atta-flour-grains';

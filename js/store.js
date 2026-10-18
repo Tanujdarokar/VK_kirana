@@ -26,7 +26,7 @@ export const DEMO_VENDOR = {
   phone: '+91 98111 22233',
   role: 'vendor',
   shopName: 'VK Kirana & Supermarket',
-  avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+  avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=75',
   address: {
     street: 'Shop No 1, Main Mandi Market, Koramangala',
     city: 'Bengaluru',
@@ -41,7 +41,7 @@ export const DEMO_USER = {
   email: 'tanuj@example.com',
   phone: '+91 98765 43210',
   role: 'user',
-  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=75',
   address: {
     street: 'Flat 402, Green Meadows Residency, Sector 45',
     city: 'Bengaluru',
@@ -117,7 +117,7 @@ const INITIAL_ORDERS = [
           price: 74,
           discountPrice: 68,
           unit: '1 L (Tetra Pack)',
-          image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80'
+          image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=75'
         },
         quantity: 2
       },
@@ -128,7 +128,7 @@ const INITIAL_ORDERS = [
           price: 650,
           discountPrice: 535,
           unit: '5 kg Bag',
-          image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80'
+          image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=75'
         },
         quantity: 1
       }
@@ -205,9 +205,10 @@ class Store {
   getUser() {
     try {
       const data = localStorage.getItem(KEYS.USER);
-      return data ? JSON.parse(data) : DEMO_USER;
-    } catch {
-      return DEMO_USER;
+      return data ? JSON.parse(data) : null;
+    } catch (error) {
+      console.error('Unable to read the local user profile:', error);
+      return null;
     }
   }
 
@@ -225,42 +226,6 @@ class Store {
     return user && user.role === 'vendor';
   }
 
-  login(email, password) {
-    const cleanEmail = email.toLowerCase().trim();
-    const registered = this.getRegisteredUsers();
-    const found = registered.find(u => u.email.toLowerCase() === cleanEmail);
-
-    if (found) {
-      this.setUser(found);
-      this.showToast(`Logged in as ${found.role === 'vendor' ? '🏪 Vendor' : '🛒 Customer'}: ${found.name}!`);
-      return { success: true, user: found };
-    }
-
-    const isVendorLogin = cleanEmail === 'vendor@vkcommerce.in' || cleanEmail.includes('vendor') || cleanEmail.includes('admin') || cleanEmail.includes('shop');
-    const role = isVendorLogin ? 'vendor' : 'user';
-
-    const newUser = {
-      id: 'usr_' + Date.now(),
-      name: cleanEmail.split('@')[0],
-      email: cleanEmail,
-      phone: '+91 98765 00000',
-      role,
-      shopName: isVendorLogin ? 'VK Kirana & Supermarket' : undefined,
-      address: {
-        street: isVendorLogin ? 'Mandi Market Main Gate' : '12th Cross Road, Indiranagar',
-        city: 'Bengaluru',
-        state: 'Karnataka',
-        pincode: '560038'
-      }
-    };
-
-    registered.push(newUser);
-    localStorage.setItem(KEYS.USERS, JSON.stringify(registered));
-    this.setUser(newUser);
-    this.showToast(`Logged in as ${role === 'vendor' ? '🏪 Vendor' : '🛒 Customer'}: ${newUser.name}!`);
-    return { success: true, user: newUser };
-  }
-
   loginAsVendor() {
     this.setUser(DEMO_VENDOR);
     this.showToast('Switched to Vendor / Dukan Owner Account! Full Khata & POS enabled.');
@@ -274,7 +239,16 @@ class Store {
   }
 
   register({ name, email, phone }) {
-    const cleanEmail = email.toLowerCase().trim();
+    const cleanName = String(name || '').trim();
+    const cleanEmail = String(email || '').toLowerCase().trim();
+    const cleanPhone = String(phone || '').trim();
+
+    if (cleanName.length < 2 || cleanName.length > 80 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail) ||
+        (cleanPhone && !/^(\+91[\s-]?)?[6-9](?:[\s-]?\d){9}$/.test(cleanPhone))) {
+      this.showToast('Please provide a valid name, email address, and mobile number.', 'error');
+      return { success: false, message: 'Invalid profile details' };
+    }
+
     const registered = this.getRegisteredUsers();
 
     if (registered.some(u => u.email.toLowerCase() === cleanEmail)) {
@@ -284,9 +258,9 @@ class Store {
 
     const newUser = {
       id: 'usr_' + Date.now(),
-      name,
+      name: cleanName,
       email: cleanEmail,
-      phone: phone || '+91 98765 43210',
+      phone: cleanPhone || '+91 98765 43210',
       role: 'user',
       address: {
         street: '7th Main Road, Koramangala',
@@ -299,7 +273,7 @@ class Store {
     registered.push(newUser);
     localStorage.setItem(KEYS.USERS, JSON.stringify(registered));
     this.setUser(newUser);
-    this.showToast(`Customer account created! Welcome ${name}`);
+    this.showToast(`Demo profile created! Welcome ${cleanName}`);
     return { success: true, user: newUser };
   }
 
@@ -356,10 +330,16 @@ class Store {
   }
 
   updateStock(productId, newStock) {
+    const stock = Number(newStock);
+    if (!Number.isSafeInteger(stock) || stock < 0 || stock > 1000000) {
+      this.showToast('Stock must be a whole number between 0 and 1,000,000.', 'error');
+      return;
+    }
+
     const products = this.getProducts();
     const idx = products.findIndex(p => p.id === productId);
     if (idx > -1) {
-      products[idx].stock = Math.max(0, Number(newStock));
+      products[idx].stock = stock;
       localStorage.setItem(KEYS.INVENTORY, JSON.stringify(products));
       this.notify('inventory_changed', products);
       this.showToast(`Updated stock for ${products[idx].name}`);
@@ -367,30 +347,51 @@ class Store {
   }
 
   addProduct(newItem) {
+    const name = String(newItem.name || '').trim();
+    const price = Number(newItem.price);
+    const costPrice = newItem.costPrice === '' || newItem.costPrice == null ? undefined : Number(newItem.costPrice);
+    const stock = Number(newItem.stock);
+    let image = '';
+    try {
+      image = newItem.image ? new URL(newItem.image).href : '';
+    } catch {
+      this.showToast('Enter a valid HTTPS image URL or leave the image field empty.', 'error');
+      return null;
+    }
+
+    if (name.length < 2 || name.length > 100 ||
+        !Number.isFinite(price) || price <= 0 || price > 1000000 ||
+        (costPrice !== undefined && (!Number.isFinite(costPrice) || costPrice < 0 || costPrice > 1000000)) ||
+        !Number.isSafeInteger(stock) || stock < 0 || stock > 1000000 ||
+        (image && new URL(image).protocol !== 'https:')) {
+      this.showToast('Check the product name, prices, stock, and HTTPS image URL.', 'error');
+      return null;
+    }
+
     const products = this.getProducts();
     const id = 'kirana-' + Date.now();
     const sellPrice = Number(newItem.discountPrice || newItem.price);
-    const costPrice = Number(newItem.costPrice || Math.round(sellPrice * 0.8));
-    const price = Number(newItem.price || sellPrice);
-    const discount = price > sellPrice ? Math.round(((price - sellPrice) / price) * 100) : 0;
+    const productCost = costPrice ?? Math.round(sellPrice * 0.8);
+    const listPrice = Number(newItem.price || sellPrice);
+    const discount = listPrice > sellPrice ? Math.round(((listPrice - sellPrice) / listPrice) * 100) : 0;
 
     const fullItem = {
       id,
-      name: newItem.name,
+      name,
       category: newItem.category || 'atta-flour-grains',
       categoryName: newItem.categoryName || 'General Grocery',
       brand: newItem.brand || 'Local Kirana',
-      price,
+      price: listPrice,
       discountPrice: sellPrice,
       discount,
-      costPrice,
+      costPrice: productCost,
       unit: newItem.unit || '1 pack',
-      stock: Number(newItem.stock || 25),
+      stock,
       minStockAlert: Number(newItem.minStockAlert || 5),
       rating: 4.8,
       reviewsCount: 1,
-      image: newItem.image || 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop&q=80',
-      images: [newItem.image || 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop&q=80'],
+      image: image || 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop&q=75',
+      images: [image || 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop&q=75'],
       description: newItem.description || 'Fresh item stocked directly at local VK Kirana store.',
       features: ['Local farm fresh sourcing', '100% Quality checked'],
       isPopular: false,
@@ -476,6 +477,11 @@ class Store {
   }
 
   addToCart(product, qty = 1) {
+    if (!Number.isSafeInteger(qty) || qty < 1 || !product || !Number.isSafeInteger(product.stock) || product.stock < 1) {
+      this.showToast('This product or quantity is not available.', 'error');
+      return;
+    }
+
     const cart = this.getCart();
     const existing = cart.find(i => i.product.id === product.id);
 
@@ -500,6 +506,10 @@ class Store {
   }
 
   updateCartQty(productId, qty) {
+    if (!Number.isSafeInteger(qty)) {
+      this.showToast('Cart quantity must be a whole number.', 'error');
+      return;
+    }
     let cart = this.getCart();
     if (qty <= 0) {
       this.removeFromCart(productId);
@@ -678,12 +688,20 @@ class Store {
   }
 
   addKhataCustomer({ name, phone, address }) {
+    const cleanName = String(name || '').trim();
+    const cleanPhone = String(phone || '').trim();
+    if (cleanName.length < 2 || cleanName.length > 80 || !/^[6-9]\d{9}$/.test(cleanPhone) ||
+        String(address || '').length > 160) {
+      this.showToast('Enter a valid customer name, 10-digit mobile number, and address.', 'error');
+      return null;
+    }
+
     const list = this.getKhataCustomers();
     const id = 'khata-' + Date.now();
     const newCust = {
       id,
-      name,
-      phone,
+      name: cleanName,
+      phone: cleanPhone,
       address: address || '',
       balance: 0,
       entries: []
@@ -696,11 +714,17 @@ class Store {
   }
 
   addKhataEntry(customerId, { type, amount, note }) {
+    const amt = Number(amount);
+    if (!['udhaar', 'jama'].includes(type) || !Number.isFinite(amt) || amt <= 0 || amt > 10000000 ||
+        String(note || '').length > 200) {
+      this.showToast('Enter a valid entry type, amount, and note.', 'error');
+      return null;
+    }
+
     const list = this.getKhataCustomers();
     const cust = list.find(c => c.id === customerId);
     if (!cust) return;
 
-    const amt = Number(amount);
     const entry = {
       id: 'ent-' + Date.now(),
       date: new Date().toISOString(),
@@ -733,12 +757,20 @@ class Store {
   }
 
   addExpense({ category, amount, note, paidVia = 'cash' }) {
+    const validCategories = ['transport', 'bags', 'tea_snacks', 'wages', 'electricity', 'rent', 'other'];
+    const amt = Number(amount);
+    if (!validCategories.includes(category) || !Number.isFinite(amt) || amt <= 0 || amt > 10000000 ||
+        !['cash', 'upi'].includes(paidVia) || String(note || '').length > 200) {
+      this.showToast('Enter a valid expense category, amount, payment method, and note.', 'error');
+      return null;
+    }
+
     const list = this.getExpenses();
     const newExp = {
       id: 'exp-' + Date.now(),
       date: new Date().toISOString(),
       category,
-      amount: Number(amount),
+      amount: amt,
       note: note || '',
       paidVia
     };

@@ -27,36 +27,17 @@ function setupAuthListeners() {
     });
   }
 
-  // Standard Login Form
-  const loginForm = document.getElementById('login-form');
-  if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('login-email').value.trim();
-      const password = document.getElementById('login-password').value;
-
-      const res = store.login(email, password);
-      if (res.success) {
-        if (res.user.role === 'vendor') {
-          window.location.href = 'admin.html';
-        } else {
-          window.location.href = 'products.html';
-        }
-      }
-    });
-  }
-
   // Registration Form
   const regForm = document.getElementById('register-form');
   if (regForm) {
     regForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (document.getElementById('reg-company').value) return;
       const name = document.getElementById('reg-name').value.trim();
       const email = document.getElementById('reg-email').value.trim();
       const phone = document.getElementById('reg-phone').value.trim();
-      const password = document.getElementById('reg-password').value;
 
-      const res = store.register({ name, email, phone, password });
+      const res = store.register({ name, email, phone });
       if (res.success) {
         window.location.href = 'products.html';
       }

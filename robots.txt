@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tanujdarokar.github.io/VK_kirana/sitemap.xml

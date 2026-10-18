@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
-  <title>Register - VKCommerce</title>
-  <meta name="description" content="Create a customer account for instant grocery delivery." />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <title>Create Demo Profile - VKCommerce</title>
+  <meta name="description" content="Create a browser-only demo profile for the VKCommerce grocery storefront." />
+  <meta name="robots" content="noindex,follow" />
   <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
 <body style="background: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column;">
   <!-- Common Navbar Shell -->
@@ -21,40 +22,44 @@
         <div style="width: 48px; height: 48px; border-radius: 14px; background: #059669; color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);">
           <i data-lucide="user-plus" style="width: 24px; height: 24px;"></i>
         </div>
-        <h1 style="font-size: 1.6rem; font-weight: 900; color: #0f172a;">Create Customer Account</h1>
-        <p style="color: #64748b; font-size: 0.88rem; margin-top: 4px;">Get ₹100 OFF on your first grocery delivery order</p>
+        <h1 style="font-size: 1.6rem; font-weight: 900; color: #0f172a;">Create Demo Profile</h1>
+        <p style="color: #64748b; font-size: 0.88rem; margin-top: 4px;">This profile is saved only in your browser. Do not use sensitive or real personal data.</p>
       </div>
 
       <!-- Register Form -->
       <form id="register-form">
+        <div class="form-honeypot" aria-hidden="true">
+          <label for="reg-company">Leave this field empty</label>
+          <input type="text" id="reg-company" name="company" tabindex="-1" autocomplete="off" />
+        </div>
         <div style="margin-bottom: 14px;">
-          <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Full Name *</label>
-          <input type="text" id="reg-name" required placeholder="e.g. Ramesh Patel" style="width: 100%; padding: 11px; border-radius: 10px;" />
+          <label for="reg-name" style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Full Name *</label>
+          <input type="text" id="reg-name" name="name" required minlength="2" maxlength="80" autocomplete="name" placeholder="e.g. Ramesh Patel" style="width: 100%; padding: 11px; border-radius: 10px;" />
         </div>
 
         <div style="margin-bottom: 14px;">
-          <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Email Address *</label>
-          <input type="email" id="reg-email" required placeholder="name@example.com" style="width: 100%; padding: 11px; border-radius: 10px;" />
+          <label for="reg-email" style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Email Address *</label>
+          <input type="email" id="reg-email" name="email" required maxlength="254" autocomplete="email" placeholder="name@example.com" style="width: 100%; padding: 11px; border-radius: 10px;" />
         </div>
 
         <div style="margin-bottom: 14px;">
-          <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Mobile Number</label>
-          <input type="tel" id="reg-phone" placeholder="+91 98765 43210" style="width: 100%; padding: 11px; border-radius: 10px;" />
+          <label for="reg-phone" style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Mobile Number</label>
+          <input type="tel" id="reg-phone" name="phone" maxlength="20" pattern="(\+91[\s-]?)?[6-9](?:[\s-]?[0-9]){9}" autocomplete="tel" placeholder="+91 98765 43210" style="width: 100%; padding: 11px; border-radius: 10px;" />
         </div>
 
-        <div style="margin-bottom: 20px;">
-          <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Create Password *</label>
-          <input type="password" id="reg-password" required placeholder="At least 6 characters" style="width: 100%; padding: 11px; border-radius: 10px;" />
+        <div style="margin: 16px 0 20px; font-size: 0.82rem; color: #475569;">
+          <input type="checkbox" id="reg-terms" required />
+          <label for="reg-terms">I agree to the <a href="terms.html" style="color: #065f46; text-decoration: underline;">Terms & Conditions</a> and acknowledge the <a href="privacy.html" style="color: #065f46; text-decoration: underline;">Privacy Policy</a>.</label>
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; padding: 13px; font-weight: 800;">
-          Create Account
+          Create Demo Profile
         </button>
       </form>
 
       <div style="margin-top: 20px; text-align: center; font-size: 0.88rem; color: #64748b;">
         Already have an account?
-        <a href="login.html" style="color: #059669; font-weight: 800; text-decoration: underline;">
+        <a href="login.html" style="color: #047857; font-weight: 800; text-decoration: underline;">
           Sign In
         </a>
       </div>

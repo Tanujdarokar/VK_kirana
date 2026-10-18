@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <title>Order Confirmed - VKCommerce</title>
   <meta name="description" content="Your grocery order is confirmed with 15-minute live tracking." />
+  <meta name="robots" content="noindex,follow" />
   <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js" defer></script>
 </head>
 <body>
   <!-- Common Navbar Shell -->
@@ -19,7 +20,7 @@
       
       <!-- Celebration Header Card -->
       <div class="card" style="padding: 36px; border-radius: 24px; text-align: center; margin-bottom: 24px; border-top: 6px solid #10b981;">
-        <div style="width: 72px; height: 72px; border-radius: 50%; background: #ecfdf5; color: #10b981; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 16px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);">
+        <div style="width: 72px; height: 72px; border-radius: 50%; background: #ecfdf5; color: #047857; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 16px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);">
           ✓
         </div>
 
@@ -28,7 +29,7 @@
           Badhaai Ho! Your Kirana Order is Placed
         </h1>
         <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 16px;">
-          Order ID: <strong id="success-order-id" style="color: #059669; font-size: 1.05rem;">VK-XXXXXX</strong>
+          Order ID: <strong id="success-order-id" style="color: #047857; font-size: 1.05rem;">VK-XXXXXX</strong>
         </p>
 
         <!-- Live 15-Min Delivery Countdown Tracker -->
@@ -38,13 +39,13 @@
               <span style="font-size: 1.2rem;">⚡</span>
               <span style="font-size: 1rem; font-weight: 800; color: #0f172a;">Live 15-Minute Express Tracker</span>
             </div>
-            <span style="font-size: 0.85rem; font-weight: 800; color: #059669; background: #ecfdf5; padding: 4px 10px; border-radius: 20px;">
+            <span style="font-size: 0.85rem; font-weight: 800; color: #047857; background: #ecfdf5; padding: 4px 10px; border-radius: 20px;">
               Estimated: ~12 mins remaining
             </span>
           </div>
 
           <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center; font-size: 0.78rem; font-weight: 700;">
-            <div style="background: #ecfdf5; color: #059669; padding: 10px; border-radius: 10px; border: 1.5px solid #a7f3d0;">
+            <div style="background: #ecfdf5; color: #047857; padding: 10px; border-radius: 10px; border: 1.5px solid #a7f3d0;">
               <div>✓ Placed</div>
               <div style="font-size: 0.68rem; font-weight: 500; margin-top: 2px;">Dukan Confirmed</div>
             </div>
@@ -52,11 +53,11 @@
               <div>📦 Packing</div>
               <div style="font-size: 0.68rem; font-weight: 500; margin-top: 2px;">At Mandi Hub</div>
             </div>
-            <div style="background: white; color: #94a3b8; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0;">
+            <div style="background: white; color: #64748b; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0;">
               <div>🛵 On The Way</div>
               <div style="font-size: 0.68rem; font-weight: 500; margin-top: 2px;">Rider Assigned</div>
             </div>
-            <div style="background: white; color: #94a3b8; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0;">
+            <div style="background: white; color: #64748b; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0;">
               <div>🏠 Delivered</div>
               <div style="font-size: 0.68rem; font-weight: 500; margin-top: 2px;">Doorstep Handover</div>
             </div>
@@ -87,7 +88,7 @@
             <span>Delivery Destination:</span>
             <strong id="success-address" style="color: #0f172a; max-width: 320px; text-align: right;">Bengaluru</strong>
           </div>
-          <div style="border-top: 2px dashed #e2e8f0; padding-top: 10px; margin-top: 6px; display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 900; color: #059669;">
+          <div style="border-top: 2px dashed #e2e8f0; padding-top: 10px; margin-top: 6px; display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 900; color: #047857;">
             <span>Total Paid:</span>
             <span id="success-total-amount">₹0</span>
           </div>

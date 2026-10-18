@@ -31,7 +31,7 @@ function renderDashboardData() {
   const salesList = document.getElementById('recent-sales-list');
   if (salesList) {
     if (transactions.length === 0) {
-      salesList.innerHTML = `<div style="padding: 20px; text-align: center; color: #94a3b8; font-size: 0.9rem;">No POS sales recorded today.</div>`;
+      salesList.innerHTML = `<div style="padding: 20px; text-align: center; color: #64748b; font-size: 0.9rem;">No POS sales recorded today.</div>`;
     } else {
       salesList.innerHTML = transactions.slice(0, 5).map(t => {
         const timeStr = new Date(t.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -42,7 +42,7 @@ function renderDashboardData() {
               <div style="font-size: 0.75rem; color: #64748b;">${timeStr} • Paid via ${t.paymentMethod.toUpperCase()}</div>
             </div>
             <div style="text-align: right;">
-              <div style="font-weight: 900; font-size: 0.95rem; color: #059669;">₹${t.subtotal}</div>
+              <div style="font-weight: 900; font-size: 0.95rem; color: #047857;">₹${t.subtotal}</div>
               <div style="font-size: 0.72rem; color: #047857; font-weight: 700;">+₹${t.profit || 0} profit</div>
             </div>
           </div>
@@ -55,12 +55,12 @@ function renderDashboardData() {
   const stockList = document.getElementById('low-stock-list');
   if (stockList) {
     if (lowStockItems.length === 0) {
-      stockList.innerHTML = `<div style="padding: 20px; text-align: center; color: #059669; font-size: 0.9rem;">✓ All grocery items have adequate stock!</div>`;
+      stockList.innerHTML = `<div style="padding: 20px; text-align: center; color: #047857; font-size: 0.9rem;">✓ All grocery items have adequate stock!</div>`;
     } else {
       stockList.innerHTML = lowStockItems.slice(0, 5).map(p => `
         <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: #fffbeb; border-radius: 10px; border: 1px solid #fde68a;">
           <div style="display: flex; align-items: center; gap: 10px;">
-            <img src="${p.image}" alt="${p.name}" style="width: 34px; height: 34px; object-fit: cover; border-radius: 6px;" />
+            <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" width="34" height="34" style="width: 34px; height: 34px; object-fit: cover; border-radius: 6px;" />
             <div>
               <div style="font-weight: 700; font-size: 0.85rem; color: #0f172a;">${p.name}</div>
               <div style="font-size: 0.75rem; color: #b45309;">${p.unit}</div>

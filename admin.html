@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <title>Dukan Dashboard - VK Kirana Admin</title>
   <meta name="description" content="Kirana Store business metrics, daily revenue, and operations management." />
+  <meta name="robots" content="noindex,follow" />
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/admin.css" />
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
 <body>
   <div class="admin-wrapper">
@@ -56,9 +57,9 @@
             <div>
               <div style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Today's Counter Sales</div>
               <div id="stat-sales" style="font-size: 1.8rem; font-weight: 900; color: #0f172a; margin-top: 4px;">₹0</div>
-              <div style="font-size: 0.78rem; color: #059669; font-weight: 700; margin-top: 2px;">⚡ Express POS + Store</div>
+              <div style="font-size: 0.78rem; color: #047857; font-weight: 700; margin-top: 2px;">⚡ Express POS + Store</div>
             </div>
-            <div class="stat-icon-wrapper" style="background: #ecfdf5; color: #059669;">
+            <div class="stat-icon-wrapper" style="background: #ecfdf5; color: #047857;">
               <i data-lucide="banknote" style="width: 26px; height: 26px;"></i>
             </div>
           </div>
@@ -105,7 +106,7 @@
           <div class="card" style="padding: 24px; border-radius: 20px;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
               <h3 style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">Recent Counter Bills</h3>
-              <a href="admin-pos.html" style="font-size: 0.85rem; font-weight: 700; color: #059669;">+ New Bill</a>
+              <a href="admin-pos.html" style="font-size: 0.85rem; font-weight: 700; color: #047857;">+ New Bill</a>
             </div>
 
             <div id="recent-sales-list" style="display: flex; flex-direction: column; gap: 10px;">
@@ -117,7 +118,7 @@
           <div class="card" style="padding: 24px; border-radius: 20px;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
               <h3 style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">Low Stock Alerts (Mandi Reorder)</h3>
-              <a href="admin-inventory.html" style="font-size: 0.85rem; font-weight: 700; color: #059669;">Manage Stock</a>
+              <a href="admin-inventory.html" style="font-size: 0.85rem; font-weight: 700; color: #047857;">Manage Stock</a>
             </div>
 
             <div id="low-stock-list" style="display: flex; flex-direction: column; gap: 10px;">

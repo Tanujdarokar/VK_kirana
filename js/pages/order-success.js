@@ -42,7 +42,7 @@ function renderOrderDetails(order) {
       return `
         <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.9rem; padding: 6px 0;">
           <div style="display: flex; align-items: center; gap: 10px;">
-            <img src="${p.image}" alt="${p.name}" style="width: 42px; height: 42px; object-fit: cover; border-radius: 8px;" />
+            <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" width="42" height="42" style="width: 42px; height: 42px; object-fit: cover; border-radius: 8px;" />
             <div>
               <div style="font-weight: 700; color: #0f172a;">${p.name}</div>
               <div style="font-size: 0.78rem; color: #64748b;">${p.unit} • Qty: ${item.quantity}</div>

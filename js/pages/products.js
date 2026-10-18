@@ -1,10 +1,9 @@
 // Products Catalog Controller for products.html
 
 import { initCommonUI, renderProductCard } from '../common.js';
-import { initAiWidget } from '../ai-widget.js';
 import { store } from '../store.js';
 import { categories } from '../data/categories.js';
-import { getExpandedSearchTerms } from '../data/aiAssistant.js';
+import { getExpandedSearchTerms } from '../data/searchAliases.js';
 
 let activeCategory = 'all';
 let maxPrice = 1000;
@@ -15,7 +14,6 @@ let searchQuery = '';
 
 document.addEventListener('DOMContentLoaded', () => {
   initCommonUI();
-  initAiWidget();
 
   // Read URL query params
   const urlParams = new URLSearchParams(window.location.search);
@@ -50,12 +48,12 @@ function renderCategoryFilters() {
 
   container.innerHTML = `
     <label style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; cursor: pointer;">
-      <input type="radio" name="cat-filter" value="all" ${activeCategory === 'all' ? 'checked' : ''} style="accent-color: #059669;" />
+      <input type="radio" name="cat-filter" value="all" ${activeCategory === 'all' ? 'checked' : ''} style="accent-color: #047857;" />
       <span style="font-weight: 600;">All Groceries</span>
     </label>
     ${categories.map(c => `
       <label style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; cursor: pointer;">
-        <input type="radio" name="cat-filter" value="${c.slug}" ${activeCategory === c.slug ? 'checked' : ''} style="accent-color: #059669;" />
+        <input type="radio" name="cat-filter" value="${c.slug}" ${activeCategory === c.slug ? 'checked' : ''} style="accent-color: #047857;" />
         <span style="font-weight: 600;">${c.name}</span>
       </label>
     `).join('')}

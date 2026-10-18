@@ -1,97 +1,103 @@
 # VKCommerce - Kirana & Supermarket
 
-A modern, high-performance grocery and local kirana store web application built using **pure HTML5, CSS3, and Vanilla JavaScript (ES Modules)**.
+A grocery storefront and kirana management **demo** built using HTML5, CSS3, and Vanilla JavaScript (ES Modules).
 
-The project includes an interactive customer storefront, product catalog with dynamic filtering and live auto-complete search, cart, checkout flow with UPI/COD, order tracking, customer authentication, along with a complete Kirana Store Management suite (Admin Dashboard, POS Billing Counter, Stock Inventory Manager, Digital Khata Book, and Shop Expense Tracker).
+The project includes a storefront, product catalog, demo cart and checkout flow, local demo profiles, and a browser-only shop management suite (dashboard, POS, inventory, khata, and expenses). It does not process real orders or payments.
 
 ---
 
 ## 🌟 Tech Stack
 
-- **Core**: Vanilla HTML5, CSS3, and Modern JavaScript (ES Modules)
+- **Core**: Static HTML5, CSS3, and browser-native JavaScript modules
 - **Styling**: Tailored CSS design system with CSS custom properties, glassmorphism, responsive grid layouts, and micro-animations
-- **State Management**: Centralized unified store (`js/store.js`) backed by browser `localStorage`
-- **NLP Grocery Assistant**: Hinglish conversational parser (`js/data/aiAssistant.js` & `js/ai-widget.js`)
-- **Dev Server**: Vite (for fast local development and multi-page preview)
+- **State Management**: Centralized demo store (`js/store.js`) backed by browser `localStorage`
+- **Search**: Hinglish grocery search aliases (`js/data/searchAliases.js`)
+- **Hosting**: Static hosting (GitHub Pages or any host that serves HTML, CSS, JavaScript modules, and static assets)
 
 ---
 
-## 📁 Project Structure
+## Project structure
 
 ```text
 VKCommerce/
-├── index.html                   # Storefront Homepage
-├── products.html                # Product Catalog with Search, Category & Price Filters
-├── category.html                # Category Browsing View
-├── product-details.html         # Product Specifications & Nutrition
-├── cart.html                    # Shopping Bag with Coupon Promo & Free Delivery Meter
-├── checkout.html                # Express 15-Min Delivery & Payment (UPI/COD)
-├── order-success.html           # Order Confirmed + Live 15-Minute Delivery Tracker
-├── orders.html                  # Customer Past Orders & Reorder
-├── wishlist.html                # Saved Wishlist Items
-├── profile.html                 # Customer Account Profile & Role Switcher
-├── login.html                   # Login with 1-Click Demo Customer & Vendor Buttons
-├── register.html                # Customer Registration
-├── admin.html                   # Dukan Business Dashboard & Metrics
-├── admin-pos.html               # Express POS Billing Counter & Thermal Receipt Printer
-├── admin-inventory.html         # Live Inventory Stock & Price Margin Manager
-├── admin-khata.html             # Digital Udhar / Khata Book with WhatsApp Reminders
-├── admin-expenses.html          # Shop Daily Expenses & P&L Overhead Tracker
+├── .github/
+│   └── workflows/
+│       └── deploy.yml           # Publish static files to GitHub Pages
+├── .gitignore
+├── 404.html                     # Custom not-found page
+├── admin-expenses.html
+├── admin-inventory.html
+├── admin-khata.html
+├── admin-pos.html
+├── admin.html                   # Store dashboard
+├── cart.html
+├── category.html
+├── checkout.html                # Demo checkout
+├── favicon.svg
+├── index.html                   # Storefront homepage
+├── login.html                   # Demo customer/vendor profile entry
+├── order-success.html
+├── orders.html
+├── privacy.html
+├── product-details.html
+├── products.html
+├── profile.html
+├── README.md
+├── register.html                # Create a browser-only demo profile
+├── robots.txt
+├── sitemap.xml
+├── social-preview.png
+├── terms.html
+├── wishlist.html
 ├── css/
-│   ├── style.css                # Core design system, utilities, cards, typography
-│   └── admin.css                # Admin, POS Counter, Khata, and Expenses styles
-├── js/
-│   ├── data/
-│   │   ├── products.js          # 80+ Grocery products with images, prices, units
-│   │   ├── categories.js        # 10 Kirana categories with banners & colors
-│   │   └── aiAssistant.js       # Hinglish voice/text parser & grocery aliases
-│   ├── store.js                 # Unified state store (Auth, Cart, Inventory, Khata, Expenses)
-│   ├── common.js                # Shared navbar, footer, modals, toasts, product cards
-│   ├── ai-widget.js             # Kirana AI Assistant floating widget
-│   ├── admin-common.js          # Shared admin navigation and vendor security guard
-│   └── pages/                   # Page-specific controllers
-│       ├── home.js
-│       ├── products.js
-│       ├── category.js
-│       ├── product-details.js
-│       ├── cart.js
-│       ├── checkout.js
-│       ├── order-success.js
-│       ├── orders.js
-│       ├── wishlist.js
-│       ├── profile.js
-│       ├── auth.js
-│       ├── admin-dashboard.js
-│       ├── admin-pos.js
-│       ├── admin-inventory.js
-│       ├── admin-khata.js
-│       └── admin-expenses.js
-├── public/
-│   └── favicon.svg              # Store favicon icon
-├── package.json
-└── vite.config.js
+│   ├── admin.css
+│   └── style.css
+└── js/
+    ├── admin-common.js          # Shared admin layout and demo UI guard
+    ├── common.js                # Shared navigation, footer, modals, and cards
+    ├── store.js                 # Browser-local demo state
+    ├── data/
+    │   ├── categories.js
+    │   ├── products.js
+    │   └── searchAliases.js
+    └── pages/
+        ├── admin-dashboard.js
+        ├── admin-expenses.js
+        ├── admin-inventory.js
+        ├── admin-khata.js
+        ├── admin-pos.js
+        ├── auth.js
+        ├── cart.js
+        ├── category.js
+        ├── checkout.js
+        ├── home.js
+        ├── legal.js
+        ├── order-success.js
+        ├── orders.js
+        ├── product-details.js
+        ├── products.js
+        ├── profile.js
+        └── wishlist.js
 ```
 
 ---
 
-## 🚀 Running Locally
+## Running locally
 
-1. **Install dependencies**:
+Serve the repository root with any static web server. For example, with Python installed:
    ```bash
-   npm install
+   python -m http.server 8000
    ```
+Then open `http://localhost:8000`. Serving over HTTP is required for browser-native JavaScript modules; opening the HTML files directly with `file://` may block module imports.
 
-2. **Start Development Server**:
-   ```bash
-   npm run dev
-   ```
-   Open `http://localhost:5173` in your browser.
+Deploy the repository's HTML pages, `css/`, `js/`, and root static assets to a static host. The GitHub Pages workflow publishes these files directly without a package manager, bundler, or build step. The sitemap and canonical URLs currently use `https://tanujdarokar.github.io/VK_kirana/`; update them if the production domain or repository path changes.
 
-3. **Build for Production**:
-   ```bash
-   npm run build
-   ```
-   The optimized multi-page output will be generated inside the `dist/` directory.
+For GitHub Pages, open **Settings → Pages** and enable **Enforce HTTPS** after the site is published. Repository files cannot enable that hosting setting by themselves.
 
-4. **Direct Browser / Static Hosting**:
-   The website can also be opened directly via `index.html` or deployed to any static web hosting service (GitHub Pages, Vercel, Netlify, Apache, Nginx, or cPanel).
+## Demo security and production requirements
+
+This repository is frontend-only. Demo profiles, inventory, orders, and shop records live in editable browser storage; the admin guard is a UI convenience, not authorization. The demo intentionally does not collect passwords. Do not use real customer, payment, or business data.
+
+There are no application APIs, SQL queries, webhook handlers, upload endpoints, or configured analytics provider in this project. Accordingly, API authorization, row-level security, webhook signature checks, private object storage, server-side file validation, rate limiting, audit logs, strong CORS policy, and server response security headers cannot be implemented in static HTML/CSS/JavaScript. Do not put secrets in frontend code. A production store needs a trusted backend that authenticates every request, authorizes each resource access, validates data independently of the browser, and enforces these controls at the server and storage layers.
+
+The cookie preference UI remembers an optional analytics choice, but no analytics provider is configured or loaded. Analytics setup is pending a provider and account/site identifier; do not collect analytics until the integration is configured and consent-gated. The privacy and terms pages are demo templates and must be reviewed for the real operator, jurisdiction, and processing practices before launch.

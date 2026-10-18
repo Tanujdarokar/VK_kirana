@@ -1,13 +1,11 @@
 // Home Page Logic for index.html
 
 import { initCommonUI, renderProductCard } from '../common.js';
-import { initAiWidget } from '../ai-widget.js';
 import { store } from '../store.js';
 import { categories } from '../data/categories.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initCommonUI();
-  initAiWidget();
   renderCategories();
   renderDeals();
   renderPopular();
@@ -28,7 +26,7 @@ function renderCategories() {
   container.innerHTML = categories.map(cat => `
     <a href="category.html?category=${cat.slug}" class="category-card">
       <div class="category-icon-box" style="background-color: ${cat.color};">
-        <img src="${cat.image}" alt="${cat.name}" style="width: 100%; height: 100%; object-fit: cover;" />
+        <img src="${cat.image}" alt="${cat.name}" loading="lazy" decoding="async" width="120" height="120" style="width: 100%; height: 100%; object-fit: cover;" />
       </div>
       <div class="category-name">${cat.name}</div>
       <div class="category-count">${cat.itemCount || 8}+ Items</div>

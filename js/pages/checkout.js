@@ -83,6 +83,7 @@ function setupCheckoutForm() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    if (!form.reportValidity()) return;
 
     const name = document.getElementById('cust-name').value.trim();
     const phone = document.getElementById('cust-phone').value.trim();

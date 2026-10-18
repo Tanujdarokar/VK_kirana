@@ -1,12 +1,10 @@
 // Cart Page Controller for cart.html
 
 import { initCommonUI } from '../common.js';
-import { initAiWidget } from '../ai-widget.js';
 import { store } from '../store.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initCommonUI();
-  initAiWidget();
   renderCart();
   setupCartListeners();
 
@@ -66,9 +64,9 @@ function renderCart() {
       return `
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid #f1f5f9; flex-wrap: wrap;">
           <div style="display: flex; align-items: center; gap: 14px; min-width: 240px; flex: 1;">
-            <img src="${p.image}" alt="${p.name}" style="width: 64px; height: 64px; object-fit: cover; border-radius: 12px; background: #f8fafc;" />
+            <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" width="64" height="64" style="width: 64px; height: 64px; object-fit: cover; border-radius: 12px; background: #f8fafc;" />
             <div>
-              <div style="font-size: 0.75rem; font-weight: 700; color: #059669; text-transform: uppercase;">${p.brand || 'Kirana'}</div>
+              <div style="font-size: 0.75rem; font-weight: 700; color: #047857; text-transform: uppercase;">${p.brand || 'Kirana'}</div>
               <a href="product-details.html?id=${p.id}" style="font-size: 0.95rem; font-weight: 700; color: #0f172a; text-decoration: none;">${p.name}</a>
               <div style="font-size: 0.8rem; color: #64748b; margin-top: 2px;">${p.unit} • ₹${price} each</div>
             </div>
@@ -85,7 +83,7 @@ function renderCart() {
               ₹${lineTotal}
             </div>
 
-            <button class="btn-icon" style="width: 32px; height: 32px; color: #94a3b8;" onclick="window.vkRemoveFromCart('${p.id}')" title="Remove item">
+            <button class="btn-icon" style="width: 32px; height: 32px; color: #64748b;" onclick="window.vkRemoveFromCart('${p.id}')" title="Remove item">
               ✕
             </button>
           </div>
