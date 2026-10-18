@@ -246,9 +246,8 @@ function renderNavbar() {
           <a href="cart.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="shopping-cart"></i> Cart</a>
           <a href="wishlist.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="heart"></i> Wishlist</a>
           <a href="${user ? 'profile.html' : 'login.html'}" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="user"></i> ${user ? 'My Profile' : 'Demo Profiles'}</a>
-          <a href="cart.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="shopping-cart"></i> Cart</a>
+          ${isVendor ? '<a href="admin.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="layout-dashboard"></i> Store Management</a>' : ''}
           <a href="orders.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="package"></i> Orders</a>
-          <a href="wishlist.html" class="btn btn-outline" style="justify-content: flex-start;"><i data-lucide="heart"></i> Wishlist</a>
         </div>
 
         <div style="margin-top: 24px; border-top: 1px solid #e2e8f0; padding-top: 16px;">

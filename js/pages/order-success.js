@@ -40,7 +40,7 @@ function renderOrderDetails(order) {
       const p = item.product;
       const price = p.discountPrice || p.price;
       return `
-        <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.9rem; padding: 6px 0;">
+        <div class="receipt-item-row" style="display: flex; align-items: center; justify-content: space-between; font-size: 0.9rem; padding: 6px 0;">
           <div style="display: flex; align-items: center; gap: 10px;">
             <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" width="42" height="42" style="width: 42px; height: 42px; object-fit: cover; border-radius: 8px;" />
             <div>

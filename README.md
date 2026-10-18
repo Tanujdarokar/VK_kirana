@@ -94,6 +94,10 @@ Deploy the repository's HTML pages, `css/`, `js/`, and root static assets to a s
 
 For GitHub Pages, open **Settings → Pages** and enable **Enforce HTTPS** after the site is published. Repository files cannot enable that hosting setting by themselves.
 
+## Responsive layouts
+
+The storefront and management pages adapt across phone, tablet, laptop, and desktop widths. Product and admin layouts collapse to a single column on narrower screens; mobile navigation uses a drawer, admin navigation becomes a toggleable sidebar, and wide management tables scroll horizontally within their panels. The main breakpoints are 1024px, 768px, 480px, and 360px.
+
 ## Demo security and production requirements
 
 This repository is frontend-only. Demo profiles, inventory, orders, and shop records live in editable browser storage; the admin guard is a UI convenience, not authorization. The demo intentionally does not collect passwords. Do not use real customer, payment, or business data.

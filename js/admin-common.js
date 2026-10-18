@@ -76,7 +76,7 @@ function renderAdminNav(activePage) {
           </a>
         </div>
 
-        <nav class="admin-nav">
+        <nav class="admin-nav" aria-label="Store management">
           <a href="admin.html" class="admin-nav-item ${activePage === 'dashboard' ? 'active' : ''}">
             <i data-lucide="layout-dashboard" style="width: 18px; height: 18px;"></i>
             <span>Overview Dashboard</span>
@@ -140,8 +140,8 @@ function renderAdminNav(activePage) {
   if (topbarContainer) {
     topbarContainer.innerHTML = `
       <div class="admin-topbar">
-        <div style="display: flex; align-items: center; gap: 16px;">
-          <button id="admin-sidebar-toggle-btn" class="btn-icon show-on-mobile" style="display: none;">
+        <div class="admin-topbar-heading" style="display: flex; align-items: center; gap: 16px;">
+          <button id="admin-sidebar-toggle-btn" class="btn-icon show-on-mobile" style="display: none;" aria-label="Toggle management menu" aria-expanded="false">
             <i data-lucide="menu"></i>
           </button>
           <div>
@@ -152,8 +152,8 @@ function renderAdminNav(activePage) {
           </div>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span style="display: inline-flex; align-items: center; gap: 6px; background: #ecfdf5; color: #059669; font-size: 0.8rem; font-weight: 700; padding: 6px 12px; border-radius: 20px;">
+        <div class="admin-topbar-actions" style="display: flex; align-items: center; gap: 12px;">
+          <span class="admin-counter-status" style="display: inline-flex; align-items: center; gap: 6px; background: #ecfdf5; color: #059669; font-size: 0.8rem; font-weight: 700; padding: 6px 12px; border-radius: 20px;">
             <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
             Counter Live
           </span>
@@ -170,7 +170,8 @@ function renderAdminNav(activePage) {
     const sidebar = document.getElementById('admin-sidebar');
     if (toggleBtn && sidebar) {
       toggleBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
+        const isOpen = sidebar.classList.toggle('open');
+        toggleBtn.setAttribute('aria-expanded', String(isOpen));
       });
     }
   }

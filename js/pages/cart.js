@@ -62,8 +62,8 @@ function renderCart() {
       const lineTotal = price * item.quantity;
 
       return `
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid #f1f5f9; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; gap: 14px; min-width: 240px; flex: 1;">
+        <div class="cart-item-row" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid #f1f5f9; flex-wrap: wrap;">
+          <div class="cart-item-info" style="display: flex; align-items: center; gap: 14px; min-width: 240px; flex: 1;">
             <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" width="64" height="64" style="width: 64px; height: 64px; object-fit: cover; border-radius: 12px; background: #f8fafc;" />
             <div>
               <div style="font-size: 0.75rem; font-weight: 700; color: #047857; text-transform: uppercase;">${p.brand || 'Kirana'}</div>
