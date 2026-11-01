@@ -4,73 +4,117 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-  <title>Create Demo Profile - VKCommerce</title>
-  <meta name="description" content="Create a browser-only demo profile for the VKCommerce grocery storefront." />
-  <meta name="robots" content="noindex,follow" />
+  <title>Register - Apni Kirana</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <link rel="stylesheet" href="./css/responsive.css" />
 </head>
-<body style="background: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column;">
-  <!-- Common Navbar Shell -->
-  <div id="vk-navbar-container"></div>
+<body>
 
-  <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 16px;">
-    <div class="card auth-card" style="max-width: 480px; width: 100%; padding: 36px 32px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
-      
-      <!-- Brand Heading -->
-      <div style="text-align: center; margin-bottom: 24px;">
-        <div style="width: 48px; height: 48px; border-radius: 14px; background: #059669; color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);">
-          <i data-lucide="user-plus" style="width: 24px; height: 24px;"></i>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left"><span><i class="fas fa-truck-fast"></i> 15-Min Instant Kirana Delivery</span></div>
+      <div class="top-bar-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">English</button>
+          <button class="lang-btn" data-lang="hi">हिंदी</button>
         </div>
-        <h1 style="font-size: 1.6rem; font-weight: 900; color: #0f172a;">Create Demo Profile</h1>
-        <p style="color: #64748b; font-size: 0.88rem; margin-top: 4px;">This profile is saved only in your browser. Do not use sensitive or real personal data.</p>
+        <button class="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-brand">
+        <div class="logo-icon"><i class="fas fa-shopping-basket"></i></div>
+        <div class="logo-text">
+          <h1 data-i18n="siteName">Apni Kirana</h1>
+          <span data-i18n="tagline">Aapki Apni Dukan, Ab Online!</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-outline"><i class="fas fa-house"></i> Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 50px 20px 80px; display: flex; align-items: center; justify-content: center;">
+    <div class="card" style="max-width: 460px; width: 100%; padding: 36px 28px;">
+      
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div style="width: 52px; height: 52px; border-radius: var(--radius-md); background: var(--primary-color); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 12px;">
+          <i class="fas fa-user-plus"></i>
+        </div>
+        <h1 style="font-size: 1.5rem; font-weight: 800;" data-i18n="registerTitle">Create Free Customer Account</h1>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Join Apni Kirana for instant 15-min grocery deliveries</p>
       </div>
 
-      <!-- Register Form -->
-      <form id="register-form">
-        <div class="form-honeypot" aria-hidden="true">
-          <label for="reg-company">Leave this field empty</label>
-          <input type="text" id="reg-company" name="company" tabindex="-1" autocomplete="off" />
-        </div>
-        <div style="margin-bottom: 14px;">
-          <label for="reg-name" style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Full Name *</label>
-          <input type="text" id="reg-name" name="name" required minlength="2" maxlength="80" autocomplete="name" placeholder="e.g. Ramesh Patel" style="width: 100%; padding: 11px; border-radius: 10px;" />
+      <form id="register-form" style="display: flex; flex-direction: column; gap: 14px;">
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Full Name *</label>
+          <input type="text" id="reg-name" required placeholder="e.g. Harsh Sharma" style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
         </div>
 
-        <div style="margin-bottom: 14px;">
-          <label for="reg-email" style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Email Address *</label>
-          <input type="email" id="reg-email" name="email" required maxlength="254" autocomplete="email" placeholder="name@example.com" style="width: 100%; padding: 11px; border-radius: 10px;" />
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Email Address *</label>
+          <input type="email" id="reg-email" required placeholder="name@example.com" style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
         </div>
 
-        <div style="margin-bottom: 14px;">
-          <label for="reg-phone" style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Mobile Number</label>
-          <input type="tel" id="reg-phone" name="phone" maxlength="20" pattern="(\+91[\s-]?)?[6-9](?:[\s-]?[0-9]){9}" autocomplete="tel" placeholder="+91 98765 43210" style="width: 100%; padding: 11px; border-radius: 10px;" />
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Mobile Phone Number (10 digits) *</label>
+          <input type="tel" id="reg-phone" required pattern="[0-9]{10}" placeholder="9876543210" style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
         </div>
 
-        <div style="margin: 16px 0 20px; font-size: 0.82rem; color: #475569;">
-          <input type="checkbox" id="reg-terms" required />
-          <label for="reg-terms">I agree to the <a href="terms.html" style="color: #065f46; text-decoration: underline;">Terms & Conditions</a> and acknowledge the <a href="privacy.html" style="color: #065f46; text-decoration: underline;">Privacy Policy</a>.</label>
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Password (Min. 6 chars) *</label>
+          <input type="password" id="reg-password" required minlength="6" placeholder="••••••••" style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
         </div>
 
-        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; padding: 13px; font-weight: 800;">
-          Create Demo Profile
-        </button>
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Confirm Password *</label>
+          <input type="password" id="reg-confirm-password" required minlength="6" placeholder="••••••••" style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 6px;">Create Customer Account</button>
       </form>
 
-      <div style="margin-top: 20px; text-align: center; font-size: 0.88rem; color: #64748b;">
-        Already have an account?
-        <a href="login.html" style="color: #047857; font-weight: 800; text-decoration: underline;">
-          Sign In
-        </a>
+      <div style="text-align: center; margin-top: 20px; font-size: 0.85rem; color: var(--text-muted);">
+        Already registered? <a href="login.html" style="color: var(--primary-color); font-weight: 700;">Sign In Here</a>
       </div>
-
     </div>
   </main>
 
-  <!-- Common Footer Shell -->
-  <div id="vk-footer-container"></div>
+  <footer class="footer"><div class="container"><div class="footer-bottom">© 2025 Apni Kirana</div></div></footer>
 
-  <!-- Page Logic Script -->
-  <script type="module" src="./js/pages/auth.js"></script>
+  <script src="./js/language.js"></script>
+  <script src="./js/products.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('register-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('reg-name').value;
+        const email = document.getElementById('reg-email').value;
+        const phone = document.getElementById('reg-phone').value;
+        const pass = document.getElementById('reg-password').value;
+        const confirmPass = document.getElementById('reg-confirm-password').value;
+
+        if (pass !== confirmPass) {
+          if (window.showToast) window.showToast("Passwords do not match!", "error");
+          return;
+        }
+
+        const newUser = window.Auth.register({ name, email, phone, password: pass });
+        if (newUser) {
+          window.location.href = "profile.html";
+        }
+      });
+    });
+  </script>
 </body>
 </html>

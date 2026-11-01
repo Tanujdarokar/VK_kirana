@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin.html
+
 Sitemap: https://tanujdarokar.github.io/VK_kirana/sitemap.xml

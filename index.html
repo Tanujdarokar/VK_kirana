@@ -4,211 +4,336 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-  <title>VKCommerce - Fresh Daily Grocery Shopping & 15-Min Delivery</title>
-  <meta name="description" content="Shop fresh daily groceries, farm-pure milk & dairy, whole wheat atta, aged basmati rice, breakfast spreads, spices, and tea with superfast 15-minute delivery." />
-  <link rel="canonical" href="https://tanujdarokar.github.io/VK_kirana/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="VK Kirana" />
-  <meta property="og:url" content="https://tanujdarokar.github.io/VK_kirana/" />
-  <meta property="og:title" content="VKCommerce - Fresh Daily Grocery Shopping &amp; 15-Min Delivery" />
-  <meta property="og:description" content="Shop fresh daily groceries, farm-pure milk &amp; dairy, whole wheat atta, aged basmati rice, breakfast spreads, spices, and tea with superfast 15-minute delivery." />
-  <meta property="og:image" content="https://tanujdarokar.github.io/VK_kirana/social-preview.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="VK Kirana - fresh daily groceries at your doorstep" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="VKCommerce - Fresh Daily Grocery Shopping &amp; 15-Min Delivery" />
-  <meta name="twitter:description" content="Shop fresh daily groceries, farm-pure milk &amp; dairy, whole wheat atta, aged basmati rice, breakfast spreads, spices, and tea with superfast 15-minute delivery." />
-  <meta name="twitter:image" content="https://tanujdarokar.github.io/VK_kirana/social-preview.png" />
+  <title>Apni Kirana - Aapki Apni Dukan, Ab Online!</title>
+  <meta name="description" content="Apni Kirana - Shop fresh daily groceries, farm milk, whole wheat atta, basmati rice, spices, and oil at wholesale prices with 15-minute home delivery." />
+  <meta property="og:title" content="Apni Kirana - Aapki Apni Dukan, Ab Online!" />
+  <meta property="og:description" content="Fresh daily groceries, farm-pure milk & dairy, whole wheat atta, aged basmati rice, breakfast spreads, and spices delivered in 15 mins." />
+  <meta property="og:image" content="./social-preview.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <link rel="stylesheet" href="./css/shop.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
 </head>
 <body>
-  <!-- Common Shell Navigation -->
-  <div id="vk-navbar-container"></div>
+
+  <!-- Top Notification Strip -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <span><i class="fas fa-truck-fast"></i> 15-Min Instant Kirana Delivery</span>
+        <span class="hide-on-mobile"><i class="fas fa-store"></i> Store Timings: 7:00 AM - 10:00 PM</span>
+      </div>
+      <div class="top-bar-right">
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">English</button>
+          <button class="lang-btn" data-lang="hi">हिंदी</button>
+        </div>
+        <!-- Dark Mode Toggle -->
+        <button class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <!-- Logo -->
+      <a href="index.html" class="logo-brand">
+        <div class="logo-icon"><i class="fas fa-shopping-basket"></i></div>
+        <div class="logo-text">
+          <h1 data-i18n="siteName">Apni Kirana</h1>
+          <span data-i18n="tagline">Aapki Apni Dukan, Ab Online!</span>
+        </div>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="search-bar-wrap">
+        <i class="fas fa-search search-icon-btn"></i>
+        <input type="text" class="search-input global-search-input" placeholder="Search atta, rice, oil, milk, spices..." data-i18n-placeholder="searchPlaceholder" />
+        <div class="search-dropdown"></div>
+      </div>
+
+      <!-- Nav Actions Right -->
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline" id="nav-login-btn">
+          <i class="fas fa-user"></i>
+          <span data-i18n="navLogin">Login / Account</span>
+        </a>
+
+        <a href="cart.html" class="btn btn-primary" style="position: relative;">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-total-price">₹0</span>
+          <span class="badge cart-count-badge" style="position: absolute; top: -6px; right: -6px; background: #FF9800; color: #fff; font-size: 0.7rem; border-radius: 50%; padding: 2px 6px;">0</span>
+        </a>
+
+        <button class="mobile-menu-toggle" style="display: none;">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category Nav Bar -->
+  <nav class="category-nav">
+    <div class="container nav-links-menu">
+      <a href="index.html" class="category-link active" data-i18n="navHome">Home</a>
+      <a href="shop.html" class="category-link" data-i18n="navShop">Shop All 10 Aisles</a>
+      <a href="shop.html?cat=rice-wheat" class="category-link" data-i18n="catAnaj">Anaj (Rice & Wheat)</a>
+      <a href="shop.html?cat=dal-pulses" class="category-link" data-i18n="catDaal">Daal & Pulses</a>
+      <a href="shop.html?cat=oil-ghee" class="category-link" data-i18n="catTel">Cooking Oil & Ghee</a>
+      <a href="shop.html?cat=dairy" class="category-link" data-i18n="catDoodh">Dairy & Milk</a>
+      <a href="shop.html?cat=spices-masala" class="category-link" data-i18n="catMasale">Spices & Masala</a>
+      <a href="track-order.html" class="category-link" data-i18n="navTrack">Track Order</a>
+      <a href="admin.html" class="category-link" data-i18n="navAdmin" style="color: var(--accent-color); font-weight: 700;">🏪 Dukan Admin</a>
+    </div>
+  </nav>
 
   <main>
-    <!-- Hero Banner Section -->
-    <section style="background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #065f46 100%); color: white; padding: 48px 0 60px; position: relative; overflow: hidden;">
-      <div class="hero-decoration" style="position: absolute; right: -5%; top: -20%; width: 450px; height: 450px; border-radius: 50%; background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(6, 78, 59, 0) 70%); pointer-events: none;"></div>
-      
-      <div class="container" style="position: relative; z-index: 1;">
-        <div style="display: grid; grid-template-columns: 1fr 420px; gap: 2.5rem; align-items: center;" class="layout-2col-responsive">
-          <div>
-            <div class="hero-kicker" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; color: #a7f3d0; margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.15);">
-              <span>⚡ Bengaluru Express Hub</span>
-              <span>•</span>
-              <span style="color: #facc15;">15-Minute Guaranteed Delivery</span>
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <i class="fas fa-bolt"></i> 15-Min Instant Home Delivery
             </div>
-
-            <h1 style="font-size: 2.75rem; font-weight: 900; line-height: 1.15; color: white; margin-bottom: 18px; letter-spacing: -0.02em;">
-              Pure Desi Groceries & Daily Kirana at <span style="color: #34d399;">Wholesale Rates</span>
+            <h1 class="hero-title" data-i18n="heroTitle">
+              Fresh Groceries, <span>Best Prices!</span>
             </h1>
-
-            <p style="font-size: 1.05rem; color: #d1fae5; line-height: 1.6; margin-bottom: 28px; max-width: 580px;">
-              Direct from mandi to your doorstep. Fresh chakki atta, farm-pure cow milk, unpolished dal, mustard oil, authentic spices & daily essentials.
+            <p class="hero-subtitle" data-i18n="heroSubtitle">
+              Get 100% pure, farm-fresh staples delivered straight from your local Kirana store to your doorstep in 15 minutes.
             </p>
-
-            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-              <a href="products.html" class="btn btn-primary btn-lg home-main-cta" style="background: #ffffff; color: #047857; font-weight: 800; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
-                <span>Shop All Essentials</span>
-                <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
-              </a>
-
-            </div>
-
-            <div class="home-benefits" style="display: flex; align-items: center; gap: 24px; margin-top: 32px; font-size: 0.85rem; color: #a7f3d0;">
-              <div>✓ No Minimum Order</div>
-              <div>✓ Instant UPI & COD</div>
-              <div>✓ Fresh Sourced Daily</div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <a href="shop.html" class="btn btn-primary" data-i18n="shopNow">Shop Now <i class="fas fa-arrow-right"></i></a>
+              <button onclick="openWhatsAppEnquiry()" class="btn btn-secondary">
+                <i class="fab fa-whatsapp" style="color: #25D366;"></i> Order via WhatsApp
+              </button>
             </div>
           </div>
-
-          <!-- Hero Promo Card -->
-          <div class="card hide-on-mobile animate-float-3d" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); padding: 24px; border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-              <span class="badge badge-deal">🔥 Dukan Maha Bachat</span>
-              <span style="font-size: 0.8rem; font-weight: 800; color: #ef4444;">ENDS IN 04h 32m</span>
-            </div>
-
-            <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 16px;">
-              <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&auto=format&fit=crop&q=75" alt="Fresh wheat flour atta" decoding="async" fetchpriority="low" style="width: 90px; height: 90px; object-fit: cover; border-radius: 12px;" />
-              <div>
-                <div style="font-size: 0.75rem; font-weight: 800; color: #047857; text-transform: uppercase;">Aashirvaad Sharbati Atta</div>
-                <div style="font-size: 1rem; font-weight: 800; color: #0f172a;">100% MP Wheat 5kg Pack</div>
-                <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 4px;">
-                  <span style="font-size: 1.3rem; font-weight: 900; color: #047857;">₹245</span>
-                  <span style="font-size: 0.9rem; text-decoration: line-through; color: #64748b;">₹265</span>
-                  <span style="font-size: 0.75rem; font-weight: 800; color: #ef4444; background: #fee2e2; padding: 2px 6px; border-radius: 4px;">8% OFF</span>
-                </div>
-              </div>
-            </div>
-
-            <div style="background: #f8fafc; border-radius: 12px; padding: 12px; margin-bottom: 16px; border: 1px solid #e2e8f0; font-size: 0.85rem; color: #475569;">
-              🎁 Use Code <strong>VKFIRST100</strong> for Flat ₹100 OFF on orders above ₹400!
-            </div>
-
-            <a href="product-details.html?id=atta-1" class="btn btn-primary" style="width: 100%; padding: 12px;">
-              Grab Deal Now
-            </a>
+          <div class="hero-image" style="text-align: center;">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&auto=format&fit=crop&q=80" alt="Fresh Kirana Groceries" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Categories Strip -->
-    <section style="padding: 48px 0; background-color: #ffffff;">
+    <!-- Grocery Categories Section -->
+    <section style="padding: 40px 0;">
       <div class="container">
-        <div class="section-header">
-          <div class="section-title-wrap">
-            <span class="section-tag">⚡ Dukan Aisle Categories</span>
-            <h2 class="section-title">Shop by Category</h2>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px;">
+          <div>
+            <span style="color: var(--primary-color); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Shop By Aisle</span>
+            <h2 style="font-size: 1.6rem; font-weight: 800;" data-i18n="exploreCategories">Featured Grocery Aisles</h2>
           </div>
-          <a href="products.html" class="section-link">
-            <span>View All Products</span>
-            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+          <a href="shop.html" class="btn btn-outline" style="font-size: 0.82rem;">View All Aisles →</a>
+        </div>
+
+        <div class="grid-responsive" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px;">
+          <a href="shop.html?cat=rice-wheat" class="category-card">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&auto=format&fit=crop&q=80" alt="Anaj" />
+            <h3 data-i18n="catAnaj">Anaj (Rice & Wheat)</h3>
+            <span class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" data-i18n="viewProducts">View Products</span>
+          </a>
+
+          <a href="shop.html?cat=dal-pulses" class="category-card">
+            <img src="https://images.unsplash.com/photo-1585994192701-f1a505c8574a?w=300&auto=format&fit=crop&q=80" alt="Daal" />
+            <h3 data-i18n="catDaal">Daal & Pulses</h3>
+            <span class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" data-i18n="viewProducts">View Products</span>
+          </a>
+
+          <a href="shop.html?cat=oil-ghee" class="category-card">
+            <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=300&auto=format&fit=crop&q=80" alt="Tel" />
+            <h3 data-i18n="catTel">Cooking Oil & Ghee</h3>
+            <span class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" data-i18n="viewProducts">View Products</span>
+          </a>
+
+          <a href="shop.html?cat=dairy" class="category-card">
+            <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&auto=format&fit=crop&q=80" alt="Doodh" />
+            <h3 data-i18n="catDoodh">Dairy & Milk</h3>
+            <span class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" data-i18n="viewProducts">View Products</span>
+          </a>
+
+          <a href="shop.html?cat=spices-masala" class="category-card">
+            <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=300&auto=format&fit=crop&q=80" alt="Masale" />
+            <h3 data-i18n="catMasale">Spices & Masala</h3>
+            <span class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" data-i18n="viewProducts">View Products</span>
+          </a>
+
+          <a href="shop.html?cat=snacks-biscuits" class="category-card">
+            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=300&auto=format&fit=crop&q=80" alt="Snacks" />
+            <h3 data-i18n="catSnacks">Snacks & Biscuits</h3>
+            <span class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" data-i18n="viewProducts">View Products</span>
           </a>
         </div>
-
-        <div id="home-categories-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(115px, 1fr)); gap: 14px;">
-          <!-- Dynamically populated -->
-        </div>
       </div>
     </section>
 
-    <!-- Deals of the Day Section -->
-    <section style="padding: 48px 0; background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+    <!-- Bestselling Products Section -->
+    <section style="padding: 30px 0 50px; background: var(--surface-color);">
       <div class="container">
-        <div class="section-header">
-          <div class="section-title-wrap">
-            <span class="section-tag" style="color: #ef4444;">🔥 Limited Time Discounts</span>
-            <h2 class="section-title">Deals of the Day</h2>
-            <div class="section-subtitle">Lowest wholesale prices on premium daily groceries</div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px;">
+          <div>
+            <span style="color: var(--accent-color); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Top Rated</span>
+            <h2 style="font-size: 1.6rem; font-weight: 800;" data-i18n="bestSellers">Bestselling Essentials</h2>
           </div>
-          <a href="products.html?deal=true" class="section-link">
-            <span>See All Deals</span>
-            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-          </a>
+          <a href="shop.html" class="btn btn-primary" style="font-size: 0.82rem;">Browse Full Catalog →</a>
         </div>
 
-        <div id="home-deals-grid" class="grid-responsive">
-          <!-- Dynamically populated -->
-        </div>
+        <div id="bestseller-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px;"></div>
       </div>
     </section>
 
-    <!-- Popular Kirana Essentials Section -->
-    <section style="padding: 48px 0; background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+    <!-- Why Choose Us Features -->
+    <section style="padding: 50px 0; background-color: var(--bg-color);">
       <div class="container">
-        <div class="section-header">
-          <div class="section-title-wrap">
-            <span class="section-tag">⭐ Bengaluru Most Bought</span>
-            <h2 class="section-title">Popular Everyday Kirana</h2>
-            <div class="section-subtitle">Staples that 10,000+ local families re-order every week</div>
-          </div>
-          <a href="products.html" class="section-link">
-            <span>Browse Full Store</span>
-            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-          </a>
+        <div style="text-align: center; margin-bottom: 36px;">
+          <h2 style="font-size: 1.8rem; font-weight: 800;" data-i18n="whyChooseUs">Why Shop With Apni Kirana?</h2>
+          <p style="color: var(--text-muted); font-size: 0.92rem;">Aapki Apni Dukan, Ab Online!</p>
         </div>
 
-        <div id="home-popular-grid" class="grid-responsive">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Choose VK Kirana Features Banner -->
-    <section style="padding: 54px 0; background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border-top: 1px solid #d1fae5; border-bottom: 1px solid #d1fae5;">
-      <div class="container">
-        <div style="text-align: center; max-width: 640px; margin: 0 auto 40px;">
-          <span class="section-tag" style="justify-content: center;">🌟 Why VK Kirana?</span>
-          <h2 class="home-feature-heading" style="font-size: 2rem; font-weight: 800; color: #064e3b; margin-top: 6px;">The Neighborhood Dukan Trust</h2>
-          <p style="color: #047857; font-size: 0.95rem; margin-top: 6px;">Blending traditional trustworthiness with 15-minute quick-commerce speed</p>
-        </div>
-
-        <div class="home-feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
-          <div class="card" style="padding: 24px; text-align: center; border-radius: 18px;">
-            <div style="width: 52px; height: 52px; border-radius: 14px; background: #ecfdf5; color: #047857; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
-              ⚡
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
+          <div class="card" style="text-align: center; padding: 28px 20px;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--secondary-color); color: var(--primary-color); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
+              <i class="fas fa-truck-fast"></i>
             </div>
-            <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">15-Min Delivery</h3>
-            <p style="font-size: 0.88rem; color: #64748b; line-height: 1.5;">Express delivery from the nearest Mandi fulfillment counter in Bengaluru.</p>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;" data-i18n="feature1Title">15-Min Instant Delivery</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted);" data-i18n="feature1Desc">Superfast delivery straight from your neighborhood Kirana shop.</p>
           </div>
 
-          <div class="card" style="padding: 24px; text-align: center; border-radius: 18px;">
-            <div style="width: 52px; height: 52px; border-radius: 14px; background: #fef3c7; color: #d97706; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
-              🏷️
+          <div class="card" style="text-align: center; padding: 28px 20px;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: #FFF3E0; color: #E65100; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
+              <i class="fas fa-tags"></i>
             </div>
-            <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Wholesale Kirana Rates</h3>
-            <p style="font-size: 0.88rem; color: #64748b; line-height: 1.5;">Direct mandi procurement ensures prices 10-15% lower than fancy dark stores.</p>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;" data-i18n="feature2Title">Wholesale Kirana Prices</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted);" data-i18n="feature2Desc">Wholesale rates 10-15% lower than dark stores.</p>
           </div>
 
-          <div class="card" style="padding: 24px; text-align: center; border-radius: 18px;">
-            <div style="width: 52px; height: 52px; border-radius: 14px; background: #fee2e2; color: #ef4444; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
-              🛡️
+          <div class="card" style="text-align: center; padding: 28px 20px;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: #E0F2FE; color: #0284C7; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
+              <i class="fas fa-shield-halved"></i>
             </div>
-            <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">100% Genuine Staples</h3>
-            <p style="font-size: 0.88rem; color: #64748b; line-height: 1.5;">Original brands: Aashirvaad, Amul, Fortune, MDH, Tata Tea with no compromise.</p>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;" data-i18n="feature3Title">100% Pure Staples</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted);" data-i18n="feature3Desc">Sealed, original brand items: Aashirvaad, Fortune, Amul, Tata.</p>
           </div>
 
-          <div class="card" style="padding: 24px; text-align: center; border-radius: 18px;">
-            <div style="width: 52px; height: 52px; border-radius: 14px; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
-              🛍️
+          <div class="card" style="text-align: center; padding: 28px 20px;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: #EDE9FE; color: #7C3AED; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem;">
+              <i class="fas fa-money-bill-wave"></i>
             </div>
-            <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Easy Online Orders</h3>
-            <p style="font-size: 0.88rem; color: #64748b; line-height: 1.5;">Browse the catalog, add essentials to your cart, and review your order before checkout.</p>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;" data-i18n="feature4Title">Cash on Delivery & UPI</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted);" data-i18n="feature4Desc">Zero prepayment required. Pay at your doorstep with Cash or UPI.</p>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Common Shell Footer -->
-  <div id="vk-footer-container"></div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo-brand" style="margin-bottom: 14px;">
+            <div class="logo-icon" style="width: 36px; height: 36px; font-size: 1.1rem;"><i class="fas fa-shopping-basket"></i></div>
+            <h3 style="color: #fff; font-size: 1.2rem;">Apni Kirana</h3>
+          </div>
+          <p style="font-size: 0.85rem; margin-bottom: 12px;" data-i18n="tagline">Aapki Apni Dukan, Ab Online!</p>
+          <p style="font-size: 0.82rem;" data-i18n="footerTimings">Store Timings: 7:00 AM - 10:00 PM (Mon-Sun)</p>
+        </div>
 
-  <!-- Page Logic Script -->
-  <script type="module" src="./js/pages/home.js"></script>
+        <div class="footer-col">
+          <h4 data-i18n="navShop">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html">Shop Grocery Catalog</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+            <li><a href="track-order.html">Track My Order</a></li>
+            <li><a href="profile.html">My Account</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="openWhatsAppEnquiry()">WhatsApp Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Admin Portal</h4>
+          <ul class="footer-links">
+            <li><a href="admin.html" style="color: var(--accent-color); font-weight: 700;">🏪 Dukan Owner Dashboard</a></li>
+            <li><a href="login.html">Vendor Login</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span data-i18n="footerRights">© 2025 Apni Kirana. Aapki Apni Dukan, Ab Online! All rights reserved.</span>
+        <span data-i18n="footerContact">Toll Free: 1800-419-8899 | Care@apnikirana.in</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Enquiry Button -->
+  <a href="javascript:void(0)" class="whatsapp-float" onclick="openWhatsAppEnquiry()" title="Chat with Apni Kirana Shopkeeper">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Core Scripts -->
+  <script src="./js/language.js"></script>
+  <script src="./js/products.js"></script>
+  <script src="./js/cart.js"></script>
+  <script src="./js/checkout.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/orders.js"></script>
+  <script src="./js/admin.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Render bestsellers on home page
+      const grid = document.getElementById('bestseller-grid');
+      if (grid && window.ProductStore) {
+        const products = window.ProductStore.getProducts().slice(0, 8);
+        grid.innerHTML = products.map(p => `
+          <div class="product-card">
+            ${p.price > p.discountPrice ? `<span class="badge-discount">${Math.round(((p.price - p.discountPrice)/p.price)*100)}% OFF</span>` : ''}
+            <div class="img-wrap">
+              <a href="product-details.html?id=${p.id}">
+                <img src="${p.image}" alt="${p.name}" />
+              </a>
+            </div>
+            <div class="brand">${p.brand}</div>
+            <a href="product-details.html?id=${p.id}" class="title">${window.LangEngine?.getLang() === 'hi' ? p.hindiName : p.name}</a>
+            <div class="unit">${p.unit}</div>
+            <div class="price-row">
+              <span class="price">₹${p.discountPrice || p.price}</span>
+              ${p.price > p.discountPrice ? `<span class="original-price">₹${p.price}</span>` : ''}
+            </div>
+            <div class="action-row">
+              <button onclick="window.Cart.addToCart('${p.id}', 1)" class="btn btn-primary btn-sm" style="width: 100%;">
+                <i class="fas fa-plus"></i> <span data-i18n="addToCart">Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Update User Login state button in navbar
+      const loginBtn = document.getElementById('nav-login-btn');
+      if (loginBtn && window.Auth) {
+        const user = window.Auth.getUser();
+        if (user) {
+          loginBtn.href = "profile.html";
+          loginBtn.innerHTML = `<i class="fas fa-user-check"></i> <span>${user.name.split(' ')[0]}</span>`;
+        }
+      }
+    });
+  </script>
 </body>
 </html>

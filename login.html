@@ -4,61 +4,128 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-  <title>Demo Profile Access - VKCommerce</title>
-  <meta name="description" content="Open a browser-only VKCommerce demo customer or store-owner profile." />
-  <meta name="robots" content="noindex,follow" />
+  <title>Login - Apni Kirana</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <link rel="stylesheet" href="./css/responsive.css" />
 </head>
-<body style="background: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column;">
-  <!-- Common Navbar Shell -->
-  <div id="vk-navbar-container"></div>
+<body>
 
-  <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 16px;">
-    <div class="card auth-card" style="max-width: 460px; width: 100%; padding: 36px 32px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
-      
-      <!-- Brand Heading -->
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left"><span><i class="fas fa-truck-fast"></i> 15-Min Instant Kirana Delivery</span></div>
+      <div class="top-bar-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">English</button>
+          <button class="lang-btn" data-lang="hi">हिंदी</button>
+        </div>
+        <button class="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-brand">
+        <div class="logo-icon"><i class="fas fa-shopping-basket"></i></div>
+        <div class="logo-text">
+          <h1 data-i18n="siteName">Apni Kirana</h1>
+          <span data-i18n="tagline">Aapki Apni Dukan, Ab Online!</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-outline"><i class="fas fa-house"></i> Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 50px 20px 80px; display: flex; align-items: center; justify-content: center;">
+    <div class="card" style="max-width: 440px; width: 100%; padding: 36px 28px;">
+
       <div style="text-align: center; margin-bottom: 24px;">
-        <div style="width: 48px; height: 48px; border-radius: 14px; background: #059669; color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);">
-          <i data-lucide="shopping-bag" style="width: 24px; height: 24px;"></i>
+        <div style="width: 52px; height: 52px; border-radius: var(--radius-md); background: var(--primary-color); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 12px;">
+          <i class="fas fa-user-lock"></i>
         </div>
-        <h1 style="font-size: 1.6rem; font-weight: 900; color: #0f172a;">Welcome to VK Kirana</h1>
-        <p style="color: #64748b; font-size: 0.88rem; margin-top: 4px;">Sign in to your customer account or store management portal</p>
+        <h1 style="font-size: 1.5rem; font-weight: 800;" data-i18n="loginTitle">Customer & Vendor Login</h1>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Sign in to access your orders, cart, or shop manager</p>
       </div>
 
-      <!-- 1-Click Demo Buttons (Super convenient for testing) -->
-      <div style="background: #f8fafc; border-radius: 14px; padding: 14px; margin-bottom: 24px; border: 1px solid #e2e8f0;">
-        <div style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 8px; text-align: center;">
-          ⚡ Instant Demo Logins
+      <!-- Quick Demo Login Buttons -->
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+        <button type="button" id="demo-user-btn" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: space-between;">
+          <span><i class="fas fa-user"></i> Login as <strong>Customer Demo</strong></span>
+          <span class="badge badge-stock">harsh@example.com</span>
+        </button>
+
+        <button type="button" id="demo-vendor-btn" class="btn btn-outline btn-sm" style="width: 100%; justify-content: space-between; border-color: var(--primary-color); color: var(--primary-dark);">
+          <span><i class="fas fa-store"></i> Login as <strong>Vendor Demo</strong></span>
+          <span class="badge badge-offer">vendor@apnikirana.in</span>
+        </button>
+      </div>
+
+      <form id="login-form" style="display: flex; flex-direction: column; gap: 14px;">
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Email Address *</label>
+          <input type="email" id="login-email" required placeholder="name@example.com" style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
         </div>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button type="button" id="demo-customer-login-btn" class="btn btn-outline btn-sm" style="background: white; justify-content: center; font-weight: 700;">
-            🛒 1-Click Customer Demo (Tanuj)
-          </button>
-          <button type="button" id="demo-vendor-login-btn" class="btn btn-primary btn-sm" style="background: #0f172a; border-color: #1e293b; justify-content: center; font-weight: 700;">
-            🏪 1-Click Store Owner Demo (Vijay POS & Khata)
-          </button>
+
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Password *</label>
+          <input type="password" id="login-password" required placeholder="••••••••" style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
         </div>
-      </div>
 
-      <div role="note" style="background: #fff7ed; color: #7c2d12; border: 1px solid #fdba74; border-radius: 12px; padding: 12px; font-size: 0.85rem; line-height: 1.5;">
-        Demo only: account data stays in this browser and is not protected by a server. Password sign-in is unavailable; do not enter real or sensitive information.
-      </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem;">
+          <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+            <input type="checkbox" id="remember-me" checked style="accent-color: var(--primary-color);" />
+            <span data-i18n="rememberMe">Remember Me</span>
+          </label>
+        </div>
 
-      <div style="margin-top: 20px; text-align: center; font-size: 0.88rem; color: #64748b;">
-        New to VK Kirana?
-        <a href="register.html" style="color: #047857; font-weight: 800; text-decoration: underline;">
-          Create Demo Profile
-        </a>
-      </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 6px;">Sign In to Account</button>
+      </form>
 
+      <div style="text-align: center; margin-top: 20px; font-size: 0.85rem; color: var(--text-muted);">
+        Don't have an account? <a href="register.html" style="color: var(--primary-color); font-weight: 700;">Sign Up Free</a>
+      </div>
     </div>
   </main>
 
-  <!-- Common Footer Shell -->
-  <div id="vk-footer-container"></div>
+  <footer class="footer"><div class="container"><div class="footer-bottom">© 2025 Apni Kirana</div></div></footer>
 
-  <!-- Page Logic Script -->
-  <script type="module" src="./js/pages/auth.js"></script>
+  <script src="./js/language.js"></script>
+  <script src="./js/products.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('demo-user-btn')?.addEventListener('click', () => {
+        window.Auth.loginDemoUser();
+        window.location.href = "profile.html";
+      });
+
+      document.getElementById('demo-vendor-btn')?.addEventListener('click', () => {
+        window.Auth.loginDemoVendor();
+        window.location.href = "admin.html";
+      });
+
+      document.getElementById('login-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const pass = document.getElementById('login-password').value;
+
+        const user = window.Auth.login(email, pass);
+        if (user) {
+          if (user.role === 'vendor') {
+            window.location.href = "admin.html";
+          } else {
+            window.location.href = "profile.html";
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>

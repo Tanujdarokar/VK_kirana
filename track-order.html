@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <title>Track Order - Apni Kirana</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/cart.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left"><span><i class="fas fa-truck-fast"></i> 15-Min Instant Kirana Delivery</span></div>
+      <div class="top-bar-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">English</button>
+          <button class="lang-btn" data-lang="hi">हिंदी</button>
+        </div>
+        <button class="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-brand">
+        <div class="logo-icon"><i class="fas fa-shopping-basket"></i></div>
+        <div class="logo-text">
+          <h1 data-i18n="siteName">Apni Kirana</h1>
+          <span data-i18n="tagline">Aapki Apni Dukan, Ab Online!</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-outline"><i class="fas fa-house"></i> Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 40px 0 80px;">
+    <div class="container" style="max-width: 800px;">
+      <div style="margin-bottom: 24px; text-align: center;">
+        <h1 style="font-size: 1.8rem; font-weight: 800;" data-i18n="navTrack">Track Order Status</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Track live progress of your Kirana delivery in real-time</p>
+      </div>
+
+      <!-- Search Input Card -->
+      <div class="card" style="padding: 20px; margin-bottom: 24px;">
+        <form id="track-form" style="display: flex; gap: 10px;">
+          <input type="text" id="track-id-input" placeholder="Enter Order ID (e.g. AK-882194)" required style="flex: 1; padding: 10px 14px; border-radius: var(--radius-sm); font-weight: 700;" />
+          <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Track Order</button>
+        </form>
+      </div>
+
+      <div id="tracking-result-wrap"></div>
+    </div>
+  </main>
+
+  <footer class="footer"><div class="container"><div class="footer-bottom">© 2025 Apni Kirana</div></div></footer>
+
+  <script src="./js/language.js"></script>
+  <script src="./js/products.js"></script>
+  <script src="./js/cart.js"></script>
+  <script src="./js/checkout.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/orders.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      let orderId = urlParams.get('orderId');
+
+      function displayTracking(idToSearch) {
+        const wrap = document.getElementById('tracking-result-wrap');
+        if (!wrap || !window.Checkout) return;
+
+        const order = idToSearch ? window.Checkout.getOrderById(idToSearch) : window.Checkout.getOrders()[0];
+
+        if (!order) {
+          wrap.innerHTML = `<div class="card" style="padding: 40px; text-align: center;"><h3>No Order Found for ID: ${idToSearch || ''}</h3><p style="color: var(--text-muted);">Please check your order ID or place a new grocery order.</p></div>`;
+          return;
+        }
+
+        document.getElementById('track-id-input').value = order.id;
+
+        wrap.innerHTML = `
+          <div class="card" style="padding: 24px; margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px;">
+              <div>
+                <h3 style="font-size: 1.1rem; font-weight: 800;">Order #${order.id}</h3>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">${new Date(order.date).toLocaleString()}</div>
+              </div>
+              <span class="badge" style="background: var(--secondary-color); color: var(--primary-dark); font-size: 0.85rem; padding: 4px 12px;">● ${order.status}</span>
+            </div>
+
+            <!-- Timeline -->
+            <div id="timeline-box"></div>
+          </div>
+
+          <!-- Items Summary -->
+          <div class="card" style="padding: 24px;">
+            <h4 style="font-size: 1rem; font-weight: 800; margin-bottom: 12px;">Order Items (${order.items.length})</h4>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              ${order.items.map(item => `
+                <div style="display: flex; justify-content: space-between; font-size: 0.88rem; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
+                  <span>${item.quantity}x ${item.name} (${item.unit})</span>
+                  <strong>₹${item.subtotal}</strong>
+                </div>
+              `).join('')}
+              <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1rem; margin-top: 8px; color: var(--primary-color);">
+                <span>Total Amount Paid</span>
+                <span>₹${order.totalAmount}</span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        if (window.OrdersUI) {
+          window.OrdersUI.renderTrackingTimeline(order.status, 'timeline-box');
+        }
+      }
+
+      document.getElementById('track-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const val = document.getElementById('track-id-input')?.value.trim();
+        if (val) displayTracking(val);
+      });
+
+      displayTracking(orderId);
+    });
+  </script>
+</body>
+</html>

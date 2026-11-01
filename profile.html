@@ -4,113 +4,187 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-  <title>My Profile - VKCommerce</title>
-  <meta name="description" content="Manage your customer account and delivery address." />
-  <meta name="robots" content="noindex,follow" />
+  <title>My Account - Apni Kirana</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <link rel="stylesheet" href="./css/responsive.css" />
 </head>
 <body>
-  <!-- Common Navbar Shell -->
-  <div id="vk-navbar-container"></div>
 
-  <main style="padding: 32px 0 60px;">
-    <div class="container" style="max-width: 800px;">
-      <!-- Breadcrumb -->
-      <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #64748b; margin-bottom: 20px;">
-        <a href="index.html" style="color: #047857; font-weight: 600;">Home</a>
-        <span>›</span>
-        <span style="font-weight: 700; color: #0f172a;">Account Profile</span>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left"><span><i class="fas fa-truck-fast"></i> 15-Min Instant Kirana Delivery</span></div>
+      <div class="top-bar-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">English</button>
+          <button class="lang-btn" data-lang="hi">हिंदी</button>
+        </div>
+        <button class="theme-toggle-btn"><i class="fas fa-moon"></i></button>
       </div>
+    </div>
+  </div>
 
-      <!-- Profile Header Card -->
-      <div class="card profile-header-card" style="padding: 28px; border-radius: 20px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-        <div style="display: flex; align-items: center; gap: 18px;">
-          <div style="width: 64px; height: 64px; border-radius: 50%; background: #059669; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 900; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);">
-            <span id="profile-avatar-letter">U</span>
-          </div>
-          <div>
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <h1 id="profile-name-heading" style="font-size: 1.4rem; font-weight: 900; color: #0f172a;">User</h1>
-              <span id="profile-role-badge" class="badge badge-popular">Customer</span>
-            </div>
-            <div id="profile-email-text" style="color: #64748b; font-size: 0.88rem; margin-top: 2px;">user@example.com</div>
-          </div>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-brand">
+        <div class="logo-icon"><i class="fas fa-shopping-basket"></i></div>
+        <div class="logo-text">
+          <h1 data-i18n="siteName">Apni Kirana</h1>
+          <span data-i18n="tagline">Aapki Apni Dukan, Ab Online!</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <a href="cart.html" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Cart</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 40px 0 80px;">
+    <div class="container" style="max-width: 840px;">
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h1 style="font-size: 1.8rem; font-weight: 800;">My Profile & Saved Address</h1>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">Manage your profile information and delivery preferences</p>
         </div>
 
-        <button id="profile-logout-btn" class="btn btn-outline btn-sm" style="color: #ef4444; border-color: #fee2e2;">
-          <i data-lucide="log-out"></i>
-          <span>Sign Out</span>
+        <button id="logout-btn" class="btn btn-outline" style="color: var(--danger-color); border-color: var(--danger-color);">
+          <i class="fas fa-right-from-bracket"></i> Logout
         </button>
       </div>
 
-      <!-- Edit Profile Form -->
-      <div class="card" style="padding: 28px; border-radius: 20px; margin-bottom: 24px;">
-        <h3 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin-bottom: 18px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px;">
-          Personal & Delivery Address Details
-        </h3>
-
-        <form id="profile-form">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;" class="layout-2col-responsive">
-            <div>
-              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Full Name</label>
-              <input type="text" id="prof-name" required style="width: 100%; padding: 10px; border-radius: 10px;" />
-            </div>
-
-            <div>
-              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Phone Number</label>
-              <input type="tel" id="prof-phone" required style="width: 100%; padding: 10px; border-radius: 10px;" />
-            </div>
+      <!-- Quick Shortcuts Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px;">
+        <a href="orders.html" class="card" style="display: flex; align-items: center; gap: 16px; padding: 20px;">
+          <div style="width: 48px; height: 48px; border-radius: var(--radius-md); background: var(--secondary-color); color: var(--primary-color); display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+            <i class="fas fa-box"></i>
           </div>
-
-          <div style="margin-bottom: 16px;">
-            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Delivery Street / Flat Address</label>
-            <input type="text" id="prof-street" required style="width: 100%; padding: 10px; border-radius: 10px;" />
+          <div>
+            <div style="font-weight: 800; font-size: 1.1rem;">My Orders</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">View past purchases & status</div>
           </div>
+        </a>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;" class="layout-2col-responsive">
-            <div>
-              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">City / State</label>
-              <input type="text" id="prof-city" required style="width: 100%; padding: 10px; border-radius: 10px;" />
-            </div>
-
-            <div>
-              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">Pincode</label>
-              <input type="text" id="prof-pincode" required style="width: 100%; padding: 10px; border-radius: 10px;" />
-            </div>
+        <a href="cart.html" class="card" style="display: flex; align-items: center; gap: 16px; padding: 20px;">
+          <div style="width: 48px; height: 48px; border-radius: var(--radius-md); background: #FFF3E0; color: #E65100; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+            <i class="fas fa-shopping-basket"></i>
           </div>
-
-          <button type="submit" class="btn btn-primary" style="padding: 12px 24px;">
-            Save Profile Changes
-          </button>
-        </form>
+          <div>
+            <div style="font-weight: 800; font-size: 1.1rem;">Active Cart</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Checkout active items</div>
+          </div>
+        </a>
       </div>
 
-      <!-- Quick Switch Role Card -->
-      <div class="card" style="padding: 24px; border-radius: 20px; background: #f8fafc;">
-        <h4 style="font-size: 1rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;">
-          Demo Role Switching
-        </h4>
-        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 14px;">
-          Easily test both Customer Storefront view and Dukan Owner (POS & Khata) management view:
-        </p>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <button id="prof-switch-cust-btn" class="btn btn-outline" style="background: white;">
-            🛒 Switch to Customer Account (Tanuj Sharma)
-          </button>
-          <button id="prof-switch-vend-btn" class="btn btn-primary" style="background: #0f172a; border-color: #1e293b;">
-            🏪 Switch to Store Owner (Vijay Dukan)
-          </button>
-        </div>
+      <!-- Profile Edit Form -->
+      <div class="card" style="padding: 28px;">
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 20px; color: var(--primary-color);">
+          <i class="fas fa-user-gear"></i> Personal Information & Address
+        </h3>
+
+        <form id="profile-form" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">Full Name *</label>
+            <input type="text" id="prof-name" required style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">Email Address *</label>
+            <input type="email" id="prof-email" required style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">Phone Number *</label>
+            <input type="tel" id="prof-phone" required style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">House / Flat Number</label>
+            <input type="text" id="prof-house" style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
+          </div>
+
+          <div style="grid-column: 1 / -1;">
+            <label style="font-size: 0.8rem; font-weight: 700;">Street / Area Address</label>
+            <input type="text" id="prof-street" style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">City</label>
+            <input type="text" id="prof-city" style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">State</label>
+            <input type="text" id="prof-state" style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">PIN Code (6 digits)</label>
+            <input type="text" id="prof-pincode" style="width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);" />
+          </div>
+
+          <div style="grid-column: 1 / -1; margin-top: 10px;">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-floppy-disk"></i> Save Profile Changes</button>
+          </div>
+        </form>
       </div>
 
     </div>
   </main>
 
-  <!-- Common Footer Shell -->
-  <div id="vk-footer-container"></div>
+  <footer class="footer"><div class="container"><div class="footer-bottom">© 2025 Apni Kirana</div></div></footer>
 
-  <!-- Page Logic Script -->
-  <script type="module" src="./js/pages/profile.js"></script>
+  <script src="./js/language.js"></script>
+  <script src="./js/products.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.Auth || !window.Auth.isLoggedIn()) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      const user = window.Auth.getUser();
+      if (user) {
+        document.getElementById('prof-name').value = user.name || '';
+        document.getElementById('prof-email').value = user.email || '';
+        document.getElementById('prof-phone').value = user.phone || '';
+        if (user.address) {
+          document.getElementById('prof-house').value = user.address.house || '';
+          document.getElementById('prof-street').value = user.address.street || '';
+          document.getElementById('prof-city').value = user.address.city || '';
+          document.getElementById('prof-state').value = user.address.state || '';
+          document.getElementById('prof-pincode').value = user.address.pincode || '';
+        }
+      }
+
+      document.getElementById('profile-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const updated = {
+          name: document.getElementById('prof-name').value,
+          email: document.getElementById('prof-email').value,
+          phone: document.getElementById('prof-phone').value,
+          address: {
+            house: document.getElementById('prof-house').value,
+            street: document.getElementById('prof-street').value,
+            city: document.getElementById('prof-city').value,
+            state: document.getElementById('prof-state').value,
+            pincode: document.getElementById('prof-pincode').value
+          }
+        };
+
+        window.Auth.updateProfile(updated);
+      });
+
+      document.getElementById('logout-btn')?.addEventListener('click', () => {
+        window.Auth.logout();
+        window.location.href = "index.html";
+      });
+    });
+  </script>
 </body>
 </html>

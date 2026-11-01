@@ -4,134 +4,357 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-  <title>Dukan Dashboard - VK Kirana Admin</title>
-  <meta name="description" content="Kirana Store business metrics, daily revenue, and operations management." />
-  <meta name="robots" content="noindex,follow" />
+  <title>Apni Kirana - Store Owner Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/admin.css" />
-  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <link rel="stylesheet" href="./css/responsive.css" />
 </head>
 <body>
-  <div class="admin-wrapper">
-    <!-- Shared Admin Sidebar -->
-    <div id="admin-sidebar-container"></div>
 
-    <!-- Admin Content Area -->
-    <div class="admin-content-area">
-      <!-- Shared Admin Topbar -->
-      <div id="admin-topbar-container"></div>
-
-      <!-- Main Dashboard Body -->
-      <div class="admin-main-body">
-        
-        <!-- Welcome Banner -->
-        <div style="background: linear-gradient(135deg, #064e3b 0%, #047857 100%); color: white; padding: 24px 28px; border-radius: 20px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-          <div>
-            <span style="font-size: 0.78rem; font-weight: 800; color: #a7f3d0; text-transform: uppercase;">
-              🏪 Mandi Koramangala Hub
-            </span>
-            <h2 style="font-size: 1.6rem; font-weight: 900; color: white; margin-top: 4px;">
-              VK Kirana Store & Supermarket
-            </h2>
-            <p style="color: #d1fae5; font-size: 0.9rem; margin-top: 2px;">
-              Live counter billing, customer credit accounts (Udhaar), stock reorder alerts, and daily profits.
-            </p>
-          </div>
-
-          <div style="display: flex; gap: 10px;">
-            <a href="admin-pos.html" class="btn btn-primary" style="background: #ffffff; color: #064e3b; font-weight: 800;">
-              <i data-lucide="calculator"></i>
-              <span>Open POS Billing</span>
-            </a>
-            <a href="admin-khata.html" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.4);">
-              <i data-lucide="book-open"></i>
-              <span>Khata Book</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- 4 Stat Metric Cards -->
-        <div class="stat-card-grid">
-          
-          <div class="stat-card">
-            <div>
-              <div style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Today's Counter Sales</div>
-              <div id="stat-sales" style="font-size: 1.8rem; font-weight: 900; color: #0f172a; margin-top: 4px;">₹0</div>
-              <div style="font-size: 0.78rem; color: #047857; font-weight: 700; margin-top: 2px;">⚡ Express POS + Store</div>
-            </div>
-            <div class="stat-icon-wrapper" style="background: #ecfdf5; color: #047857;">
-              <i data-lucide="banknote" style="width: 26px; height: 26px;"></i>
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div>
-              <div style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Pending Udhaar (Khata)</div>
-              <div id="stat-khata" style="font-size: 1.8rem; font-weight: 900; color: #ef4444; margin-top: 4px;">₹0</div>
-              <div style="font-size: 0.78rem; color: #dc2626; font-weight: 700; margin-top: 2px;">Across active customers</div>
-            </div>
-            <div class="stat-icon-wrapper" style="background: #fee2e2; color: #ef4444;">
-              <i data-lucide="book-open" style="width: 26px; height: 26px;"></i>
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div>
-              <div style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Low Stock Warnings</div>
-              <div id="stat-low-stock" style="font-size: 1.8rem; font-weight: 900; color: #d97706; margin-top: 4px;">0</div>
-              <div style="font-size: 0.78rem; color: #b45309; font-weight: 700; margin-top: 2px;">Items need mandi reorder</div>
-            </div>
-            <div class="stat-icon-wrapper" style="background: #fef3c7; color: #d97706;">
-              <i data-lucide="alert-triangle" style="width: 26px; height: 26px;"></i>
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div>
-              <div style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Total Kirana Items</div>
-              <div id="stat-total-items" style="font-size: 1.8rem; font-weight: 900; color: #0f172a; margin-top: 4px;">80</div>
-              <div style="font-size: 0.78rem; color: #64748b; font-weight: 700; margin-top: 2px;">Active in digital catalog</div>
-            </div>
-            <div class="stat-icon-wrapper" style="background: #e0f2fe; color: #0284c7;">
-              <i data-lucide="boxes" style="width: 26px; height: 26px;"></i>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- 2 Column Overview Section: Recent Transactions & Low Stock Alerts -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;" class="layout-2col-responsive">
-          
-          <!-- Recent Sales Table -->
-          <div class="card" style="padding: 24px; border-radius: 20px;">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-              <h3 style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">Recent Counter Bills</h3>
-              <a href="admin-pos.html" style="font-size: 0.85rem; font-weight: 700; color: #047857;">+ New Bill</a>
-            </div>
-
-            <div id="recent-sales-list" style="display: flex; flex-direction: column; gap: 10px;">
-              <!-- Populated dynamically -->
-            </div>
-          </div>
-
-          <!-- Low Stock Items Warning Table -->
-          <div class="card" style="padding: 24px; border-radius: 20px;">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-              <h3 style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">Low Stock Alerts (Mandi Reorder)</h3>
-              <a href="admin-inventory.html" style="font-size: 0.85rem; font-weight: 700; color: #047857;">Manage Stock</a>
-            </div>
-
-            <div id="low-stock-list" style="display: flex; flex-direction: column; gap: 10px;">
-              <!-- Populated dynamically -->
-            </div>
-          </div>
-
-        </div>
-
+  <!-- Top Bar -->
+  <div class="top-bar" style="background-color: #121815;">
+    <div class="container">
+      <div class="top-bar-left">
+        <span><i class="fas fa-store"></i> Apni Kirana Store Owner Portal</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="index.html" style="color: #fff; font-weight: 600;"><i class="fas fa-store"></i> View Storefront</a>
       </div>
     </div>
   </div>
 
-  <script type="module" src="./js/pages/admin-dashboard.js"></script>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="admin.html" class="logo-brand">
+        <div class="logo-icon" style="background: var(--accent-color);"><i class="fas fa-store"></i></div>
+        <div class="logo-text">
+          <h1 style="color: var(--accent-color);">Apni Kirana Admin</h1>
+          <span>Shop Owner & Inventory Manager</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-outline btn-sm"><i class="fas fa-house"></i> Storefront</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 30px 0 60px;">
+    <div class="container">
+
+      <!-- Page Header -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h1 style="font-size: 1.8rem; font-weight: 800;">Dukan Owner Dashboard</h1>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">Manage grocery products, stock levels, orders, and sales</p>
+        </div>
+        <button id="add-prod-modal-btn" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add New Product</button>
+      </div>
+
+      <!-- Stats Grid Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #E8F5E9; color: #168447;"><i class="fas fa-box"></i></div>
+          <div>
+            <div class="stat-value" id="stat-prods-count">0</div>
+            <div class="stat-label">Total Inventory Items</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #E0F2FE; color: #0284C7;"><i class="fas fa-file-invoice"></i></div>
+          <div>
+            <div class="stat-value" id="stat-orders-count">0</div>
+            <div class="stat-label">Total Customer Orders</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #FFF3E0; color: #E65100;"><i class="fas fa-indian-rupee-sign"></i></div>
+          <div>
+            <div class="stat-value" id="stat-sales-total">₹0</div>
+            <div class="stat-label">Total Sales Revenue</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #FFEBEE; color: #E53935;"><i class="fas fa-triangle-exclamation"></i></div>
+          <div>
+            <div class="stat-value" id="stat-low-stock">0</div>
+            <div class="stat-label">Low Stock Alerts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inventory Management Table -->
+      <div class="card" style="padding: 0; margin-bottom: 30px; overflow: hidden;">
+        <div style="padding: 16px 20px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+          <h3 style="font-size: 1.1rem; font-weight: 800;">Inventory Products List</h3>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Product & Brand</th>
+                <th>Category</th>
+                <th>Unit Size</th>
+                <th>Price (₹)</th>
+                <th>Stock</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-prods-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Orders Management Table -->
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <div style="padding: 16px 20px; border-bottom: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; font-weight: 800;">Recent Customer Orders</h3>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Order ID & Date</th>
+                <th>Customer Details</th>
+                <th>Items</th>
+                <th>Payment Mode</th>
+                <th>Total (₹)</th>
+                <th>Order Status</th>
+                <th style="text-align: right;">Update Status</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Add / Edit Product Modal -->
+  <div id="product-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 2000; align-items: center; justify-content: center; padding: 20px;">
+    <div class="card" style="max-width: 500px; width: 100%; padding: 28px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h3 id="modal-title" style="font-size: 1.2rem; font-weight: 800;">Add New Product</h3>
+        <button id="close-modal-btn" style="font-size: 1.2rem; color: var(--text-muted);">&times;</button>
+      </div>
+
+      <form id="product-form" style="display: flex; flex-direction: column; gap: 12px;">
+        <input type="hidden" id="form-prod-id" />
+
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Product Name (English) *</label>
+          <input type="text" id="form-prod-name" required placeholder="e.g. Aashirvaad Atta 5kg" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-sm);" />
+        </div>
+
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Product Name (Hindi) *</label>
+          <input type="text" id="form-prod-hindi" required placeholder="e.g. आशीर्वाद आटा 5kg" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-sm);" />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">Category</label>
+            <select id="form-prod-cat" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-sm);">
+              <option value="rice-wheat">Rice & Wheat (Anaj)</option>
+              <option value="dal-pulses">Dal & Pulses (Daal)</option>
+              <option value="oil-ghee">Cooking Oil & Ghee (Tel)</option>
+              <option value="dairy">Dairy Products (Doodh)</option>
+              <option value="spices-masala">Spices & Masala (Masale)</option>
+              <option value="snacks-biscuits">Snacks & Biscuits (Naashta)</option>
+              <option value="tea-coffee">Tea & Coffee</option>
+              <option value="personal-care">Personal Care</option>
+              <option value="household-cleaning">Household Cleaning</option>
+              <option value="dry-fruits">Dry Fruits & Grocery</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">Brand Name *</label>
+            <input type="text" id="form-prod-brand" required placeholder="e.g. Fortune" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-sm);" />
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">Unit Size *</label>
+            <input type="text" id="form-prod-unit" required placeholder="5 kg" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-sm);" />
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">Original Price (₹) *</label>
+            <input type="number" id="form-prod-price" required placeholder="310" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-sm);" />
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700;">Discount Price (₹) *</label>
+            <input type="number" id="form-prod-disc" required placeholder="265" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-sm);" />
+          </div>
+        </div>
+
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Stock Quantity *</label>
+          <input type="number" id="form-prod-stock" required value="25" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-sm);" />
+        </div>
+
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 700;">Image URL</label>
+          <input type="text" id="form-prod-img" placeholder="https://images.unsplash.com/..." style="width: 100%; padding: 8px 12px; border-radius: var(--radius-sm);" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 8px;"><i class="fas fa-save"></i> Save Product</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer"><div class="container"><div class="footer-bottom">© 2025 Apni Kirana Admin</div></div></footer>
+
+  <script src="./js/language.js"></script>
+  <script src="./js/products.js"></script>
+  <script src="./js/cart.js"></script>
+  <script src="./js/checkout.js"></script>
+  <script src="./js/admin.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      function renderAdminUI() {
+        if (!window.Admin || !window.ProductStore) return;
+
+        const stats = window.Admin.getDashboardStats();
+        document.getElementById('stat-prods-count').textContent = stats.totalProducts;
+        document.getElementById('stat-orders-count').textContent = stats.totalOrders;
+        document.getElementById('stat-sales-total').textContent = `₹${stats.totalSales}`;
+        document.getElementById('stat-low-stock').textContent = stats.lowStockCount;
+
+        // Render Inventory Table
+        const prodsTbody = document.getElementById('admin-prods-tbody');
+        if (prodsTbody) {
+          const prods = window.ProductStore.getProducts();
+          prodsTbody.innerHTML = prods.map(p => `
+            <tr>
+              <td>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <img src="${p.image}" alt="${p.name}" style="width: 32px; height: 32px; object-fit: contain; border-radius: 4px;" />
+                  <div>
+                    <strong>${p.name}</strong>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">${p.brand}</div>
+                  </div>
+                </div>
+              </td>
+              <td>${p.categoryName || p.category}</td>
+              <td>${p.unit}</td>
+              <td>₹${p.discountPrice || p.price} <span style="font-size: 0.75rem; color: var(--text-muted); text-decoration: line-through;">₹${p.price}</span></td>
+              <td><span class="badge ${p.stock <= 5 ? 'badge-offer' : 'badge-stock'}">${p.stock} units</span></td>
+              <td style="text-align: right;">
+                <button onclick="editProd('${p.id}')" style="color: #0284C7; margin-right: 8px;"><i class="fas fa-edit"></i></button>
+                <button onclick="deleteProd('${p.id}')" style="color: var(--danger-color);"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+          `).join('');
+        }
+
+        // Render Orders Table
+        const ordersTbody = document.getElementById('admin-orders-tbody');
+        if (ordersTbody && window.Checkout) {
+          const orders = window.Checkout.getOrders();
+          ordersTbody.innerHTML = orders.map(o => `
+            <tr>
+              <td><strong>#${o.id}</strong><div style="font-size: 0.75rem; color: var(--text-muted);">${new Date(o.date).toLocaleDateString()}</div></td>
+              <td>${o.customer.name}<div style="font-size: 0.75rem; color: var(--text-muted);">${o.customer.phone}</div></td>
+              <td>${o.items.length} items</td>
+              <td>${o.paymentMethod}</td>
+              <td><strong>₹${o.totalAmount}</strong></td>
+              <td><span class="status-badge status-${o.status.toLowerCase().replace(/\s+/g, '-')}">${o.status}</span></td>
+              <td style="text-align: right;">
+                <select onchange="updateOrder('${o.id}', this.value)" style="padding: 4px 8px; font-size: 0.78rem; border-radius: 4px;">
+                  <option value="Placed" ${o.status==='Placed'?'selected':''}>Placed</option>
+                  <option value="Confirmed" ${o.status==='Confirmed'?'selected':''}>Confirmed</option>
+                  <option value="Packing" ${o.status==='Packing'?'selected':''}>Packing</option>
+                  <option value="Out for Delivery" ${o.status==='Out for Delivery'?'selected':''}>Out for Delivery</option>
+                  <option value="Delivered" ${o.status==='Delivered'?'selected':''}>Delivered</option>
+                </select>
+              </td>
+            </tr>
+          `).join('');
+        }
+      }
+
+      window.deleteProd = function(id) {
+        if (confirm("Delete this product from inventory?")) {
+          window.Admin.deleteProduct(id);
+          renderAdminUI();
+        }
+      };
+
+      window.editProd = function(id) {
+        const p = window.ProductStore.getProducts().find(item => item.id === id);
+        if (!p) return;
+
+        document.getElementById('form-prod-id').value = p.id;
+        document.getElementById('form-prod-name').value = p.name;
+        document.getElementById('form-prod-hindi').value = p.hindiName || p.name;
+        document.getElementById('form-prod-cat').value = p.category;
+        document.getElementById('form-prod-brand').value = p.brand;
+        document.getElementById('form-prod-unit').value = p.unit;
+        document.getElementById('form-prod-price').value = p.price;
+        document.getElementById('form-prod-disc').value = p.discountPrice;
+        document.getElementById('form-prod-stock').value = p.stock;
+        document.getElementById('form-prod-img').value = p.image;
+
+        document.getElementById('modal-title').textContent = "Edit Kirana Product";
+        document.getElementById('product-modal').style.display = 'flex';
+      };
+
+      window.updateOrder = function(orderId, status) {
+        window.Admin.updateOrderStatus(orderId, status);
+        renderAdminUI();
+      };
+
+      document.getElementById('add-prod-modal-btn')?.addEventListener('click', () => {
+        document.getElementById('form-prod-id').value = '';
+        document.getElementById('product-form').reset();
+        document.getElementById('modal-title').textContent = "Add New Product";
+        document.getElementById('product-modal').style.display = 'flex';
+      });
+
+      document.getElementById('close-modal-btn')?.addEventListener('click', () => {
+        document.getElementById('product-modal').style.display = 'none';
+      });
+
+      document.getElementById('product-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = document.getElementById('form-prod-id').value;
+        const data = {
+          name: document.getElementById('form-prod-name').value,
+          hindiName: document.getElementById('form-prod-hindi').value,
+          category: document.getElementById('form-prod-cat').value,
+          brand: document.getElementById('form-prod-brand').value,
+          unit: document.getElementById('form-prod-unit').value,
+          price: document.getElementById('form-prod-price').value,
+          discountPrice: document.getElementById('form-prod-disc').value,
+          stock: document.getElementById('form-prod-stock').value,
+          image: document.getElementById('form-prod-img').value
+        };
+
+        if (id) {
+          window.Admin.updateProduct(id, data);
+        } else {
+          window.Admin.addProduct(data);
+        }
+
+        document.getElementById('product-modal').style.display = 'none';
+        renderAdminUI();
+      });
+
+      renderAdminUI();
+    });
+  </script>
 </body>
 </html>

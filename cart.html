@@ -4,140 +4,195 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-  <title>Your Grocery Cart - VKCommerce</title>
-  <meta name="description" content="Review your shopping bag, apply coupons, and checkout with fast 15-minute delivery." />
-  <meta name="robots" content="noindex,follow" />
+  <title>Shopping Cart - Apni Kirana</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <link rel="stylesheet" href="./css/cart.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
 </head>
 <body>
-  <!-- Common Navbar Shell -->
-  <div id="vk-navbar-container"></div>
 
-  <main style="padding: 32px 0 60px;">
+  <!-- Top Bar -->
+  <div class="top-bar">
     <div class="container">
-      <!-- Page Title -->
-      <div class="cart-page-heading" style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px;">
-        <div>
-          <h1 style="font-size: 1.85rem; font-weight: 900; color: #0f172a;">Shopping Bag</h1>
-          <p style="color: #64748b; font-size: 0.9rem;">Review items and proceed to instant 15-min delivery</p>
+      <div class="top-bar-left"><span><i class="fas fa-truck-fast"></i> 15-Min Instant Kirana Delivery</span></div>
+      <div class="top-bar-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">English</button>
+          <button class="lang-btn" data-lang="hi">हिंदी</button>
         </div>
-        <button id="clear-cart-btn" class="btn btn-outline btn-sm" style="color: #ef4444; border-color: #fee2e2;">
-          Clear Bag
-        </button>
+        <button class="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-brand">
+        <div class="logo-icon"><i class="fas fa-shopping-basket"></i></div>
+        <div class="logo-text">
+          <h1 data-i18n="siteName">Apni Kirana</h1>
+          <span data-i18n="tagline">Aapki Apni Dukan, Ab Online!</span>
+        </div>
+      </a>
+
+      <div class="search-bar-wrap">
+        <i class="fas fa-search search-icon-btn"></i>
+        <input type="text" class="search-input global-search-input" placeholder="Search atta, rice, oil, milk, spices..." data-i18n-placeholder="searchPlaceholder" />
+        <div class="search-dropdown"></div>
       </div>
 
-      <!-- Free Delivery Progress Bar -->
-      <div id="free-delivery-bar-card" class="card" style="padding: 16px 20px; border-radius: 16px; margin-bottom: 24px; background: #ecfdf5; border-color: #a7f3d0;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-          <span id="free-delivery-text" style="font-size: 0.9rem; font-weight: 700; color: #047857;">
-            Add ₹0 more for FREE Delivery!
-          </span>
-          <span style="font-size: 0.85rem; font-weight: 800; color: #047857;">Free Delivery at ₹499</span>
-        </div>
-        <div style="width: 100%; height: 8px; background: #d1fae5; border-radius: 4px; overflow: hidden;">
-          <div id="free-delivery-progress" style="width: 0%; height: 100%; background: #10b981; transition: width 0.3s ease;"></div>
-        </div>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline" id="nav-login-btn"><i class="fas fa-user"></i> <span data-i18n="navLogin">Login / Account</span></a>
+        <a href="cart.html" class="btn btn-primary" style="position: relative;"><i class="fas fa-shopping-cart"></i> <span class="cart-total-price">₹0</span><span class="badge cart-count-badge" style="position: absolute; top: -6px; right: -6px; background: #FF9800; color: #fff; font-size: 0.7rem; border-radius: 50%; padding: 2px 6px;">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 30px 0 60px;">
+    <div class="container">
+      <div style="margin-bottom: 20px;">
+        <h1 style="font-size: 1.8rem; font-weight: 800;" data-i18n="cartTitle">Your Kirana Shopping Cart</h1>
+        <p style="color: var(--text-muted); font-size: 0.88rem;">Review your items before proceeding to checkout</p>
       </div>
 
-      <!-- Main Cart Content -->
-      <div id="cart-content-wrapper" class="layout-2col-responsive">
-        
-        <!-- Cart Items List -->
-        <div class="card" style="padding: 24px; border-radius: 20px;">
-          <div style="font-weight: 800; font-size: 1.1rem; color: #0f172a; margin-bottom: 16px;">
-            Cart Items (<span id="cart-items-count">0</span>)
-          </div>
-
-          <div id="cart-items-list" style="display: flex; flex-direction: column; gap: 16px;">
-            <!-- Populated dynamically -->
-          </div>
-        </div>
-
-        <!-- Order Summary & Checkout Card -->
-        <div>
-          <div class="card" style="padding: 24px; border-radius: 20px; position: sticky; top: 100px;">
-            <h3 style="font-size: 1.2rem; font-weight: 800; color: #0f172a; margin-bottom: 16px;">
-              Bill Summary
-            </h3>
-
-            <!-- Promo Coupon Input -->
-            <div style="margin-bottom: 18px;">
-              <div style="display: flex; gap: 8px;">
-                <input type="text" id="coupon-input" placeholder="Enter coupon (VKFIRST100)" style="flex: 1; padding: 10px 12px; border-radius: 10px; font-size: 0.88rem; text-transform: uppercase;" />
-                <button id="apply-coupon-btn" class="btn btn-secondary btn-sm" style="font-weight: 700;">
-                  Apply
-                </button>
-              </div>
-              <div id="applied-coupon-pill" style="display: none; align-items: center; justify-content: space-between; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 6px 12px; border-radius: 8px; margin-top: 8px; font-size: 0.8rem; color: #047857; font-weight: 700;">
-                <span>Coupon Applied: <strong id="applied-coupon-code"></strong></span>
-                <button id="remove-coupon-btn" style="background: none; border: none; color: #ef4444; font-size: 1rem; cursor: pointer;">✕</button>
-              </div>
-            </div>
-
-            <!-- Price Breakdown Rows -->
-            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; border-top: 1px solid #f1f5f9; padding-top: 14px; margin-bottom: 16px;">
-              <div style="display: flex; justify-content: space-between; color: #475569;">
-                <span>Item Total</span>
-                <span id="summary-subtotal" style="font-weight: 700; color: #0f172a;">₹0</span>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; color: #475569;">
-                <span>15-Min Delivery Partner Fee</span>
-                <span id="summary-delivery-fee" style="font-weight: 700; color: #0f172a;">₹40</span>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; color: #475569;">
-                <span>Handling & Safety Fee</span>
-                <span id="summary-handling-fee" style="font-weight: 700; color: #0f172a;">₹5</span>
-              </div>
-
-              <div id="summary-discount-row" style="display: none; justify-content: space-between; color: #047857; font-weight: 700;">
-                <span>Coupon Discount</span>
-                <span id="summary-discount">-₹0</span>
-              </div>
-
-              <div style="border-top: 2px dashed #e2e8f0; padding-top: 12px; display: flex; justify-content: space-between; align-items: baseline;">
-                <span style="font-size: 1.1rem; font-weight: 900; color: #0f172a;">To Pay</span>
-                <span id="summary-grand-total" style="font-size: 1.4rem; font-weight: 900; color: #047857;">₹0</span>
-              </div>
-            </div>
-
-            <!-- Checkout CTA -->
-            <a href="checkout.html" class="btn btn-primary btn-lg" style="width: 100%; padding: 14px; margin-bottom: 14px; font-weight: 800;">
-              <span>Proceed to Checkout</span>
-              <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
-            </a>
-
-            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.78rem; color: #64748b;">
-              <i data-lucide="shield-check" style="width: 16px; height: 16px; color: #047857;"></i>
-              <span>100% Safe Payments • UPI, Cards & Cash on Delivery</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Empty Cart State -->
-      <div id="cart-empty-state" class="card" style="display: none; padding: 60px 24px; text-align: center; border-radius: 24px;">
-        <div style="font-size: 4rem; margin-bottom: 16px;">🛒</div>
-        <h2 style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Your Shopping Bag is Empty</h2>
-        <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 24px; max-width: 420px; margin-left: auto; margin-right: auto;">
-          Looks like you haven't added any fresh groceries to your cart yet. Explore our wholesale daily essentials!
-        </p>
-        <a href="products.html" class="btn btn-primary btn-lg" style="margin: 0 auto;">
-          <span>Start Grocery Shopping</span>
-          <i data-lucide="arrow-right"></i>
-        </a>
-      </div>
-
+      <div id="cart-content-wrap"></div>
     </div>
   </main>
 
-  <!-- Common Footer Shell -->
-  <div id="vk-footer-container"></div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom"><span data-i18n="footerRights">© 2025 Apni Kirana. All rights reserved.</span></div>
+    </div>
+  </footer>
 
-  <!-- Page Logic Script -->
-  <script type="module" src="./js/pages/cart.js"></script>
+  <script src="./js/language.js"></script>
+  <script src="./js/products.js"></script>
+  <script src="./js/cart.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      function renderCartPage() {
+        const wrap = document.getElementById('cart-content-wrap');
+        if (!wrap || !window.Cart) return;
+
+        const bill = window.Cart.getBillDetails();
+
+        if (bill.items.length === 0) {
+          wrap.innerHTML = `
+            <div class="card" style="padding: 50px; text-align: center;">
+              <i class="fas fa-shopping-basket" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 16px;"></i>
+              <h2 data-i18n="emptyCartMsg">Your shopping cart is empty!</h2>
+              <p style="color: var(--text-muted); margin: 8px 0 20px;">Browse our 50+ fresh grocery items and add essentials to your cart.</p>
+              <a href="shop.html" class="btn btn-primary" data-i18n="shopNow">Shop Now</a>
+            </div>
+          `;
+          return;
+        }
+
+        const lang = window.LangEngine ? window.LangEngine.getLang() : 'en';
+
+        wrap.innerHTML = `
+          <!-- Free Delivery Progress Bar -->
+          <div class="free-delivery-progress">
+            <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.9rem; color: var(--primary-dark);">
+              <span><i class="fas fa-truck-fast"></i> ${bill.amountNeededForFreeDelivery > 0 ? `Add <strong>₹${bill.amountNeededForFreeDelivery}</strong> more for FREE Delivery!` : '🎉 Congratulations! You unlocked FREE Delivery!'}</span>
+              <span>${Math.round(bill.freeDeliveryProgress)}%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${bill.freeDeliveryProgress}%;"></div>
+            </div>
+          </div>
+
+          <div class="cart-layout">
+            <!-- Left Items List -->
+            <div class="card" style="padding: 0;">
+              ${bill.items.map(item => `
+                <div class="cart-item">
+                  <img src="${item.product.image}" alt="${item.product.name}" />
+                  <div style="flex: 1;">
+                    <div style="font-size: 0.9rem; font-weight: 700;">${lang === 'hi' ? item.product.hindiName : item.product.name}</div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted);">${item.product.unit} • ₹${item.unitPrice} / unit</div>
+                  </div>
+                  <div class="quantity-control">
+                    <button onclick="window.Cart.updateQuantity('${item.productId}', ${item.quantity - 1})">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="window.Cart.updateQuantity('${item.productId}', ${item.quantity + 1})">+</button>
+                  </div>
+                  <div style="font-weight: 800; font-size: 1rem; width: 80px; text-align: right;">₹${item.itemSubtotal}</div>
+                  <button onclick="window.Cart.removeFromCart('${item.productId}')" style="color: var(--danger-color); font-size: 0.9rem;"><i class="fas fa-trash-can"></i></button>
+                </div>
+              `).join('')}
+            </div>
+
+            <!-- Right Bill Summary -->
+            <div>
+              <div class="bill-summary">
+                <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 16px;">Bill Details</h3>
+
+                <div class="bill-row">
+                  <span>Subtotal (${bill.totalItemsCount} items)</span>
+                  <span>₹${bill.itemsTotal}</span>
+                </div>
+
+                ${bill.productSavings > 0 ? `
+                  <div class="bill-row" style="color: var(--primary-color); font-weight: 700;">
+                    <span>Product Savings</span>
+                    <span>- ₹${bill.productSavings}</span>
+                  </div>
+                ` : ''}
+
+                <div class="bill-row">
+                  <span>Delivery Charge</span>
+                  <span>${bill.deliveryFee === 0 ? '<strong style="color: var(--primary-color);">FREE</strong>' : `₹${bill.deliveryFee}`}</span>
+                </div>
+
+                <div class="bill-row">
+                  <span>Handling & Packaging</span>
+                  <span>₹${bill.handlingFee}</span>
+                </div>
+
+                ${bill.couponDiscount > 0 ? `
+                  <div class="bill-row" style="color: var(--primary-color); font-weight: 700;">
+                    <span>Coupon (${bill.appliedCoupon.code})</span>
+                    <span>- ₹${bill.couponDiscount}</span>
+                  </div>
+                ` : ''}
+
+                <div class="bill-row grand-total">
+                  <span>Total Amount</span>
+                  <span>₹${bill.grandTotal}</span>
+                </div>
+
+                <!-- Coupon Input -->
+                <div style="margin: 16px 0;">
+                  <div style="display: flex; gap: 8px;">
+                    <input type="text" id="coupon-code-input" placeholder="Coupon Code" data-i18n-placeholder="couponPlaceholder" style="padding: 8px 12px; border-radius: var(--radius-sm); font-weight: 700; flex: 1;" />
+                    <button id="apply-coupon-btn" class="btn btn-secondary btn-sm" data-i18n="applyCoupon">Apply</button>
+                  </div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Use <strong>KIRANA10</strong> or <strong>WELCOME50</strong></div>
+                </div>
+
+                <a href="checkout.html" class="btn btn-primary" style="width: 100%; font-size: 1rem;" data-i18n="proceedCheckout">
+                  Proceed to Checkout <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+
+        document.getElementById('apply-coupon-btn')?.addEventListener('click', () => {
+          const val = document.getElementById('coupon-code-input')?.value;
+          if (val) window.Cart.applyCouponCode(val);
+        });
+      }
+
+      window.addEventListener('cartUpdated', renderCartPage);
+      renderCartPage();
+    });
+  </script>
 </body>
 </html>

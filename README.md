@@ -1,107 +1,117 @@
-# VKCommerce - Kirana & Supermarket
+# Apni Kirana (अपनी किराना) – Online Grocery Shopping Website
 
-A grocery storefront and kirana management **demo** built using HTML5, CSS3, and Vanilla JavaScript (ES Modules).
+> **"Aapki Apni Dukan, Ab Online!"**
 
-The project includes a storefront, product catalog, demo cart and checkout flow, local demo profiles, and a browser-only shop management suite (dashboard, POS, inventory, khata, and expenses). It does not process real orders or payments.
-
----
-
-## 🌟 Tech Stack
-
-- **Core**: Static HTML5, CSS3, and browser-native JavaScript modules
-- **Styling**: Tailored CSS design system with CSS custom properties, glassmorphism, responsive grid layouts, and micro-animations
-- **State Management**: Centralized demo store (`js/store.js`) backed by browser `localStorage`
-- **Search**: Hinglish grocery search aliases (`js/data/searchAliases.js`)
-- **Hosting**: Static hosting (GitHub Pages or any host that serves HTML, CSS, JavaScript modules, and static assets)
+A complete, modern, professional, responsive Indian Kirana Store website built using **HTML5, CSS3, and Vanilla JavaScript**. Represents a real Indian local grocery shop (*Kirana Dukan*), allowing customers to browse 50+ fresh grocery staples, add items to cart, switch between **English & Hindi (हिंदी)**, checkout via Cash on Delivery or UPI, track order progress, and manage shop inventory as a Dukan Owner.
 
 ---
 
-## Project structure
+## 🌟 Key Features
 
-```text
-VKCommerce/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml           # Publish static files to GitHub Pages
-├── .gitignore
-├── 404.html                     # Custom not-found page
-├── admin-expenses.html
-├── admin-inventory.html
-├── admin-khata.html
-├── admin-pos.html
-├── admin.html                   # Store dashboard
-├── cart.html
-├── category.html
-├── checkout.html                # Demo checkout
-├── favicon.svg
-├── index.html                   # Storefront homepage
-├── login.html                   # Demo customer/vendor profile entry
-├── order-success.html
-├── orders.html
-├── privacy.html
-├── product-details.html
-├── products.html
-├── profile.html
-├── README.md
-├── register.html                # Create a browser-only demo profile
-├── robots.txt
-├── sitemap.xml
-├── social-preview.png
-├── terms.html
-├── wishlist.html
+### 1. 🌐 Bilingual Support (English & Hindi)
+- Live language switcher in top navbar (`English` | `हिंदी`).
+- Authentic Kirana Terminology:
+  - **Anaj (अनाज)** – Rice & Wheat
+  - **Daal (दाल)** – Dal & Pulses
+  - **Tel (तेल)** – Cooking Oil & Ghee
+  - **Doodh (दूध)** – Dairy Products
+  - **Masale (मसाले)** – Spices & Masala
+  - **Naashta (नाश्ता)** – Snacks & Biscuits
+- Automatically updates product names, category cards, navigation, and shopping messages on language change!
+
+### 2. 🛒 Shopping Cart & LocalStorage Engine
+- Add/remove items with live cart quantity counter.
+- Automatic Subtotal, Savings, Delivery Charge (Free above ₹499), and Handling Fee calculation.
+- Apply discount coupons (`KIRANA10` for 10% OFF, `WELCOME50` for flat ₹50 OFF).
+- Full LocalStorage persistence across browser refreshes.
+
+### 3. 📦 Checkout & Cash on Delivery / UPI
+- Address validation (10-digit mobile number, 6-digit Indian Pincode).
+- Payment options: **Cash on Delivery (COD)**, **UPI QR**, and Online demo interface.
+- Instant unique Order ID generation (`AK-XXXXXX`).
+
+### 4. 🚚 Real-Time Order Tracking
+- Interactive progress timeline:
+  1. **Order Placed** $\rightarrow$ 2. **Order Confirmed** $\rightarrow$ 3. **Packing in Kirana** $\rightarrow$ 4. **Out for Delivery** $\rightarrow$ 5. **Delivered**
+
+### 5. 🏪 Dukan Owner Admin Dashboard (`admin.html`)
+- Store metrics: Total Products, Total Orders, Sales Revenue (₹), Low Stock Alerts.
+- Product CRUD: Add new items, update prices & stock, delete products.
+- Order Status Manager: Live status updates for customer orders.
+
+### 6. 🎨 Responsive Indian E-Commerce Design
+- **Color Palette**: Fresh Green (`#168447`), Light Green (`#E8F5E9`), Dark Grey (`#252525`), Accent Orange (`#FF9800`).
+- **Dark Mode**: Toggle between Light and Dark mode.
+- **WhatsApp Order Enquiry**: Direct WhatsApp chat integration with storekeeper.
+
+---
+
+## 📂 Project Structure
+
+```
+apni-kirana/
+├── index.html            # Homepage
+├── shop.html             # Product Catalog & Category Filters
+├── products.html         # Redirect to shop.html
+├── product-details.html  # Product Details View
+├── cart.html             # Shopping Cart & Bill Summary
+├── checkout.html         # Customer Address & Payment Checkout
+├── order-success.html    # Order Confirmation
+├── track-order.html      # Order Tracking Timeline
+├── login.html            # Customer & Vendor Login
+├── register.html         # Account Registration
+├── profile.html          # Profile & Saved Addresses
+├── orders.html           # My Orders History
+├── admin.html            # Dukan Owner Admin Dashboard
+│
 ├── css/
-│   ├── admin.css
-│   └── style.css
+│   ├── style.css         # Global Theme Variables & Component Styles
+│   ├── responsive.css    # Mobile, Tablet & Desktop Queries
+│   ├── shop.css          # Product & Category Cards
+│   ├── cart.css          # Cart Layout & Tracking Timeline
+│   └── admin.css         # Admin Metrics & Tables
+│
 └── js/
-    ├── admin-common.js          # Shared admin layout and demo UI guard
-    ├── common.js                # Shared navigation, footer, modals, and cards
-    ├── store.js                 # Browser-local demo state
-    ├── data/
-    │   ├── categories.js
-    │   ├── products.js
-    │   └── searchAliases.js
-    └── pages/
-        ├── admin-dashboard.js
-        ├── admin-expenses.js
-        ├── admin-inventory.js
-        ├── admin-khata.js
-        ├── admin-pos.js
-        ├── auth.js
-        ├── cart.js
-        ├── category.js
-        ├── checkout.js
-        ├── home.js
-        ├── legal.js
-        ├── order-success.js
-        ├── orders.js
-        ├── product-details.js
-        ├── products.js
-        ├── profile.js
-        └── wishlist.js
+    ├── language.js       # Multilingual Dictionary & Switcher Engine
+    ├── products.js       # 50+ Realistic Indian Grocery Database
+    ├── cart.js           # Cart Engine, Coupons & Bill Calculation
+    ├── checkout.js       # Order Placement & Address Validation
+    ├── auth.js           # User Session & Demo Login Manager
+    ├── orders.js         # Order Status Timeline Renderer
+    ├── admin.js          # Admin Dashboard & Inventory CRUD
+    └── main.js           # Global Search Suggestions, Toasts & Theme
 ```
 
 ---
 
-## Running locally
+## 🚀 How to Run using VS Code Live Server
 
-Serve the repository root with any static web server. For example, with Python installed:
+1. **Clone or Download the Repository**:
    ```bash
-   python -m http.server 8000
+   git clone https://github.com/tanujdarokar/VK_kirana.git
+   cd VK_kirana
    ```
-Then open `http://localhost:8000`. Serving over HTTP is required for browser-native JavaScript modules; opening the HTML files directly with `file://` may block module imports.
 
-Deploy the repository's HTML pages, `css/`, `js/`, and root static assets to a static host. The GitHub Pages workflow publishes these files directly without a package manager, bundler, or build step. The sitemap and canonical URLs currently use `https://tanujdarokar.github.io/VK_kirana/`; update them if the production domain or repository path changes.
+2. **Open in VS Code**:
+   Launch Visual Studio Code and open the project directory.
 
-For GitHub Pages, open **Settings → Pages** and enable **Enforce HTTPS** after the site is published. Repository files cannot enable that hosting setting by themselves.
+3. **Install Live Server Extension**:
+   - Go to Extensions (`Ctrl+Shift+X` or `Cmd+Shift+X`).
+   - Search for **Live Server** by Ritwick Dey and click **Install**.
 
-## Responsive layouts
+4. **Start the Web Application**:
+   - Right-click `index.html` in the file explorer.
+   - Click **Open with Live Server**.
+   - Your browser will open `http://127.0.0.1:5500/index.html`.
 
-The storefront and management pages adapt across phone, tablet, laptop, and desktop widths. Product and admin layouts collapse to a single column on narrower screens; mobile navigation uses a drawer, admin navigation becomes a toggleable sidebar, and wide management tables scroll horizontally within their panels. The main breakpoints are 1024px, 768px, 480px, and 360px.
+---
 
-## Demo security and production requirements
+## 👥 Demo Credentials
 
-This repository is frontend-only. Demo profiles, inventory, orders, and shop records live in editable browser storage; the admin guard is a UI convenience, not authorization. The demo intentionally does not collect passwords. Do not use real customer, payment, or business data.
+- **Customer Demo**: `harsh@example.com`
+- **Vendor / Dukan Owner Demo**: `vendor@apnikirana.in`
 
-There are no application APIs, SQL queries, webhook handlers, upload endpoints, or configured analytics provider in this project. Accordingly, API authorization, row-level security, webhook signature checks, private object storage, server-side file validation, rate limiting, audit logs, strong CORS policy, and server response security headers cannot be implemented in static HTML/CSS/JavaScript. Do not put secrets in frontend code. A production store needs a trusted backend that authenticates every request, authorizes each resource access, validates data independently of the browser, and enforces these controls at the server and storage layers.
+---
 
-The cookie preference UI remembers an optional analytics choice, but no analytics provider is configured or loaded. Analytics setup is pending a provider and account/site identifier; do not collect analytics until the integration is configured and consent-gated. The privacy and terms pages are demo templates and must be reviewed for the real operator, jurisdiction, and processing practices before launch.
+## 📜 License & Portfolio Usage
+This project is built for portfolio showcases, GitHub repositories, and deployment on **Vercel / GitHub Pages**. All rights reserved © 2025 **Apni Kirana**.

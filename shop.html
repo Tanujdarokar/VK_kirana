@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <title>Shop Grocery Catalog - Apni Kirana</title>
+  <meta name="description" content="Browse 50+ fresh Indian grocery staples, wheat flour, basmati rice, cooking oils, pure desi ghee, spices, and snacks at wholesale Kirana prices." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/shop.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <span><i class="fas fa-truck-fast"></i> 15-Min Instant Kirana Delivery</span>
+      </div>
+      <div class="top-bar-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">English</button>
+          <button class="lang-btn" data-lang="hi">हिंदी</button>
+        </div>
+        <button class="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-brand">
+        <div class="logo-icon"><i class="fas fa-shopping-basket"></i></div>
+        <div class="logo-text">
+          <h1 data-i18n="siteName">Apni Kirana</h1>
+          <span data-i18n="tagline">Aapki Apni Dukan, Ab Online!</span>
+        </div>
+      </a>
+
+      <div class="search-bar-wrap">
+        <i class="fas fa-search search-icon-btn"></i>
+        <input type="text" id="shop-search-input" class="search-input global-search-input" placeholder="Search atta, rice, oil, milk, spices..." data-i18n-placeholder="searchPlaceholder" />
+        <div class="search-dropdown"></div>
+      </div>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline" id="nav-login-btn">
+          <i class="fas fa-user"></i>
+          <span data-i18n="navLogin">Login / Account</span>
+        </a>
+
+        <a href="cart.html" class="btn btn-primary" style="position: relative;">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-total-price">₹0</span>
+          <span class="badge cart-count-badge" style="position: absolute; top: -6px; right: -6px; background: #FF9800; color: #fff; font-size: 0.7rem; border-radius: 50%; padding: 2px 6px;">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category Nav Bar -->
+  <nav class="category-nav">
+    <div class="container nav-links-menu">
+      <a href="index.html" class="category-link" data-i18n="navHome">Home</a>
+      <a href="shop.html" class="category-link active" data-i18n="navShop">Shop All 10 Aisles</a>
+      <a href="shop.html?cat=rice-wheat" class="category-link" data-i18n="catAnaj">Anaj (Rice & Wheat)</a>
+      <a href="shop.html?cat=dal-pulses" class="category-link" data-i18n="catDaal">Daal & Pulses</a>
+      <a href="shop.html?cat=oil-ghee" class="category-link" data-i18n="catTel">Cooking Oil & Ghee</a>
+      <a href="shop.html?cat=dairy" class="category-link" data-i18n="catDoodh">Dairy & Milk</a>
+      <a href="shop.html?cat=spices-masala" class="category-link" data-i18n="catMasale">Spices & Masala</a>
+      <a href="track-order.html" class="category-link" data-i18n="navTrack">Track Order</a>
+      <a href="admin.html" class="category-link" data-i18n="navAdmin" style="color: var(--accent-color); font-weight: 700;">🏪 Dukan Admin</a>
+    </div>
+  </nav>
+
+  <main style="padding: 30px 0 60px;">
+    <div class="container">
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 1.8rem; font-weight: 800; color: var(--text-color);" data-i18n="navShop">Shop Kirana Catalog</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Fresh Indian staples & household items delivered in 15 minutes.</p>
+      </div>
+
+      <div class="shop-layout">
+        <!-- Sidebar Filters -->
+        <aside class="card" style="padding: 20px;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Filter Category</h3>
+          <div style="display: flex; flexDirection: column; gap: 8px;">
+            <button class="filter-cat-btn btn btn-outline btn-sm active" data-cat="all" style="width: 100%; justify-content: flex-start;">All Grocery Items</button>
+            <button class="filter-cat-btn btn btn-outline btn-sm" data-cat="rice-wheat" style="width: 100%; justify-content: flex-start;" data-i18n="catAnaj">Anaj (Rice & Wheat)</button>
+            <button class="filter-cat-btn btn btn-outline btn-sm" data-cat="dal-pulses" style="width: 100%; justify-content: flex-start;" data-i18n="catDaal">Daal & Pulses</button>
+            <button class="filter-cat-btn btn btn-outline btn-sm" data-cat="oil-ghee" style="width: 100%; justify-content: flex-start;" data-i18n="catTel">Cooking Oil & Ghee</button>
+            <button class="filter-cat-btn btn btn-outline btn-sm" data-cat="dairy" style="width: 100%; justify-content: flex-start;" data-i18n="catDoodh">Dairy Products</button>
+            <button class="filter-cat-btn btn btn-outline btn-sm" data-cat="spices-masala" style="width: 100%; justify-content: flex-start;" data-i18n="catMasale">Spices & Masala</button>
+            <button class="filter-cat-btn btn btn-outline btn-sm" data-cat="snacks-biscuits" style="width: 100%; justify-content: flex-start;" data-i18n="catSnacks">Snacks & Biscuits</button>
+            <button class="filter-cat-btn btn btn-outline btn-sm" data-cat="tea-coffee" style="width: 100%; justify-content: flex-start;" data-i18n="catTea">Tea & Coffee</button>
+            <button class="filter-cat-btn btn btn-outline btn-sm" data-cat="personal-care" style="width: 100%; justify-content: flex-start;" data-i18n="catCare">Personal Care</button>
+            <button class="filter-cat-btn btn btn-outline btn-sm" data-cat="household-cleaning" style="width: 100%; justify-content: flex-start;" data-i18n="catCleaning">Household Cleaning</button>
+            <button class="filter-cat-btn btn btn-outline btn-sm" data-cat="dry-fruits" style="width: 100%; justify-content: flex-start;" data-i18n="catDryFruits">Dry Fruits & Grocery</button>
+          </div>
+        </aside>
+
+        <!-- Main Product Grid & Controls -->
+        <div>
+          <div class="card" style="padding: 12px 18px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <div style="font-size: 0.9rem; color: var(--text-muted);">
+              Showing <strong id="product-count" style="color: var(--text-color);">0</strong> products
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Sort By:</span>
+              <select id="sort-select" style="padding: 6px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600;">
+                <option value="popular">Popularity</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="discount">Biggest Discount</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="shop-products-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px;"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span data-i18n="footerRights">© 2025 Apni Kirana. Aapki Apni Dukan, Ab Online! All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="javascript:void(0)" class="whatsapp-float" onclick="openWhatsAppEnquiry()"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="./js/language.js"></script>
+  <script src="./js/products.js"></script>
+  <script src="./js/cart.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      let selectedCat = urlParams.get('cat') || 'all';
+      let sortOrder = 'popular';
+
+      function renderShopProducts() {
+        if (!window.ProductStore) return;
+        let prods = window.ProductStore.getProducts();
+
+        if (selectedCat !== 'all') {
+          prods = prods.filter(p => p.category === selectedCat);
+        }
+
+        const countEl = document.getElementById('product-count');
+        if (countEl) countEl.textContent = prods.length;
+
+        // Sort
+        if (sortOrder === 'price-low') prods.sort((a,b) => (a.discountPrice||a.price) - (b.discountPrice||b.price));
+        else if (sortOrder === 'price-high') prods.sort((a,b) => (b.discountPrice||b.price) - (a.discountPrice||a.price));
+
+        const grid = document.getElementById('shop-products-grid');
+        if (!grid) return;
+
+        if (prods.length === 0) {
+          grid.innerHTML = `<div style="grid-column: 1/-1; padding: 40px; text-align: center;" class="card"><h3>No products found under this filter</h3></div>`;
+          return;
+        }
+
+        const lang = window.LangEngine ? window.LangEngine.getLang() : 'en';
+
+        grid.innerHTML = prods.map(p => `
+          <div class="product-card">
+            ${p.price > p.discountPrice ? `<span class="badge-discount">${Math.round(((p.price - p.discountPrice)/p.price)*100)}% OFF</span>` : ''}
+            <div class="img-wrap">
+              <a href="product-details.html?id=${p.id}">
+                <img src="${p.image}" alt="${p.name}" />
+              </a>
+            </div>
+            <div class="brand">${p.brand}</div>
+            <a href="product-details.html?id=${p.id}" class="title">${lang === 'hi' ? p.hindiName : p.name}</a>
+            <div class="unit">${p.unit}</div>
+            <div class="price-row">
+              <span class="price">₹${p.discountPrice || p.price}</span>
+              ${p.price > p.discountPrice ? `<span class="original-price">₹${p.price}</span>` : ''}
+            </div>
+            <div class="action-row">
+              <button onclick="window.Cart.addToCart('${p.id}', 1)" class="btn btn-primary btn-sm" style="width: 100%;">
+                <i class="fas fa-plus"></i> <span data-i18n="addToCart">Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Filter Buttons
+      document.querySelectorAll('.filter-cat-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === selectedCat) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-cat-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedCat = btn.getAttribute('data-cat');
+          renderShopProducts();
+        });
+      });
+
+      // Sort
+      const sortSelect = document.getElementById('sort-select');
+      if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+          sortOrder = e.target.value;
+          renderShopProducts();
+        });
+      }
+
+      renderShopProducts();
+    });
+  </script>
+</body>
+</html>

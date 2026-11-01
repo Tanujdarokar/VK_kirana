@@ -3,23 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page Not Found - VKCommerce</title>
-  <meta name="description" content="The page you are looking for could not be found. Return to the VKCommerce grocery storefront." />
-  <meta name="robots" content="noindex,follow" />
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <title>404 - Page Not Found | Apni Kirana</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
 </head>
 <body>
-  <div id="vk-navbar-container"></div>
-  <main class="container" style="display: grid; place-items: center; min-height: 55vh; padding-top: 48px; padding-bottom: 48px; text-align: center;">
-    <div>
-      <p style="color: #047857; font-size: 1rem; font-weight: 800;">404 · PAGE NOT FOUND</p>
-      <h1 style="margin-top: 8px; font-size: clamp(2rem, 6vw, 3rem);">This aisle is empty.</h1>
-      <p style="margin: 12px auto 24px; max-width: 480px; color: #475569; line-height: 1.6;">The link may be old or the page may have moved. Head back to the store to find what you need.</p>
-      <a class="btn btn-primary btn-lg" href="./index.html">Go to the store</a>
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-brand">
+        <div class="logo-icon"><i class="fas fa-shopping-basket"></i></div>
+        <div class="logo-text">
+          <h1>Apni Kirana</h1>
+          <span>Aapki Apni Dukan, Ab Online!</span>
+        </div>
+      </a>
+      <a href="index.html" class="btn btn-primary"><i class="fas fa-house"></i> Return Home</a>
+    </div>
+  </header>
+
+  <main style="padding: 80px 20px; text-align: center;">
+    <div class="container" style="max-width: 500px;">
+      <i class="fas fa-basket-shopping" style="font-size: 3.5rem; color: var(--text-muted); margin-bottom: 16px;"></i>
+      <h1 style="font-size: 3rem; font-weight: 800; color: var(--primary-color);">404</h1>
+      <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px;">Grocery Aisle Not Found</h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">The page or item aisle you are looking for has been moved or doesn't exist.</p>
+      <a href="shop.html" class="btn btn-primary"><i class="fas fa-store"></i> Browse Grocery Catalog</a>
     </div>
   </main>
-  <div id="vk-footer-container"></div>
-  <script type="module" src="./js/pages/legal.js"></script>
+
+  <footer class="footer"><div class="container"><div class="footer-bottom">© 2025 Apni Kirana</div></div></footer>
 </body>
 </html>

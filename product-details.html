@@ -4,167 +4,143 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-  <title>Product Details - VKCommerce</title>
-  <meta name="description" content="View product specifications, nutrition details, wholesale pricing, and add to cart with 15-minute express delivery." />
-  <link rel="canonical" href="https://tanujdarokar.github.io/VK_kirana/product-details.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="VK Kirana" />
-  <meta property="og:url" content="https://tanujdarokar.github.io/VK_kirana/product-details.html" />
-  <meta property="og:title" content="Product Details - VKCommerce" />
-  <meta property="og:description" content="View product specifications, nutrition details, wholesale pricing, and add to cart with 15-minute express delivery." />
-  <meta property="og:image" content="https://tanujdarokar.github.io/VK_kirana/social-preview.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="VK Kirana - fresh daily groceries at your doorstep" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Product Details - VKCommerce" />
-  <meta name="twitter:description" content="View product specifications, nutrition details, wholesale pricing, and add to cart with 15-minute express delivery." />
-  <meta name="twitter:image" content="https://tanujdarokar.github.io/VK_kirana/social-preview.png" />
+  <title>Product Details - Apni Kirana</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <link rel="stylesheet" href="./css/shop.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
 </head>
 <body>
-  <!-- Common Navbar Shell -->
-  <div id="vk-navbar-container"></div>
 
-  <main style="padding: 32px 0 60px;">
+  <!-- Top Bar -->
+  <div class="top-bar">
     <div class="container">
-      <!-- Breadcrumb -->
-      <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #64748b; margin-bottom: 24px; flex-wrap: wrap;">
-        <a href="index.html" style="color: #047857; font-weight: 600;">Home</a>
-        <span>›</span>
-        <a id="breadcrumb-category-link" href="products.html" style="color: #047857; font-weight: 600;">Category</a>
-        <span>›</span>
-        <span id="breadcrumb-product-name" style="font-weight: 700; color: #0f172a;">Product Details</span>
+      <div class="top-bar-left">
+        <span><i class="fas fa-truck-fast"></i> 15-Min Instant Kirana Delivery</span>
+      </div>
+      <div class="top-bar-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">English</button>
+          <button class="lang-btn" data-lang="hi">हिंदी</button>
+        </div>
+        <button class="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-brand">
+        <div class="logo-icon"><i class="fas fa-shopping-basket"></i></div>
+        <div class="logo-text">
+          <h1 data-i18n="siteName">Apni Kirana</h1>
+          <span data-i18n="tagline">Aapki Apni Dukan, Ab Online!</span>
+        </div>
+      </a>
+
+      <div class="search-bar-wrap">
+        <i class="fas fa-search search-icon-btn"></i>
+        <input type="text" class="search-input global-search-input" placeholder="Search atta, rice, oil, milk, spices..." data-i18n-placeholder="searchPlaceholder" />
+        <div class="search-dropdown"></div>
       </div>
 
-      <!-- Main Product Details Card -->
-      <div class="card product-details-card" style="padding: 36px; border-radius: 24px; margin-bottom: 48px;">
-        <div style="display: grid; grid-template-columns: 460px 1fr; gap: 3rem;" class="layout-2col-responsive">
-          
-          <!-- Left: Image Gallery & Badges -->
-          <div>
-            <div style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; overflow: hidden; background: #f8fafc; border: 1px solid #e2e8f0; margin-bottom: 16px;">
-              <img id="main-product-image" src="" alt="Product" style="width: 100%; height: 100%; object-fit: cover;" />
-              <div id="detail-badges-container" style="position: absolute; top: 16px; left: 16px; display: flex; flex-direction: column; gap: 8px;">
-                <!-- Badges -->
-              </div>
-            </div>
-
-            <div id="thumbnail-gallery" style="display: flex; gap: 10px; overflow-x: auto;">
-              <!-- Thumbnails -->
-            </div>
-          </div>
-
-          <!-- Right: Product Info & Actions -->
-          <div style="display: flex; flex-direction: column;">
-            <div id="detail-brand" style="font-size: 0.85rem; font-weight: 800; color: #047857; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">
-              Brand
-            </div>
-
-            <h1 id="detail-name" style="font-size: 1.85rem; font-weight: 900; color: #0f172a; line-height: 1.25; margin-bottom: 12px;">
-              Loading Product...
-            </h1>
-
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;">
-              <div style="display: inline-flex; align-items: center; gap: 4px; background: #ecfdf5; color: #047857; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.85rem;">
-                ★ <span id="detail-rating">4.8</span>
-              </div>
-              <span style="font-size: 0.85rem; color: #64748b;">
-                (<span id="detail-reviews-count">0</span> verified buyer ratings)
-              </span>
-              <span style="color: #cbd5e1;">•</span>
-              <span id="detail-unit-badge" style="background: #f1f5f9; color: #475569; font-weight: 700; font-size: 0.82rem; padding: 4px 10px; border-radius: 6px;">
-                1 unit
-              </span>
-            </div>
-
-            <!-- Price Breakdown -->
-            <div style="background: #f8fafc; border-radius: 16px; padding: 18px; border: 1px solid #e2e8f0; margin-bottom: 20px;">
-              <div class="detail-price-row" style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px;">
-                <span id="detail-price-current" style="font-size: 2rem; font-weight: 900; color: #0f172a;">₹0</span>
-                <span id="detail-price-original" style="font-size: 1.15rem; color: #64748b; text-decoration: line-through;">₹0</span>
-                <span id="detail-discount-tag" class="badge badge-discount" style="font-size: 0.8rem;">0% OFF</span>
-              </div>
-              <div id="detail-savings-text" style="font-size: 0.85rem; font-weight: 700; color: #047857;">
-                Inclusive of all taxes • Best Wholesale Mandi Price
-              </div>
-            </div>
-
-            <!-- Stock & 15-Min Delivery Promise -->
-            <div style="display: flex; gap: 14px; margin-bottom: 24px; flex-wrap: wrap;">
-              <div style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 700; color: #047857;">
-                <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
-                <span>In Stock (<span id="detail-stock-count">0</span> available)</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 6px; font-size: 0.88rem; font-weight: 700; color: #d97706;">
-                <span>⚡ Express 15-Min Delivery to Koramangala Hub</span>
-              </div>
-            </div>
-
-            <!-- Actions Row -->
-            <div style="display: flex; gap: 14px; align-items: center; margin-bottom: 28px; flex-wrap: wrap;">
-              <div style="display: flex; align-items: center; border: 1.5px solid #cbd5e1; border-radius: 12px; overflow: hidden; background: white;">
-                <button id="qty-decrease-btn" style="width: 42px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; color: #0f172a;">-</button>
-                <span id="selected-qty-text" style="width: 44px; text-align: center; font-size: 1.05rem; font-weight: 800; color: #0f172a;">1</span>
-                <button id="qty-increase-btn" style="width: 42px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; color: #0f172a;">+</button>
-              </div>
-
-              <button id="detail-add-cart-btn" class="btn btn-primary btn-lg" style="flex: 1; min-width: 180px;">
-                <i data-lucide="shopping-cart"></i>
-                <span>Add to Cart</span>
-              </button>
-
-              <button id="detail-wishlist-btn" class="btn-icon" style="width: 46px; height: 46px;" aria-label="Wishlist">
-                <i data-lucide="heart" style="width: 22px; height: 22px;"></i>
-              </button>
-            </div>
-
-            <!-- Features & Description -->
-            <div style="border-top: 1px solid #f1f5f9; padding-top: 20px; margin-bottom: 20px;">
-              <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 10px;">Product Overview</h3>
-              <p id="detail-description" style="color: #475569; font-size: 0.92rem; line-height: 1.6; margin-bottom: 14px;">
-                Description
-              </p>
-              <ul id="detail-features-list" style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; color: #334155;">
-                <!-- Features -->
-              </ul>
-            </div>
-
-            <!-- Nutrition Facts (if applicable) -->
-            <div id="nutrition-wrapper" style="border-top: 1px solid #f1f5f9; padding-top: 16px;">
-              <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 10px;">Nutritional Information</h4>
-              <div id="nutrition-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
-                <!-- Nutrition cards -->
-              </div>
-            </div>
-
-          </div>
-        </div>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline" id="nav-login-btn"><i class="fas fa-user"></i> <span data-i18n="navLogin">Login / Account</span></a>
+        <a href="cart.html" class="btn btn-primary" style="position: relative;"><i class="fas fa-shopping-cart"></i> <span class="cart-total-price">₹0</span><span class="badge cart-count-badge" style="position: absolute; top: -6px; right: -6px; background: #FF9800; color: #fff; font-size: 0.7rem; border-radius: 50%; padding: 2px 6px;">0</span></a>
       </div>
+    </div>
+  </header>
 
-      <!-- Related Essentials -->
-      <div>
-        <div class="section-header">
-          <div class="section-title-wrap">
-            <span class="section-tag">🛒 Often Bought Together</span>
-            <h2 class="section-title">Similar Kirana Staples</h2>
-          </div>
-        </div>
-
-        <div id="related-products-grid" class="grid-responsive">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
-
+  <main style="padding: 30px 0 60px;">
+    <div class="container">
+      <div id="product-detail-container"></div>
     </div>
   </main>
 
-  <!-- Common Footer Shell -->
-  <div id="vk-footer-container"></div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom"><span data-i18n="footerRights">© 2025 Apni Kirana. All rights reserved.</span></div>
+    </div>
+  </footer>
 
-  <!-- Page Logic Script -->
-  <script type="module" src="./js/pages/product-details.js"></script>
+  <script src="./js/language.js"></script>
+  <script src="./js/products.js"></script>
+  <script src="./js/cart.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const prodId = urlParams.get('id') || 'p1';
+
+      if (window.ProductStore) {
+        const product = window.ProductStore.getProducts().find(p => p.id === prodId);
+        const container = document.getElementById('product-detail-container');
+
+        if (!product || !container) {
+          container.innerHTML = `<div class="card" style="padding: 40px; text-align: center;"><h2>Product Not Found</h2><a href="shop.html" class="btn btn-primary">Back to Shop</a></div>`;
+          return;
+        }
+
+        const lang = window.LangEngine ? window.LangEngine.getLang() : 'en';
+        let qty = 1;
+
+        container.innerHTML = `
+          <div className="card" style="padding: 30px; margin-bottom: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+            <div style="background: var(--surface-color); border-radius: var(--radius-md); padding: 30px; display: flex; align-items: center; justify-content: center;">
+              <img src="${product.image}" alt="${product.name}" style="max-height: 280px; object-fit: contain;" />
+            </div>
+
+            <div>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--primary-color); text-transform: uppercase;">${product.brand}</div>
+              <h1 style="font-size: 1.6rem; font-weight: 800; margin: 6px 0;">${lang === 'hi' ? product.hindiName : product.name}</h1>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Unit Size: ${product.unit}</div>
+
+              <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px;">
+                <span style="font-size: 1.8rem; font-weight: 800; color: var(--text-color);">₹${product.discountPrice || product.price}</span>
+                ${product.price > product.discountPrice ? `<span style="font-size: 1.1rem; color: var(--text-muted); text-decoration: line-through;">₹${product.price}</span>` : ''}
+              </div>
+
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">${product.description}</p>
+
+              <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 24px;">
+                <div class="quantity-control">
+                  <button id="qty-minus">-</button>
+                  <span id="qty-val">1</span>
+                  <button id="qty-plus">+</button>
+                </div>
+
+                <button id="add-to-cart-btn" class="btn btn-primary" style="flex: 1;">
+                  <i class="fas fa-shopping-bag"></i> Add to Cart
+                </button>
+              </div>
+
+              <div style="background: var(--secondary-color); padding: 12px 16px; border-radius: var(--radius-md); font-size: 0.85rem; color: var(--primary-dark); font-weight: 600;">
+                <i class="fas fa-truck-fast"></i> 15-Minute Home Delivery Available
+              </div>
+            </div>
+          </div>
+        `;
+
+        document.getElementById('qty-minus')?.addEventListener('click', () => {
+          if (qty > 1) {
+            qty--;
+            document.getElementById('qty-val').textContent = qty;
+          }
+        });
+
+        document.getElementById('qty-plus')?.addEventListener('click', () => {
+          qty++;
+          document.getElementById('qty-val').textContent = qty;
+        });
+
+        document.getElementById('add-to-cart-btn')?.addEventListener('click', () => {
+          window.Cart.addToCart(product.id, qty);
+        });
+      }
+    });
+  </script>
 </body>
 </html>

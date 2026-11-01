@@ -4,117 +4,119 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-  <title>Order Confirmed - VKCommerce</title>
-  <meta name="description" content="Your grocery order is confirmed with 15-minute live tracking." />
-  <meta name="robots" content="noindex,follow" />
+  <title>Order Placed - Apni Kirana</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://unpkg.com/lucide@latest" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js" defer></script>
+  <link rel="stylesheet" href="./css/cart.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
 </head>
 <body>
-  <!-- Common Navbar Shell -->
-  <div id="vk-navbar-container"></div>
 
-  <main style="padding: 40px 0 70px;">
-    <div class="container order-confirmation-container" style="max-width: 820px;">
-      
-      <!-- Celebration Header Card -->
-      <div class="card order-confirmation-card" style="padding: 36px; border-radius: 24px; text-align: center; margin-bottom: 24px; border-top: 6px solid #10b981;">
-        <div style="width: 72px; height: 72px; border-radius: 50%; background: #ecfdf5; color: #047857; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 16px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);">
-          ✓
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left"><span><i class="fas fa-truck-fast"></i> 15-Min Instant Kirana Delivery</span></div>
+      <div class="top-bar-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">English</button>
+          <button class="lang-btn" data-lang="hi">हिंदी</button>
         </div>
-
-        <span class="badge badge-fresh" style="margin-bottom: 8px;">Order Confirmed</span>
-        <h1 style="font-size: 2rem; font-weight: 900; color: #0f172a; margin-bottom: 8px;">
-          Badhaai Ho! Your Kirana Order is Placed
-        </h1>
-        <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 16px;">
-          Order ID: <strong id="success-order-id" style="color: #047857; font-size: 1.05rem;">VK-XXXXXX</strong>
-        </p>
-
-        <!-- Live 15-Min Delivery Countdown Tracker -->
-        <div style="background: #f8fafc; border-radius: 16px; padding: 20px; border: 1.5px solid #e2e8f0; margin-top: 24px; text-align: left;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <span style="font-size: 1.2rem;">⚡</span>
-              <span style="font-size: 1rem; font-weight: 800; color: #0f172a;">Live 15-Minute Express Tracker</span>
-            </div>
-            <span style="font-size: 0.85rem; font-weight: 800; color: #047857; background: #ecfdf5; padding: 4px 10px; border-radius: 20px;">
-              Estimated: ~12 mins remaining
-            </span>
-          </div>
-
-          <div class="delivery-progress-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center; font-size: 0.78rem; font-weight: 700;">
-            <div style="background: #ecfdf5; color: #047857; padding: 10px; border-radius: 10px; border: 1.5px solid #a7f3d0;">
-              <div>✓ Placed</div>
-              <div style="font-size: 0.68rem; font-weight: 500; margin-top: 2px;">Dukan Confirmed</div>
-            </div>
-            <div class="pulse-animation" style="background: #fef3c7; color: #b45309; padding: 10px; border-radius: 10px; border: 1.5px solid #fde68a;">
-              <div>📦 Packing</div>
-              <div style="font-size: 0.68rem; font-weight: 500; margin-top: 2px;">At Mandi Hub</div>
-            </div>
-            <div style="background: white; color: #64748b; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0;">
-              <div>🛵 On The Way</div>
-              <div style="font-size: 0.68rem; font-weight: 500; margin-top: 2px;">Rider Assigned</div>
-            </div>
-            <div style="background: white; color: #64748b; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0;">
-              <div>🏠 Delivered</div>
-              <div style="font-size: 0.68rem; font-weight: 500; margin-top: 2px;">Doorstep Handover</div>
-            </div>
-          </div>
-        </div>
+        <button class="theme-toggle-btn"><i class="fas fa-moon"></i></button>
       </div>
+    </div>
+  </div>
 
-      <!-- Receipt & Items Card -->
-      <div class="card receipt-card" style="padding: 32px; border-radius: 24px; margin-bottom: 24px;">
-        <div class="receipt-heading" style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 14px; margin-bottom: 20px;">
-          <h3 style="font-size: 1.15rem; font-weight: 800; color: #0f172a;">Ordered Items Summary</h3>
-          <button id="print-receipt-btn" class="btn btn-outline btn-sm">
-            <i data-lucide="printer"></i>
-            <span>Print Receipt</span>
-          </button>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-brand">
+        <div class="logo-icon"><i class="fas fa-shopping-basket"></i></div>
+        <div class="logo-text">
+          <h1 data-i18n="siteName">Apni Kirana</h1>
+          <span data-i18n="tagline">Aapki Apni Dukan, Ab Online!</span>
         </div>
-
-        <div id="success-items-list" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
-          <!-- Populated dynamically -->
-        </div>
-
-        <div style="border-top: 1px solid #f1f5f9; padding-top: 16px; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
-          <div class="receipt-summary-row" style="display: flex; justify-content: space-between; color: #64748b;">
-            <span>Payment Method:</span>
-            <strong id="success-payment-method" style="color: #0f172a;">UPI</strong>
-          </div>
-          <div class="receipt-summary-row" style="display: flex; justify-content: space-between; color: #64748b;">
-            <span>Delivery Destination:</span>
-            <strong id="success-address" style="color: #0f172a; max-width: 320px; text-align: right;">Bengaluru</strong>
-          </div>
-          <div class="receipt-summary-row" style="border-top: 2px dashed #e2e8f0; padding-top: 10px; margin-top: 6px; display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 900; color: #047857;">
-            <span>Total Paid:</span>
-            <span id="success-total-amount">₹0</span>
-          </div>
-        </div>
+      </a>
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-outline"><i class="fas fa-house"></i> Home</a>
       </div>
+    </div>
+  </header>
 
-      <!-- Action Buttons -->
-      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-        <a href="orders.html" class="btn btn-outline btn-lg">
-          <i data-lucide="package"></i>
-          <span>View All Orders</span>
-        </a>
-
-        <a href="products.html" class="btn btn-primary btn-lg">
-          <span>Continue Shopping</span>
-          <i data-lucide="arrow-right"></i>
-        </a>
-      </div>
-
+  <main style="padding: 40px 0 80px;">
+    <div class="container" style="max-width: 780px;">
+      <div id="order-success-card"></div>
     </div>
   </main>
 
-  <!-- Common Footer Shell -->
-  <div id="vk-footer-container"></div>
+  <footer class="footer"><div class="container"><div class="footer-bottom">© 2025 Apni Kirana</div></div></footer>
 
-  <!-- Page Logic Script -->
-  <script type="module" src="./js/pages/order-success.js"></script>
+  <script src="./js/language.js"></script>
+  <script src="./js/products.js"></script>
+  <script src="./js/cart.js"></script>
+  <script src="./js/checkout.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const orderId = urlParams.get('orderId');
+
+      const card = document.getElementById('order-success-card');
+      if (!card || !window.Checkout) return;
+
+      const order = orderId ? window.Checkout.getOrderById(orderId) : window.Checkout.getOrders()[0];
+
+      if (!order) {
+        card.innerHTML = `<div class="card" style="padding: 40px; text-align: center;"><h2>Order Not Found</h2><a href="index.html" class="btn btn-primary">Return to Home</a></div>`;
+        return;
+      }
+
+      card.innerHTML = `
+        <div class="card" style="text-align: center; padding: 36px 28px; background: linear-gradient(135deg, #E8F5E9 0%, #FFFFFF 100%); margin-bottom: 24px;">
+          <div style="width: 72px; height: 72px; border-radius: 50%; background: var(--primary-color); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 16px; box-shadow: 0 8px 20px rgba(22, 132, 71, 0.3);">
+            <i class="fas fa-circle-check"></i>
+          </div>
+          <span class="badge" style="background: var(--secondary-color); color: var(--primary-dark); font-size: 0.8rem; padding: 4px 12px; margin-bottom: 8px;">Order Confirmed</span>
+          <h1 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 8px;" data-i18n="orderSuccessTitle">Order Placed Successfully!</h1>
+          <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 16px;">Thank you for shopping with Apni Kirana. Your groceries are being packed with care.</p>
+
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: #ffffff; border: 1px solid var(--border-color); padding: 8px 16px; border-radius: var(--radius-md);">
+            <span style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="orderIdLabel">Order Reference ID:</span>
+            <strong style="font-size: 1.1rem; color: var(--primary-color);">${order.id}</strong>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 24px; margin-bottom: 24px;">
+          <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 16px;">Delivery Details</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 0.88rem;">
+            <div>
+              <div style="color: var(--text-muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase;">Delivering To:</div>
+              <strong style="color: var(--text-color);">${order.customer.name}</strong>
+              <div>${order.customer.address.house}, ${order.customer.address.street}</div>
+              <div>${order.customer.address.city}, ${order.customer.address.state} - ${order.customer.address.pincode}</div>
+              <div style="color: var(--text-muted); font-size: 0.8rem;">Phone: ${order.customer.phone}</div>
+            </div>
+
+            <div>
+              <div style="color: var(--text-muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase;">Slot & Payment:</div>
+              <strong>${order.deliverySlot}</strong>
+              <div style="margin-top: 4px;">Payment Mode: <strong>${order.paymentMethod}</strong></div>
+              <div style="color: var(--primary-color); font-weight: 700; margin-top: 4px;">Status: ${order.status}</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center;">
+          <a href="track-order.html?orderId=${order.id}" class="btn btn-primary" data-i18n="trackOrderBtn">
+            <i class="fas fa-truck-fast"></i> Track Order Status
+          </a>
+          <a href="shop.html" class="btn btn-outline" data-i18n="shopNow">
+            Continue Shopping
+          </a>
+        </div>
+      `;
+    });
+  </script>
 </body>
 </html>
